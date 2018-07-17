@@ -1,0 +1,168 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Plasmati Graduate CV
+% LaTeX Template
+% Version 1.0 (24/3/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Alessandro Plasmati (alessandro.plasmati@gmail.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Important note:
+% This template needs to be compiled with XeLaTeX.
+% The main document font is called Fontin and can be downloaded for free
+% from here: http://www.exljbris.com/fontin.html
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[10pt]{article} % Default font size and paper size
+
+\usepackage[letterpaper, margin=0.5in]{geometry}
+
+\usepackage{fontspec} % For loading fonts
+\defaultfontfeatures{Mapping=tex-text}
+%\setmainfont[SmallCapsFont = Fontin SmallCaps]{Fontin} % Main document font
+
+\usepackage{xunicode,xltxtra,url,parskip} % Formatting packages
+
+\usepackage[usenames,dvipsnames]{xcolor} % Required for specifying custom colors
+
+%\usepackage[big]{layaureo} % Margin formatting of the A4 page, an alternative to layaureo can be \usepackage{fullpage}
+% To reduce the height of the top margin uncomment: \addtolength{\voffset}{-1.3cm}
+
+\usepackage{hyperref} % Required for adding links	and customizing them
+\definecolor{linkcolour}{rgb}{0,0.2,0.6} % Link color
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour} % Set link colors throughout the document
+
+\usepackage{titlesec} % Used to customize the \section command
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule] % Text formatting of sections
+\titlespacing{\section}{0pt}{3pt}{3pt} % Spacing around sections
+
+\begin{document}
+
+\pagestyle{empty} % Removes page numbering
+
+\font\fb=''[cmr10]'' % Change the font of the \LaTeX command under the skills section
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CONTACT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\par{\centering{\Huge Jim \textsc{McStanton}}\bigskip\par} % Your name
+
+\section{Personal Data}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{rl}
+\textsc{Address:} & 14216 w. 138th Court, Olathe, Kansas \\
+\textsc{Phone:} & 913 579 9813 \\
+\textsc{email:} & \href{mailto:jim@jhstanton.com}{jim@jhstanton.com}\\
+\textsc{website:} & \href{http://www.jhstanton.com}{jhstanton.com}\\
+\textsc{github:} & \href{http://www.github.com/jhstanton}{github.com/jhstanton}
+\end{tabular}
+\end{table}
+
+%----------------------------------------------------------------------------------------
+%	SKILLS
+%----------------------------------------------------------------------------------------
+
+\section{Skills}
+
+\begin{itemize}
+\item \textbf{Languages:} Java, Ruby, Python, Scala, Haskell, C++, VHDL
+\item \textbf{Technologies:} Hadoop (MapReduce, Crunch, Storm, Hive, HBase), REST, Chef, Docker, MySQL
+\end{itemize}
+%\newcommand\colspace{0.5cm}
+%\newcommand\spacer{0.25cm}
+
+% |Blank|Languages|extra_for_languages|space|space|tools|space|space|operatingsystems|
+%\begin{table}[h]
+%\centering
+%\begin{tabular}{c c c c|c c c|c c} 
+%\hspace{\colspace} & \underline{Languages} & & \hspace{\spacer} & \hspace{\spacer} 
+%& \underline{Tools} & \hspace{\spacer} & \hspace{\spacer} & \underline{Operating Systems}\\
+%& Java & & & & Hadoop/MR\\
+%& Python &  & & & Django & & & GNU/Linux\\
+%& Haskell &  & & & PSpice & & & Windows\\
+%& Scala &  & & & Active Directory & & & OS X\\
+%& C++ &  & & & Cadence Virtuoso   & & &\\
+%& VHDL &  & & & Xilinx Vivado   & & &\\
+%\multicolumn{3}{c}{} \\
+
+%\end{tabular}
+%\end{table}
+
+%----------------------------------------------------------------------------------------
+%	WORK EXPERIENCE 
+%----------------------------------------------------------------------------------------
+
+\section{Work Experience}
+
+
+\begin{tabular}{r|p{11cm}}
+   \textsc{June 2016 - Present} & Associate Senior Software Engineer at \textsc{Cerner Corporation} \\
+   & \footnotesize{Designing, developing, and supporting MapReduce pipelines and REST services for the Population
+     Health platform. Responsibilities include designing and implementing services to ingest and transform data
+     from clients/services, maintaining and updating internal big data infrastructure and tooling,
+     and mentoring new hires.} \\
+  \multicolumn{2}{c}{} \\
+& \textsc{The University of Kansas} \\
+& \emph{Various Roles}\\ \\
+\textsc{Fall 2014 - May 2016} & \emph{Undergraduate Research Assistant} \\
+& \footnotesize{Assisted Dr. Andy Gill with various projects. Tasks included developing examples for various
+research projects and assisting with papers. Upcoming projects include reviving the Kansas Lava project to
+design digital hardware with Haskell.}\\
+\textsc{May 2013-April 2015} & \emph{Web Developer and IT Support}\\ 
+& \footnotesize{Managed existing School of Engineering website and server using Python and Django and supported students, faculty 
+and labs with a multitude of hardware and software related support issues.}\\
+\multicolumn{2}{c}{} \\
+
+
+%------------------------------------------------
+
+\textsc{Summer 2014, 2015} & Summer Software Engineering Intern at \textsc{Cerner Corporation} \\
+& \footnotesize{Spent two consecutive summers working with several software engineering teams. Tasks varied from
+javascript front-end development, back-end database scripting, and refactoring a Scala code base using modern functional idioms.}\\
+\multicolumn{2}{c}{} \\
+
+%-----------------------------------------------
+\textsc{August 2012-May 2013} & IT Workstudy at \textsc{Johnson County Community College} \\
+& \footnotesize{Aided IT staff with simple tasks ranging from desktop and thin client setup and configuration to printer 
+ maitenance and support.}\\
+\multicolumn{2}{c}{} \\
+
+%------------------------------------------------
+
+\textsc{August 2011-August 2012} & Systems Specialist at \textsc{Unisource Document Products} \emph{}\\
+& \footnotesize{Provided external and internal IT support ranging from desktop management} \\ & \footnotesize{to MFP troubleshooting.}\\
+\end{tabular} 
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+
+\section{Education}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{rl}	
+\textsc{May} 2016 & Bachelors of Science in \textsc{Engineering}, \textbf{The University of Kansas}, Lawrence\\
+& Major: Computer Engineering \\
+&\normalsize \textsc{GPA}: 3.5\\
+\end{tabular}
+\end{table}
+
+
+%--------------------------------------------
+% EXTRA COURSES
+%--------------------------------------------
+\end{document}

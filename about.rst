@@ -1,17 +1,18 @@
 ---
 title: About
 ---
-Nullam imperdiet sodales orci vitae molestie. Nunc quam orci, pharetra a
-rhoncus vitae, eleifend id felis. Suspendisse potenti. Etiam vitae urna orci.
-Quisque pellentesque dignissim felis, egestas tempus urna luctus vitae. In hac
-habitasse platea dictumst. Morbi fringilla mattis odio, et mattis tellus
-accumsan vitae.
+Hi! As you can see above, my name is Jim McStanton. I'm a Software Engineer
+at `Cerner <https://www.cerner.com/>`_ where I work in the Big Data space of the
+Population Health organization. The teams I've been on build tools to ingest
+and transform large amounts of data and REST services that allow teams and
+clients to inspect their ingested data.
 
-1. Amamus Unicode 碁
-2. Interdum nex magna.
+My academic background is Computer Engineering at the University of Kansas. There
+I became interested in processor architecture, functional programming, and
+embedded systems. In addition to my course work I also worked in the `KU
+functional programming group <http://ku-fpg.github.io/>`_ under Dr. Andy Gill. 
 
-Vivamus eget mauris sit amet nulla laoreet lobortis. Nulla in diam elementum
-risus convallis commodo. Cras vehicula varius dui vitae facilisis. Proin
-elementum libero eget leo aliquet quis euismod orci vestibulum. Duis rhoncus
-lorem consequat tellus vestibulum aliquam. Quisque orci orci, malesuada porta
-blandit et, interdum nec magna.
+In addition to functional programming, software, and computer engineering, I also
+like to spend time with my dogs, baking, brewing beer, and playing PC games. 
+
+If you're looking for a way to contact me, or for my resume, head over to `Contact <./contact.html>`_
