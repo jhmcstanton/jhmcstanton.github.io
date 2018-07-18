@@ -1,3 +1,5 @@
+# Always fail the script if anything bad happens
+set -e
 # Temporarily store uncommited changes
 git stash
 
@@ -8,6 +10,8 @@ git checkout develop
 stack exec site clean
 stack exec site build
 
+# delete master locally if it exists
+git branch -D master
 # Get previous files
 git fetch --all
 git checkout -b master --track origin/master
