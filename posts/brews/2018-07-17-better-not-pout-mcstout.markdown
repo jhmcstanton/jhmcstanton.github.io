@@ -14,7 +14,7 @@ The recipe we opted for was Ben VanderMeer's [Better Not Pout Stout](https://bee
 Of course, the recipe wasn't quite the same, and my wife and I brewed it, so we went ahead and just renamed it
 Better Not Pout McStout for good measure. 
 
-Unfortunately, I don't have the exist ingredient list of what ended up in the wort that day, but the list should be pretty close
+Unfortunately, I don't have the exact ingredient list of what ended up in the wort that day, but the list should be pretty close
 to the linked recipe above. The main differences that I can recall in our brew were:
 
 - No addition of brewing salts
