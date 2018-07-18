@@ -13,6 +13,6 @@ embedded systems. In addition to my course work I also worked in the `KU
 functional programming group <http://ku-fpg.github.io/>`_ under Dr. Andy Gill. 
 
 In addition to functional programming, software, and computer engineering, I also
-like to spend time with my dogs, baking, brewing beer, and playing PC games. 
+like to spend time with my dogs, baking, brewing beer, music, board/table top games, and video games. 
 
 If you're looking for a way to contact me, or for my resume, head over to `Contact <./contact.html>`_
