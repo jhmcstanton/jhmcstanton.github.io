@@ -37,7 +37,7 @@ Note that the stats below have been calculated a few months after the actual bre
 |     |        |
 | ---- | ----- |
 | *Wort* |         |
-| 1 lb | North American Crystal 15&degL (steeped) |
+| 1 lb | North American Crystal 15&deg;L (steeped) |
 | 7 lb | Ultra Light Malt Extract |
 |     |  |
 | *Hops* | |
