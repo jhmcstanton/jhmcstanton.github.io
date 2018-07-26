@@ -1,0 +1,18 @@
+---
+title: 'Binder: Another Note Taking Tool' 
+---
+
+[`Binder`](https://github.com/jhmcstanton/Binder) is a tool I made during my senior year at KU for taking notes in class. The intention was to make note taking on my Linux machine easy with the following goals:
+
+- Allow the user to organize notes in any manner.
+- Notes should be a flat file format for ease of use, editing, and version control if desired. 
+- The "binder" should be a single file that is easily navigable.
+- The "binder" should be customizable by the user.
+
+
+`Binder` supports the above by compiling markdown files using [`Pandoc`](https://pandoc.org/) from the current working directory, and all child directories, into a single html file. This file has default styles, but can be updated by the user.
+
+Beyond just wanting to build a note taking application for myself, another reason to build this tool was to become more comfortable with [Monad transfomers](https://en.wikipedia.org/wiki/Monad_transformer). In particular, `Binder` makes use of the [`transformers`](http://hackage.haskell.org/package/transformers) and [`mtl`](http://hackage.haskell.org/package/mtl) Haskell packages. 
+
+If I were to go back and refactor `Binder` my main goal would be to rely less on concrete implementation from `transformers` and more on the `mtl`-style typeclasses to keep methods generic and ready for future refactors. 
+
