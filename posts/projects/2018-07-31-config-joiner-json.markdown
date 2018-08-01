@@ -27,7 +27,7 @@ to factor out common config from their JSON files into one `common.json`, `paren
  `config-joiner-json` is built in `Haskell` primarily using [`aeson`](http://hackage.haskell.org/package/aeson-1.4.0.0/docs/Data-Aeson.html) for the JSON handling. 
  
  `config-joiner-json` is both the binary outlined above and a library. The library 
- houses the all of the JSON reading, parsing, joining, writing, and even includes
+ houses all of the JSON reading, parsing, joining, writing, and even includes
  a handy `joinMain` method to wrap it all up. The binary basically combines `joinMain`
  with some option parsing, courtesy of [`optparse-applicative`](http://hackage.haskell.org/package/optparse-applicative), with some file system discovery.
  
