@@ -63,7 +63,7 @@ The packet was rehydated with 1 cup of 80&deg; previously boiled water.
 
 # Result
 
-<img src="/images/posts/brews/dwights-orange-honey-wheat.jpg" class="brew-photo" style="image-orientation: from-image"/> 
+<img src="/images/posts/brews/dwights-orange-honey-wheat.jpg" class="brew-photo" /> 
 
 Note that this post was made about 4 weeks after this brew was ready to drink, and 
 there have been noticeable changes from the first week of drinkability til now. I'll
