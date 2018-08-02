@@ -68,7 +68,8 @@ Simply tossed the dry yeast directly into the aerated wort.
 I'm no beer expert, I just try a lot of it, but I'll try to describe this for anyone reading this. 
 
 
-<img src="/images/posts/brews/knight-rider-apa.jpg" width="80%" style="margin-left: auto; margin-right: auto; display: block;"/>
+<img src="/images/posts/brews/knight-rider-apa.jpg" class="brew-photo" />
+
 
 ## Aroma 
 Fresh this had a mild hoppy and citrusy aroma with sweet, slightly syrupy, undertones. A month later the hoppiness has become more of a backdrop to the actual malt base.
