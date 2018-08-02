@@ -80,16 +80,14 @@ this far out.
 
 ## Flavor and Mouthfeel
 
-This is pretty light on the palate and has a slight silkiness. The majority of the
-flavor is bready, as one would expect from a wheat. There is still a honey sweetness
-in the beer, not much orange floating around right now. 
+This is pretty light on the palate and has a slight woven or thread-like texture. The majority of the flavor is bready, as one would expect from a wheat. There is still a honey sweetness in the beer, not much orange floating around right now. 
 
 There is also a _very_ slight bubblegum flavor coming out, but that may just be because I've been mulling the flavor over so much - I really wasn't expecting anything quite
 like that, but apparently Munton's Ale Yeast can inpart that. If its there it meshes
 well.
 
 Fresh this had some subtle orange hints and the honey came out quite nicely. The 
-texture was actually more honey like fresh after bottling and less silky.
+texture was actually more honey like fresh after bottling and less woven.
 
 ## Finish
 
