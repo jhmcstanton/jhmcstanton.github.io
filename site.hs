@@ -1,8 +1,9 @@
 --------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
+import qualified Data.ByteString.Lazy.Char8 as C
 import           Data.Monoid (mappend)
 import           Hakyll
-
+import           Text.Jasmine
 
 --------------------------------------------------------------------------------
 main :: IO ()
@@ -14,6 +15,10 @@ main = hakyll $ do
     match "css/*" $ do
         route   idRoute
         compile compressCssCompiler
+
+    match "scripts/**" $ do
+        route   idRoute
+        compile compressJsCompiler
 
     match "resume/*" $ do
         route   idRoute
@@ -75,3 +80,9 @@ createArchiveLanding page title glob =
                 >>= loadAndApplyTemplate (fromFilePath $ "templates/" <> page) archiveCtx
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= relativizeUrls
+
+compressJsCompiler :: Compiler (Item String)
+compressJsCompiler = do
+  let minifyJS = C.unpack . minify . C.pack . itemBody
+  s <- getResourceString
+  return $ itemSetBody (minifyJS s) s
