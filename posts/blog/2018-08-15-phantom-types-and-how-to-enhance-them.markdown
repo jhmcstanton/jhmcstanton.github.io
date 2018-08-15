@@ -224,7 +224,7 @@ A data constructor constructs a _value_ of a _type_. `Just` is a data constructo
 
 
 The `DataKinds` extension basically lets us use Data Constructors where we are using types, and Type Constructors where we are using kinds. 
-Like most extensions in GHC, this has many applications and I definitely encourage you to try this extension out.`` 
+Like most extensions in GHC, this has many applications and I definitely encourage you to try this extension out. 
 
 ### Phantom Types with Data Kinds
 
