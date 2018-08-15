@@ -247,11 +247,11 @@ data ProcessState :: * where
 newtype EnvConfig (a :: ProcessState) = EnvConfig { envValue :: Value }
 ```
 
-There are really only two changes here. First, notice that `PreProcess` and `PostProcess` have been combined into one single type, `ProcessState`. They
-are both still empty data declarations, so we can't make values out of them, so not too much has changed there. Second, the parameter `a` on `EnvConfig` now
-has this extra weird annotation on it: `a :: ProcessState.` This can be read as "a has kind `ProcessState`". Remember that typically the kind of a type
-like this would be `*`, and with the above extensions turned on we can actually use annotate our type parameter with that kind signature on our previous
-implementation:
+There are really only two changes here. First, notice that `PreProcess` and `PostProcess` have been combined into one single type, `ProcessState`. Also, these
+are no longer empty data declarations, we could create a `ProcessState` using the constructors `PreProcess` and `PostProcess` if we really needed to (we still
+don't need that though). Second, the parameter `a` on `EnvConfig` now has this extra weird annotation on it: `a :: ProcessState.` This can be read as "a has 
+kind `ProcessState`". Remember that typically the kind of a type like this would be `*`, and with the above extensions turned on we can actually annotate our 
+type parameter with that kind signature on our previous implementation:
 
 ```haskell
 -- old newtype with kind signature
@@ -279,3 +279,13 @@ that the `EnvConfig` has a very precise state for a as well.
 Finally, extending supported states is still just as simple as adding new empty data declarations, we just need to include them as data declarations
 on the type `ProcessState.`
 
+
+### Should I use this?
+
+In general, the `DataKind` approach is not needed, and in many cases overly restrictive. We could emulate the `DataKinds` version of our code here 
+by not exporting the data constructors of `EnvConfig` and only exporting smart constructors and functions that include the types we want to support
+in our public / consumer API. The smart constructor approach also allows us as library writers to use any type as needed for `a`, which could
+be useful in some cases.
+
+The smart constructor approach works well, and is used by many libraries today. In this case I like the `DataKinds` approach since it allows us
+to worry less about what is hidden and exported from the library, and the `DataKinds` approach doesn't tie our hands enough to cause problems.
