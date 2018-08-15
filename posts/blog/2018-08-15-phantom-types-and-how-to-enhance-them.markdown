@@ -11,7 +11,7 @@ If you are already familiar with phantom types just jump ahead to [enhancing-pha
 
 # Phantom Types
 
-## What is it again? 
+## What are they again? 
 
 A _Phantom type_ is just a type parameter that appears in the _type_ constructor, but not in the _data_ constructor for that type. That is to say,
 it appears only at the type level. This is more obvious in an examples. 
@@ -200,7 +200,8 @@ along the way to attempt to capture the very specific states desired. Type param
 that makes sense, there isn't usually a use case for a `List` that only contains `Num` instances, for example.
 
 ```haskell
-data [] (Num a) => a = [] | a : [a] -- hypothetical syntax, not actually supported in standard Haskell
+-- hypothetical syntax, not actually supported in standard Haskell
+data [] (Num a) => a = [] | a : [a] 
 ```
 
 However, in the use case above for phantom types we _are_ attempting to have a very small number of types that can be used as an encoding. This is where
