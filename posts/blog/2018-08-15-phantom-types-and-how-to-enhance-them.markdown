@@ -288,5 +288,5 @@ in our public / consumer API. The smart constructor approach also allows us as l
 be useful in some cases.
 
 The smart constructor approach works well, and is used by many libraries today. In this case I like the `DataKinds` approach since it allows us
-to worry less about what is hidden and exported from the library. In this library `DataKinds` approach doesn't tie our hands enough to cause problems, 
-instead giving us enough rope to implement the library, and then use it, without worrying about weird states that our `EnvConfigs` could be in. 
+to worry less about what is hidden and exported from the library. In this library `DataKinds` aren't tying our hands enough to cause problems, 
+instead giving us enough rope to implement the library, and use it, without worrying about weird states that our `EnvConfigs` could be in. 
