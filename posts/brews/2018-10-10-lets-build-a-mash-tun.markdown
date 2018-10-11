@@ -26,16 +26,16 @@ For other new brewers out there, a [_mash tun_](https://en.wikipedia.org/wiki/Ma
 
 The other key feature of the tun is that is has a false bottom or filter system. This is used to separate the wort from the grain in the final mashing step of [_lautering_](https://en.wikipedia.org/wiki/Lautering).
 
-A mash tun can come in many forms, and really a brewer just needs a tun to match the style of [sparging](https://en.wikipedia.org/wiki/Lautering#Sparging** they'll be using. In this case the tun will be designed with batch sparging in mind.
+A mash tun can come in many forms, and really a brewer just needs a tun to match the style of [sparging](https://en.wikipedia.org/wiki/Lautering#Sparging) they'll be using. In this case the tun will be designed with batch sparging in mind.
 
 ### Batch Sparging
 
-Batch sparging is a simple sparge method that is just a few simple steps. First, the wort is completely drained from the mash into the boil kettle. Next, the tun is refilled at the same temperature as the original mash. This is held for several minutes to allow the grain bed to re-settle. Once settled the tun is drained again. 
+Batch sparging is a simple sparge method that is just a few steps. First, the wort is completely drained from the mash into the boil kettle. Next, the tun is refilled at the same temperature as the original mash. This is held for several minutes to allow the grain bed to re-settle. Once settled the tun is drained again. 
 
 
 # A Batch Mash Tun
 
-This mash tun design is taken straight out of _How to Brew** by John Palmer, with only a few parts tweaked based on what was available at my hardware store. Anything that looks a little weird can be blamed on me.
+This mash tun design is taken straight out of _How to Brew_ by John Palmer, with only a few parts tweaked based on what was available at my hardware store. Anything that looks a little weird can be blamed on me.
 
 It needs to be emphasized that the part list here, or any other list found online, should be taken as a _super loose guideline_. None of this is set in stone and whatever is easiest to find, buy, and build is probably right for you.
 
@@ -77,7 +77,7 @@ Again, the parts here can change based on whats available at the store and the v
 - A washer or spacer
 - A 1/2" to 3/8" brass coupling
 - A 3/8" ball valve
-- a 3/8" hose barb
+- A 3/8" hose barb
 
 These are essentially connected in line top-to-bottom in the list. The only pieces to separate are the first two in the list, which will be on the inside of the vessel with the 1/2" end sticking through.
 
@@ -95,7 +95,7 @@ Now attach the hose barb and the coupling to the ball valve (don't forget some t
 Finally, attach this ball valve fitting to the adapter on the vessel.
 
 <img src="/images/posts/brews/mash_tun/bulkhead_complete.jpg" class="brew-photo" />
-T
+
 With the fitting complete we just need to confirm that the vessel is still water tight. Fill the vessel over the adapter and spigot hole and let it sit for at least 20 minutes, keeping an eye out for any water draining.
 
 <img src="/images/posts/brews/mash_tun/water_tight_check.jpg" class="brew-photo" />
@@ -147,7 +147,7 @@ Now, just attach the tee and adapter to the hose using the two clamps. Typically
 
 You likely will need to attach the tee to the hose after attaching the PEX adapter to the garden hose adapter due to space constraints in the tun - I did anyway.
 
-Alright, after that is left to do is attach the braid to the tee. This will need to be done after the PEX fittings above are attached to the bulkhead, otherwise it will be impossible to attach the PEX adapter to the garden hose.
+Alright, after that all that is left to do is attach the braid to the tee. This will need to be done after the PEX fittings above are attached to the bulkhead, otherwise it will be impossible to attach the PEX adapter to the garden hose.
 
 <img src="/images/posts/brews/mash_tun/braid_attached.jpg" class="brew-photo"/>
 
