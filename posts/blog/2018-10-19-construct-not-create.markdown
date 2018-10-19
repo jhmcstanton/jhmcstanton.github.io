@@ -91,7 +91,7 @@ that the caller uses a specific `Configuration`, but each has its use case.
 Sometimes constructors will use values from the system environment to populate fields:
 
 ```java
-public MyClass3(/** Look, no dependencies ma! */) {
+public MyClass3(/** Look ma! No dependencies! */) {
   this.serviceUrl = System.getProperty("serviceUrl");
   this.anotherUrl = System.getProperty("anotherUrl");
 }
