@@ -81,8 +81,10 @@ Again, the parts here can change based on whats available at the store and the v
 
 These are essentially connected in line top-to-bottom in the list. The only pieces to separate are the first two in the list, which will be on the inside of the vessel with the 1/2" end sticking through.
 
-<img src="/images/posts/brews/mash_tun/adapter_with_oring.jpg" class="brew-photo"/>
-<img src="/images/posts/brews/mash_tun/bulkhead_adapter_interior.jpg" class="brew-photo"/>
+<div class="grid-container">
+  <img src="/images/posts/brews/mash_tun/adapter_with_oring.jpg" />
+  <img src="/images/posts/brews/mash_tun/bulkhead_adapter_interior.jpg" />
+</div>
 
 Next attach the spacer and coupling. The spacer may need to be trimmed down to fit the space where the spigot was (used the hack saw for this). In my case an extra o-ring between vessel wall and spacer helped to keep this water tight.
 
