@@ -136,10 +136,12 @@ PEX is used here due to the availability of parts, as well as the price tag. I h
 
 Assembly is straight forward. First the hose needs to be cut to length. This doesn't need to be perfect or a specific length, it simply needs to be able to house both the PEX tee and PEX adapter ends that will be inside the hose.
 
-<img src="/images/posts/brews/mash_tun/tee_measure.jpg" class="brew-photo"/>
-<img src="/images/posts/brews/mash_tun/adapter_measure.jpg" class="brew-photo"/>
-<img src="/images/posts/brews/mash_tun/hose_measure.jpg" class="brew-photo"/>
-<img src="/images/posts/brews/mash_tun/hose_cut.jpg" class="brew-photo"/>
+<div class="grid-container">
+  <img src="/images/posts/brews/mash_tun/tee_measure.jpg" />
+  <img src="/images/posts/brews/mash_tun/adapter_measure.jpg" />
+  <img src="/images/posts/brews/mash_tun/hose_measure.jpg" />
+  <img src="/images/posts/brews/mash_tun/hose_cut.jpg" />
+</div>
 
 Now, just attach the tee and adapter to the hose using the two clamps. Typically PEX is attached by crimping the fitting to the hose, but the clamps still attach the fittings tightly without requiring a purchase or rental of a potentially expensive crimper. Plus, if you want to reuse those fittings later its easy to pull the clamps off.
 
