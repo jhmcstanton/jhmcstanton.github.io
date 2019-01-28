@@ -45,7 +45,8 @@ main = hakyll $ do
     match "index.html" $ do
         route idRoute
         compile $ do
-            posts <- recentFirst =<< loadAll "posts/**/*.markdown"
+            allPosts <- recentFirst =<< loadAll "posts/**/*.markdown"
+            let posts = take 10 allPosts
             let indexCtx =
                     listField "posts" postCtx (return posts) `mappend`
                     constField "title" "Home"                `mappend`
