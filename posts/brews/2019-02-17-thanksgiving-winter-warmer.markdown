@@ -41,16 +41,21 @@ Ingredients are per 1 gallon.
 | 1.72 lb | Ashburne Mild Malt\* |
 | 1.72 lb | Pale Ale Malt |
 | 0.1 lb | Caramel Malt 80&deg;L | 
-| 0.1 lb | Briess Extra Special Malt\*\* |
+| 0.1 lb | Briess Exta Special Malt\*\* |
+| | |
 | 0.2912 lb | Molasses |
+| | |
 | 0.2 oz | Challenger 8.0% AA\*\*\* |
 | 0.4 oz | Kent Goldings 5.0% AA |
+| | |
 | Per Package | White Labs WLP 023 Burton Ale Yeast |
 | 1.5 packet | Accumash 22 Brewing Salts |
+| | |
 | **Steeped After Flame Out:** | |
 | 1/12 tsp | nutmeg |
 | 0.47 oz | dried orange peel |
 | 0.7 stick | cinnamon |
+| | |
 | **Dry:** | |
 | 0.7 sticks | cinnamon (sanitized in whiskey) |
 
