@@ -74,7 +74,7 @@ What actually happened:
 Notice that this includes nothing about PH maintenance. That's because
 I didn't do any. All of the minerals came from the few cups of tap water I
 used to adjust the temperature since I use Reverse Osmosis water when 
-brewing. I've used RO water since I started brewing at home since my 
+brewing. I've used RO water since I started brewing at home because my 
 tap water has a strong chlorine smell. This was fine with extract since
 PH maintenance isn't a thing when you're only boiling wort. In fact, until
 this screw up I haven't looked much at mash PH adjustments before. 
@@ -97,7 +97,7 @@ attempt to clarify it a bit more.
 ## Boil
 
 This was a pretty standard boil, just 60 minutes. This was a super simple
-recipe there wasn't much at all to do during the boil except to clean
+recipe and there wasn't much at all to do during the boil except to clean
 and sanitize. I actually went ahead and started working on some beer bread
 mixture in the mean time.
 
@@ -120,13 +120,13 @@ an immersion chiller and this was my first change to use it.
   <img src="/images/posts/brews/2019-03-15-simple-california-common/chilling_2.jpg">
 </div>
 
-So this looks super sanitary - I swear the bathroom is cleaned somewhat regularly. The day I brewed was still pretty cold out and the immersion chiller had no way connect this to my kitchen faucet. Instead we put an adapter on the bathroom faucet and carefully chilled in there. This cooled the wort down in minutes, rather than the hour an ice bath and whirlpool could take. 
+So this looks super sanitary - I swear the bathroom is cleaned somewhat regularly. The day I brewed was still pretty cold out (too cold for the outdoor spigot) and the immersion chiller had no way connect this to my kitchen faucet. Instead we put an adapter on the bathroom faucet and carefully chilled in there. This cooled the wort down in minutes, rather than the hour an ice bath and whirlpool could take. 
 
 ## Fermentation
 
 The dry yeast packet was pitched directly into the 72&deg;F wort from the package. Oddly enough, even on the manufacturer's website I couldn't find any other details regarding rehyrdrating, which I would typically do. At the time I figured it would be fine since it was 3 gallons and under gravity.
 
-This was fermented in my dining room between ~73&deg;F and ~76&deg;F for 8 days. To keep it warm and help with the temperature fluctuations I wrapp the carboy in a sheet. 
+This was fermented in my dining room between ~73&deg;F and ~76&deg;F for 8 days. To keep it warm and help with the temperature fluctuations I wrapped the carboy in a sheet. 
 
 I was actually surprised at the temperatures required for this yeast strain. I would have expected somewhere inthe 60s given the lager qualities it is supposed to have, but I still have a ton to learn about yeast.
 
@@ -140,7 +140,7 @@ Fermentation went well enough. Pretty active after about 30 hours, so not the st
 
 This beer I kegged and force carbonated. I've read that california
 commons are typically better fresh and with a fair amount of carbonation,
-and I was ready to drin this one soon.
+and I was ready to drink this one soon.
 
 <div class="grid-container">
   <img src="/images/posts/brews/2019-03-15-simple-california-common/keg_1.jpg">
@@ -178,7 +178,7 @@ toast.
 
 ### Mouthfeel
 
-This one has a medium body, probably one of the fuller mouth feels I've brwed. The carbonation plays nicely along with this. One thing I love about this beer is the foam lingers through the whole glass, unlike my other brews, almost like a root beer floating on top.
+This one has a medium body, probably one of the fuller mouth feels I've brwed. The carbonation plays nicely along with this. One thing I love about this beer is the foam lingers through the whole glass, unlike my other brews, almost like the foam from a root beer float on top.
 
 ## Comparison to the Original
 
@@ -226,3 +226,4 @@ it came up a little short. One thing I may do is cold crash a bit longer.
 Two days helped some, but I've seen where others have done longer with some success.
 
 Other methods include using gelatin to filter out particles in the beer. Unfortunately I can't use gelatin, but may look into some alternatives.
+ 
