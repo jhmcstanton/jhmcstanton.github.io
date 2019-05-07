@@ -37,15 +37,23 @@ beer.
 |                      |                                                |
 | ---                  | ---                                            |
 | *Wort A*             |                                                |
-| 1.65lb               | Briess Wheat Malt Extract                      |
+| 1.65 lb              | Briess Wheat Malt Extract                      |
 | 0.5 lb               | Wheat DME                                      |
+| | 
 | *Hops*               |                                                |
 | 1 oz                 | Mt Hood Hops (bittering)                       |
 | 1 oz                 | Cascade Hops                                   |
+| | 
 | *Other Fermentables* |                                                |
 | 2 lb                 | Clover Honey (boiled 5 min)                    |
+| | 
+| *Wort B*             |                                                |
+| 1.65 lb              | Briess Wheat Malt Extract                      |
+| 0.5 lb | Wheat DME |
+| | 
 | *Other Additives*    |                                                |
 | 1 oz                 | Sweet Orange peel (steeped at knockout 15 min) |
+| | 
 | *Yeast*              |                                                |
 | 1 packet             | Munton's Dry Ale Yeast                         |
 
