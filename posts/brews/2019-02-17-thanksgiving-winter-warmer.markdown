@@ -10,7 +10,7 @@ Winter is the season of my favorite beer - big, malty brews with decent amounts 
 
 Without further ado, here's the *2018 Thanksgiving Winter Warmer*.
 
-## 2018 Thanksgiving Winter Warmer
+## Recipe: 2018 Thanksgiving Winter Warmer
 
 ### General Information
 
