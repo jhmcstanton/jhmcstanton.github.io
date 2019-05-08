@@ -152,7 +152,7 @@ Unlike my last beer, this wasn't the set-and-forget method of force carbonation.
 
 I also cold crashed this for clarity in the keg during force carbonation for two days. This was my first cold crash. I don't have a fridge that can fit a keg, so I filled up a cooler I have with 40 lbs of ice. I think the beer came out a bit clearer as a result.
 
-## Result
+# Result
 
 <img src="/images/posts/brews/2019-03-15-simple-california-common/beer_2.jpg" class="brew-photo">
 
@@ -213,7 +213,7 @@ alchohol, so you can drink it all night without any worries.
 I plan on brewing this again, hopefully in the summer, but with a few 
 tweaks.
 
-## Mash PH
+## Mash pH
 
 The main issue in this beer was the Mash efficiency. For my next beer I 
 plan on bringing the mash PH down to the 5.2 - 5.6 range. In the mean
