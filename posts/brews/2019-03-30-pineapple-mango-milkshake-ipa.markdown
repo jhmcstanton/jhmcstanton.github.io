@@ -59,12 +59,6 @@ Ingredients are per 1 gallon where applicable
 \* Due to a mistake when ordering ingredients this should have been 0.3 lbs of
 flaked oats and 0.3 lbs of flaked wheat, but only ended up with the oats.
 
-#### Strike Water Additions
-
-I typically use Reverse Osmosis (RO) water for brews. Since there is minimal
-mineral content in RO water, some additions are needed. For this beer
-only Calcium Chloride and Gypsum were utilized. See the [mash](#mash) section
-below for more details.
 
 ### Hop Schedule
 
@@ -95,8 +89,9 @@ Hop quanities are for 1 gallon batch.
 | Gypsum | 6.5 g |
 | Calcium Chloride | 5 g |
 
+#### Strike Water Additions
 
-The strike water was treated with calcium chloride and gypsum to add back in the necessary calcium for enzyme activity and desired sulfate to emphasize the hops.
+I typically use Reverse Osmosis (RO) water for brews. Since there is minimal mineral content in RO water, some additions are needed to achieve the desired mash pH - for this beer Calcium Chloride and Gypsum were utilized to add back in the necessary calcium for enzyme activity and desired sulfate to emphasize the hops.
 
 <div class="grid-container">
   <img src="/images/posts/brews/2019-03-30-pineapple-mango-milkshake-ipa/mash_1.jpg"> 
