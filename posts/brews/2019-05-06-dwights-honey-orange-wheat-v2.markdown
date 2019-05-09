@@ -87,6 +87,8 @@ Super weird looking! Not sure exactly why this had so little color, possibly jus
 
 I also didn't think to run the first runnings back through the grain bed to clear it up, not sure that it mattered this time though.
 
+At this point the gravity was a measly 24 points.
+
 ## Boil
 
 ### Boil Schedule
