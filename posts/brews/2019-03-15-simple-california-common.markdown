@@ -87,7 +87,6 @@ by adding molasses to hit the target OG.
   <img src="/images/posts/brews/2019-03-15-simple-california-common/mash_1.jpg">
   <img src="/images/posts/brews/2019-03-15-simple-california-common/mash_2.jpg">
   <img src="/images/posts/brews/2019-03-15-simple-california-common/mash_3.jpg">
-  <img src="/images/posts/brews/2019-03-15-simple-california-common/mash_4.jpg">
 </div>
 
 Since this beer is less dark than my previous one I went ahead and passed 
