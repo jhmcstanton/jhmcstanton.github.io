@@ -119,3 +119,15 @@ At the time of writing this is being fermented. The carboy is being kept in the 
   <img src="/images/posts/brews/2019-05-06-dwights-honey-orange-wheat-v2/fermentation_3.jpg" >
 </div>
 
+
+# Things To Do Better
+
+This is still fermenting, but there is already stuff to look into for next time. The main one so far is simply brewhouse efficiency, but will be adding some more notes in the next few weeks.
+
+## Efficiency
+
+Typically I assume an efficiency of 60-65%, depending on how optimistic I'm feeling. I haven't done much yet to try to raise this, so far just including water treatment in the brew homework. However, water treatment wasn't sufficient this time - the efficiency is much closer to a shockingly low 50%. 
+
+One suggestion that was made to me months ago was that the grain I'm using isn't milled well enough. This could be because some homebrew shops don't mill very finely or don't tighten up their mills often, or any number of reasons somewhat outside my control since I dont personally mill the grain. Unfortunately, I haven't consistently sourced my grain from the same place, so this is difficult to account for when planning a recipe. One more piece of equipment to purchase would simply be a grain mill to keep at home and set as needed, rather than relying on whatever brew shop the grain is coming from.
+
+Secondly, I've read that stirring for a few seconds every 15 minutes has helped some batch sparging brewers. Given that most of us avoid opening the mash tun to maintain the temperature this is pretty surprising, but since this is cheap solution I'll be giving this a shot next time.
