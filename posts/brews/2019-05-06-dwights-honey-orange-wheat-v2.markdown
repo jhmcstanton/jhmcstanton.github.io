@@ -6,7 +6,7 @@ Well, its summer time again and about time to brew a crowd pleaser from last yea
 
 In addition to changing to all grain we made several ingredient upgrades. First, the honey changed from basic clover honey to orange blossom honey. I have never seen orange blossom honey in stores near my house before, but I have tried mead made with it and the orange is very obvious. The consistency of the particular brand of orange blossom honey I tried is also much runnier than clover honey and a lot easier to work with. 
 
-We also upgraded our yeast from simple [Muntons Ale Yeast](https://www.muntonshomebrew.com/category/yeasts-and-other-products/) to a White Labs [WLP-029 K&ouml;lsh ale yeast](https://www.whitelabs.com/yeast-bank/wlp029-german-ale-k-lsch-yeast). This should provide a crisp, clean tasting beer.
+We also upgraded our yeast from simple [Muntons Ale Yeast](https://www.muntonshomebrew.com/category/yeasts-and-other-products/) to a White Labs [WLP-029 K&ouml;lcsh ale yeast](https://www.whitelabs.com/yeast-bank/wlp029-german-ale-k-lsch-yeast). This should provide a crisp, clean tasting beer.
 
 ## Recipe: Dwight's Honey Orange Wheat v2
 
@@ -47,7 +47,7 @@ Ingredients are per 1 gallon where applicable.
 | 1/3 oz         | Dried Sweet Orange Peel                 |
 |                |                                         |
 | _Yeast_        |                                         |
-| 1/3 Packet\*   | White Labs WLP-029 K&ouml;lsh ale yeast |
+| 1/3 Packet\*   | White Labs WLP-029 K&ouml;lcsh ale yeast |
 | 1 tsp          | Yeast Nutrient                          |
 | 1 1/2 tsp | Yeast Energizer |
 
