@@ -78,10 +78,10 @@ Hop quanities are for 1 gallon batch.
 | Duration | 60 min |  
 | Sparge | Batch | 
 | Water / Grist | 1.5 |
+| Target pH | 5.38 |
 | Target Mash Temp | 158&deg;F |
 | Strike Water Temp | 171&deg;F |
 | Actual Mash Temp | 158&deg;F |
-| Target PH | 5.38 |
 | Strike Water Volume | 2.5 gal | 
 | Sparge Water Volume | 3.75 gal |
 | | |
