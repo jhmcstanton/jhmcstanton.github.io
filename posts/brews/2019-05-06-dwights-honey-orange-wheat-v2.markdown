@@ -126,7 +126,7 @@ expected, with the FG landing between 7 and 8 points.
 
 ## Carbing
 
-The beer has been racked to a keg and allowed to carb for ~2 weeks at 60&deg;F / 30 psi. Unfortunately I don't have anywhere cooler to carb this until Memorial Day, hence the high psi. 
+The beer has been racked to a keg and allowed to carb for ~2 weeks at 60&deg;F and 30 psi. Unfortunately I don't have anywhere cooler to carb this until Memorial Day, hence the high psi. 
 
 # Things To Do Better
 
