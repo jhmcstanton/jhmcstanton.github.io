@@ -1,5 +1,5 @@
 ---
-title: (Fermentation-in-Progress) Dwight's Honey Orange Wheat v2
+title: (Carbonation-in-Progress) Dwight's Honey Orange Wheat v2
 ---
 
 Well, its summer time again and about time to brew a crowd pleaser from last year, [Dwight's Honey Orange Wheat](/posts/brews/2018-08-01-dwights-orange-honey-wheat.html). Last year this was an extract recipe that we tweaked a little to more closely follow Palmer's extract brewing method and added an addition of orange peel for some orange aromas. Since then I've [built a mash tun](/posts/brews/2018-10-10-lets-build-a-mash-tun.html) and started brewing all-grain recipes exclusively, so, naturally, I converted this extract recipe to all-grain as well. 
@@ -19,7 +19,7 @@ We also upgraded our yeast from simple [Muntons Ale Yeast](https://www.muntonsho
 | Expected OG | 49                                        |
 | Actual OG   | 42                                        |
 | Expected FG | 12                                        |
-| Actual FG   | (Fermentation-in-Progress) 10 (Estimated) |
+| Actual FG   | 7 - 8 |
 | ABV         | TBD                                       |
 | IBU         | 14                                        |
 | SRM         | TBD                                       |
@@ -111,7 +111,8 @@ We did notice a little color come into the beer after adding the honey, although
 
 ## Fermentation
 
-At the time of writing this is being fermented. The carboy is being kept in the basement which typically hovers in the low 60&deg;s and wrapped in a fermwrap targeting 70&deg;-72&deg;F.
+The carboy was kept in the basement which typically hovers in the low 60&deg;s and wrapped in a fermwrap targeting 70&deg;-72&deg;F.
+
 
 <div class="grid-container">
   <img src="/images/posts/brews/2019-05-06-dwights-honey-orange-wheat-v2/fermentation_1.jpg" >
@@ -119,6 +120,13 @@ At the time of writing this is being fermented. The carboy is being kept in the 
   <img src="/images/posts/brews/2019-05-06-dwights-honey-orange-wheat-v2/fermentation_3.jpg" >
 </div>
 
+The primary fermentation was most active in the first 3 days, and a total
+of 8 days was allowed for the primary. The yeast did a lot more work than
+expected, with the FG landing between 7 and 8 points. 
+
+## Carbing
+
+The beer has been racked to a keg and allowed to carb for ~2 weeks at 60&deg;F / 30 psi. Unfortunately I don't have anywhere cooler to carb this until Memorial Day, hence the high psi. 
 
 # Things To Do Better
 
