@@ -17,6 +17,8 @@ input[type=number] {
 
 Helper scripts, mostly for myself, to convert extract recipes to all grain recipes. Refer to [this _Brew Your Own_ article](https://byo.com/article/extract-to-all-grain-and-back/) for the formula sources.
 
+Take this with a _big_ dose of salt. This was _incredibly_ briefly tested.
+
 ||||
 |-|-|-|
 |**Extract** | **Weight** | **Estimated Specific Gravity Contribution** |
