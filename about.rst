@@ -1,8 +1,10 @@
 ---
 title: About
 ---
-Hi! As you can see above, my name is Jim McStanton. I'm a Software Engineer
-at `Cerner <https://www.cerner.com/>`_ where I work in the Big Data space of the
+Hi! As you can see above, my name is Jim McStanton. Currently I am a Software Engineer 2 at `Garmin <https://www.garmin.com/en-US/>`_ working on the team that manages the internal cloud platform for running core infrastructure services. Responsibilities range from platform and application deployment automation to building new infrastructure services to support other teams at Garmin.
+
+Previously I was employed as an Associate Senior Software Engineer
+at `Cerner <https://www.cerner.com/>`_ where I worked in the Big Data space of the
 Population Health organization. The teams I've been on build tools to ingest
 and transform large amounts of data and REST services that allow teams and
 clients to inspect their ingested data.
