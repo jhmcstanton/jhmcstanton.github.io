@@ -32,24 +32,26 @@ We also upgraded our yeast from simple [Muntons Ale Yeast](https://www.muntonsho
 
 Ingredients are per 1 gallon where applicable.
 
-| Amount         | Ingredient                              |
-|----------------|-----------------------------------------|
-| _Fermentables_ |                                         |
-| 0.37 lb        | 2-row Malt                              |
-| 0.833 lb       | White Wheat Malt                        |
-| 0.11 lb        | Pilsner Malt                            |
-| 0.4 lb         | Orange Blossom Honey                    |
-|                |                                         |
-| _Hops_         |                                         |
-| 0.9 oz         | Mt. Hood Hops 5.5% AA                   |
-| 0.283 oz       | Cascade Hops 7.15% AA                   |
-| 1/6 tab\*      | Whirlfloc                               |
-| 1/3 oz         | Dried Sweet Orange Peel                 |
-|                |                                         |
-| _Yeast_        |                                         |
+| Amount         | Ingredient                               |
+|----------------|------------------------------------------|
+| _Fermentables_ |                                          |
+| 0.37 lb        | 2-row Malt                               |
+| 0.833 lb       | White Wheat Malt                         |
+| 0.11 lb        | Pilsner Malt                             |
+| 0.4 lb         | Orange Blossom Honey                     |
+|                |                                          |
+| _Hops_         |                                          |
+| 0.9 oz         | Mt. Hood Hops 5.5% AA                    |
+| 0.283 oz       | Cascade Hops 7.15% AA                    |
+|                |                                          |
+| _Others_ | |
+| 1/6 tab\*      | Whirlfloc                                |
+| 1/3 oz         | Dried Sweet Orange Peel                  |
+|                |                                          |
+| _Yeast_        |                                          |
 | 1/3 Packet\*   | White Labs WLP-029 K&ouml;lcsh ale yeast |
-| 1 tsp          | Yeast Nutrient                          |
-| 1 1/2 tsp | Yeast Energizer |
+| 1 tsp          | Yeast Nutrient                           |
+| 1 1/2 tsp      | Yeast Energizer                          |
 
 \* Note that all values are simply divided by 3 from what was used in this 3 gallon batch, so use what makes the most sense to you at the time.
 
