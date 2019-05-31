@@ -1,5 +1,5 @@
 ---
-title: (Carbonation-in-Progress) Dwight's Honey Orange Wheat v2
+title: Dwight's Honey Orange Wheat v2
 ---
 
 Well, its summer time again and about time to brew a crowd pleaser from last year, [Dwight's Honey Orange Wheat](/posts/brews/2018-08-01-dwights-orange-honey-wheat.html). Last year this was an extract recipe that we tweaked a little to more closely follow Palmer's extract brewing method and added an addition of orange peel for some orange aromas. Since then I've [built a mash tun](/posts/brews/2018-10-10-lets-build-a-mash-tun.html) and started brewing all-grain recipes exclusively, so, naturally, I converted this extract recipe to all-grain as well. 
@@ -22,7 +22,7 @@ We also upgraded our yeast from simple [Muntons Ale Yeast](https://www.muntonsho
 | Actual FG   | 7 - 8 |
 | ABV         | TBD                                       |
 | IBU         | 14                                        |
-| SRM         | TBD                                       |
+| SRM         | 3                                         |
 | Mash        | Single Infusion, 60 min                   |
 | Boil        | 60 min                                    |
 
@@ -130,9 +130,39 @@ expected, with the FG landing between 7 and 8 points.
 
 The beer has been racked to a keg and allowed to carb for ~2 weeks at 60&deg;F and 30 psi. Unfortunately I don't have anywhere cooler to carb this until Memorial Day, hence the high psi. 
 
+
+# Result
+
+This taste taste was taken on 5/30/19, due to a few things popping up.
+The beer was served at ~63&deg;F. The next draft will be in the 40s.
+
+<img src="/images/posts/brews/2019-05-06-dwights-honey-orange-wheat-v2/beer_1.jpg" class="brew-photo">
+
+## Appearance
+
+This wheater turned out a straw color with obvious haze.
+The head is thick with a dense, creamy appearance, and chased the
+brew down the glass.
+
+## Aroma
+
+Honey. Very clear honey, just like when pouring honey from the bottle.
+Very floral with a hint of vanilla. Upon closer inspection orange appears. No malt or hops.
+
+## Flavor
+
+Honey right up front, crashing onto the palate. Again, floral and a little
+grassy. The honey makes way for fresh yeast bread once swirled. The finish
+pulls in a little sweet orange on the way down.
+
+## Mouthfeel
+
+Low to medium body, crisp. Rolls and slides around the tongue easily
+with a melted cream feel.
+
 # Things To Do Better
 
-This is still fermenting, but there is already stuff to look into for next time. The main one so far is simply brewhouse efficiency, but will be adding some more notes in the next few weeks.
+~~This is still fermenting, but there is already stuff to look into for next time.~~ The main one so far is simply brewhouse efficiency, but will be adding some more notes in the next few weeks.
 
 ## Efficiency
 
