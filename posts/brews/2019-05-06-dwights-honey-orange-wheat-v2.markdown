@@ -133,36 +133,52 @@ The beer has been racked to a keg and allowed to carb for ~2 weeks at 60&deg;F a
 
 # Result
 
+## Taste Test 1 
+
 This taste taste was taken on 5/30/19, due to a few things popping up.
-The beer was served at ~63&deg;F. The next draft will be in the 40s.
+The beer was served at ~63&deg;F.
 
 <img src="/images/posts/brews/2019-05-06-dwights-honey-orange-wheat-v2/beer_1.jpg" class="brew-photo">
 
-## Appearance
+### Appearance
 
 This wheater turned out a straw color with obvious haze.
 The head is thick with a dense, creamy appearance, and chased the
 brew down the glass.
 
-## Aroma
+### Aroma
 
 Honey. Very clear honey, just like when pouring honey from the bottle.
 Very floral with a hint of vanilla. Upon closer inspection orange appears. No malt or hops.
 
-## Flavor
+### Flavor
 
 Honey right up front, crashing onto the palate. Again, floral and a little
 grassy. The honey makes way for fresh yeast bread once swirled. The finish
 pulls in a little sweet orange on the way down.
 
-## Mouthfeel
+### Mouthfeel
 
 Low to medium body, crisp. Rolls and slides around the tongue easily
 with a melted cream feel.
 
-# Things To Do Better
+## Taste Tests 2 and 3
 
-~~This is still fermenting, but there is already stuff to look into for next time.~~ The main one so far is simply brewhouse efficiency, but will be adding some more notes in the next few weeks.
+These taste tests were on 5/31/19 and 6/1/19. The keg was chilled
+in a cooler over night to the upper 30&deg;Fs - low 40&deg;Fs. 
+
+### Aroma
+
+At these temperatures the honey aromas all disappear. A light malt and
+bread crust smell comes out along with a _tiny_ hint of orange. 
+
+### Taste
+
+As one would expect, the honey flavors all slipped away. Here the
+bread flavors are most prevalent with a hint of orange peel at the
+tail end. One sampler noticed some strawberry as well.
+
+# Things To Do Better
 
 ## Efficiency
 
@@ -171,3 +187,37 @@ Typically I assume an efficiency of 60-65%, depending on how optimistic I'm feel
 One suggestion that was made to me months ago was that the grain I'm using isn't milled well enough. This could be because some homebrew shops don't mill very finely or don't tighten up their mills often, or any number of reasons somewhat outside my control since I dont personally mill the grain. Unfortunately, I haven't consistently sourced my grain from the same place, so this is difficult to account for when planning a recipe. One more piece of equipment to purchase would simply be a grain mill to keep at home and set as needed, rather than relying on whatever brew shop the grain is coming from.
 
 Secondly, I've read that stirring for a few seconds every 15 minutes has helped some batch sparging brewers. Given that most of us avoid opening the mash tun to maintain the temperature this is pretty surprising, but since this is cheap solution I'll be giving this a shot next time.
+
+## Serving Temperature Control
+
+Kegging is great. Such a simple way to carbonate an entire batch of 
+beer that doesn't involve cleaning 30 to 50 bottles. However, in my case
+maintaining a proper serving temperature is difficult since I don't 
+have a keezer of any sort, instead I fill a cooler with ice and just
+drop the temperature somewhat haphazardly. At some point down the road
+having a keezer would be great just to maintain a more specific ball park
+temperature. In this beer's case I would have loved to serve it from
+48&deg;F to 54&deg;F, but served it on either side of that range.
+
+## Honey Additions
+
+This time around we decided to not change anything in the boil process
+since we were already making drastic changes converting the beer to 
+all grain from extract. The honey was added during the boil, but both
+of us brewing were both strongly leaning towards adding the honey either
+after the boil or after the primary to attempt to maximize the honey
+flavor and aroma. The next time we brew this, hopefully later this summer,
+we plan on moving back the honey addition to one of those times.
+
+## Just Chill
+
+After we mashed the grain we were pretty put off by the color, or lack
+thereof, of the wort. There was a fair amount of second guessing
+and concerns that we made a mistake or skipped a step somewhere. 
+Oddly enough with the original extract version of this recipe we had a 
+similar concern - after fermenting but before bottle conditioning
+the uncarbonated beer tasted _pretty awful_. However, in both cases
+the beer turned out to be a pretty great crowd pleaser. It's easy
+to second guess a brew or over think it, but we need to just remember
+it's still going to be beer and it will probably be _pretty ok_.
+
