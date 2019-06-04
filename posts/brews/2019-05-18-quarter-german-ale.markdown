@@ -1,5 +1,5 @@
 ---
-title: (Fermentation-in-Progress) I'm a &frac14; German Ale
+title: (Carbonation-in-Progress) I'm a &frac14; German Ale
 ---
 
 I'm looking to make several simple beers this summer that can appeal
@@ -20,8 +20,8 @@ just a _little_ Bavarian.
 | Expected OG | 59 |
 | Actual OG | 58 |
 | Expected FG | 14 |
-| Actual FG | Fermentation-in-Progress |
-| ABV | TBD |
+| Actual FG | 10 |
+| ABV | 6.3% |
 | IBU | 18 |
 | Mash | Single Infusion, 60 min |
 | Boil | 60 min |
@@ -136,6 +136,18 @@ temperate controlled with an Inkbird controller, set to the range of 68-72 &deg;
 
 Unfortunately I forgot to add my typical yeast nutrient and energizer to 
 this batch, but its probably fine since its a small one.
+
+The wort was allowed to sit in the primary for 16 days, mostly because
+there wasn't a free keg available. The yeast did a bit more work than
+anticipated on this guy, ending up with an FG 4 points lower than
+expected (about an extra 0.4% ABV).
+
+## Kegging and Carbonation
+
+This is currently being force carbonated
+in a basement sitting around ~63&deg;F at 30 PSI. This was _extra
+force carbonated with the rolling technique for ~3 minutes at 30 PSI
+to ensure it's carbed within a week.
 
 # Things to do Better
 
