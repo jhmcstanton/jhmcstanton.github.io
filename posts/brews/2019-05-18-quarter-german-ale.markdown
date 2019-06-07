@@ -1,5 +1,5 @@
 ---
-title: (Carbonation-in-Progress) I'm a &frac14; German Ale
+title: I'm a &frac14; German Ale
 ---
 
 I'm looking to make several simple beers this summer that can appeal
@@ -144,10 +144,38 @@ expected (about an extra 0.4% ABV).
 
 ## Kegging and Carbonation
 
-This is currently being force carbonated
-in a basement sitting around ~63&deg;F at 30 PSI. This was _extra
-force carbonated with the rolling technique for ~3 minutes at 30 PSI
-to ensure it's carbed within a week.
+This was force carbonated
+in a basement sitting around ~63&deg;F at 30 PSI for 3 days. This was 
+_extra_ force carbonated with the rolling technique for ~3 minutes 
+at 30 PSI to ensure it's carbed within a week.
+
+# Result
+
+## Taste Test 1
+
+This taste test was taken on 6/6/19, 3 days after force carbing the beer.
+The beer was 64&deg;F.
+
+<img src="/images/posts/brews/2019-05-18-quarter-german/beer_1.jpg" class="brew-photo">
+
+### Appearance
+
+This one was definitely blonde and _very_ hazy. It could use a cold crash
+for clarity. The head appeared light and fluffy, and then dissipated 
+quickly.
+
+### Aroma
+
+Very mild. Herbal with a medicinal hint at the end, although not an unpleasant one.
+
+### Taste
+
+Pleasant and mild, up front there is earth and herb - the hops are running
+the show. This is followed by cracker with a bolder herbal finish.
+
+### Mouthfeel
+
+Light-end of medium. Surprisingly dry finish. 
 
 # Things to do Better
 
