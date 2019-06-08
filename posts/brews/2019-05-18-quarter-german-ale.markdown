@@ -177,6 +177,29 @@ the show. This is followed by cracker with a bolder herbal finish.
 
 Light-end of medium. Surprisingly dry finish. 
 
+## Taste Test 2
+
+This test was on 6/7/19 after cooling the beer for 13 hours to 43&deg;F.
+
+<img src="/images/posts/brews/2019-05-18-quarter-german/beer_2.jpg" class="brew-photo">
+
+### Appearance
+
+Pretty much the same, although without the head. I depressurized the keg
+a bit too much trying to fix the giant head I had in the first taste test.
+
+### Aroma
+
+A little maltier. Still herbal, but not medicinal at all this time.
+
+### Taste
+
+Earthy and herbal again. A little cracker as well, but a bit sweeter.
+
+### Mouthfeel
+
+Light-end of medium again. Dry, although not all in the finish.
+
 # Things to do Better
 
 ## Efficiency
