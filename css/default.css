@@ -175,3 +175,28 @@ article .header {
     width: 49%; height: auto;
     margin: auto;
 }
+
+.clock-wrapper {
+    width: 90%; height: auto;
+    border-style: solid;
+    margin: auto; margin-top: 2%;
+    padding: 1%;
+}
+
+.clock {
+    display: table; table-layout: fixed;
+    width: 100%;
+}
+
+.clock span {
+    display: table-cell;
+    text-align: center;
+}
+
+.clock span span {
+    display: block; position: relative;
+}
+
+.invisible {
+    display: none
+}
