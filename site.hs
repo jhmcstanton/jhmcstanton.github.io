@@ -32,7 +32,9 @@ main = hakyll $ do
 
     match "posts/**/*" $ do
         route $ setExtension "html"
-        compile $ pandocCompiler
+        compile $ getResourceString
+            >>= applyAsTemplate postCtx -- allows posts to include partials
+            >>= renderPandoc
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
