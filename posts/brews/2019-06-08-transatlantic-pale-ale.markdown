@@ -1,10 +1,10 @@
 ---
 title: (To Brew) Transatlantic Pale Ale
 clock_header: Brew Countdown 
-clock_base: 2019-06-16 12:00
+clock_base: 2019-06-15 12:00
 ---
 
-Taking a crack at a british pale ale to get a handle on maris otter.
+Taking a crack at a British pale ale to get a handle on maris otter.
 May also be brewing this to use up some fridge hops.
 
 ## Recipe: Transatlantic Pale Ale
