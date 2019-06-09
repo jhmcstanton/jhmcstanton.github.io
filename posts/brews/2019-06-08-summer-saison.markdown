@@ -1,7 +1,7 @@
 ---
 title: (To Brew) Summer Saison
 clock_header: Brew Countdown 
-clock_base: 2019-06-16 14:00
+clock_base: 2019-06-15 14:00
 ---
 
 An attempt at making a refreshing, sessionable saison for hot days
