@@ -8,7 +8,8 @@ const update_clock = function() {
     sections[1].innerHTML = Math.abs(clock_base.diff(now, 'days') % moment(now).daysInMonth());
     sections[2].innerHTML = Math.abs(clock_base.diff(now, 'hours') % 24 );
     sections[3].innerHTML = Math.abs(clock_base.diff(now, 'minutes') % 60);
+    sections[4].innerHTML = Math.abs(clock_base.diff(now, 'seconds') % 60);
 };
 update_clock();
-setInterval(update_clock, 1000 * 60);
+setInterval(update_clock, 1000);
 
