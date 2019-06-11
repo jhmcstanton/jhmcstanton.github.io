@@ -20,7 +20,7 @@ Goldings from the east side and Chinook from the West.
 | Batch Type  | All Grain |
 | Expected OG | 55        |
 | Actual OG   | TBD       |
-| Expected FG | TODO      |
+| Expected FG | 17        |
 | Actual FG   | TBD       |
 | ABV         | TBD       |
 | IBU         | 45        |
@@ -31,18 +31,16 @@ Goldings from the east side and Chinook from the West.
 
 Ingredients are per 1 gallon where applicable
 
-TODO: Fill this in
-
 | Amount         | Ingredient                     |
 |----------------|--------------------------------|
 | _Fermentables_ |                                |
 | 1.6 lb         | Maris Otter               |
-| 0.7 lb         | TODO Crystal Malt 40&deg; L    |
+| 0.7 lb         | Crystal Malt 40&deg; L    |
 |                |                                |
 | _Hops_         |                                |
-| 1 oz           | East Kent Goldings 3.9% AA     |
-| ? oz           | Chinook 10.8 % AA              |
-| ? oz           | Chinook 12.4 % AA              |
+| 0.2 oz         | East Kent Goldings 3.9% AA     |
+| 0.1 oz         | Chinook 10.8 % AA\*\*           |
+| 0.14 oz        | Chinook 12.4 % AA\*\*           |
 |                |                                |
 | _Yeast_        |                                |
 | 1 packet\*     | Omega OYL-016 British Ale VIII |
@@ -53,6 +51,8 @@ TODO: Fill this in
 | 1/2 tab\*      | Whirlflocc                     |
 
 \* Note that this should be enough for up to 5 gal.
+\*\* The 10.8% AA were hops I already had available, but some extra
+was needed, hence the inclusion of the 12.4% AA.
 
 ## Mash 
 
