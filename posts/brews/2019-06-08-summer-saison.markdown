@@ -19,7 +19,7 @@ sharable.
 | Batch Type  | All Grain |
 | Expected OG | 42      |
 | Actual OG   | TBD       |
-| Expected FG | TODO      |
+| Expected FG | 11        |
 | Actual FG   | TBD       |
 | ABV         | TBD       |
 | IBU         | 15      |
@@ -30,17 +30,15 @@ sharable.
 
 Ingredients are per 1 gallon where applicable
 
-TODO: Fill this in
-
 | Amount         | Ingredient                     |
 |----------------|--------------------------------|
 | _Fermentables_ |                                |
 | 1.2 lb         | Belgian Pils                   |
-| 0.5 lb         | TODO Malted White Wheat Malt |
+| 0.5 lb         | Whiteswaen Classic Wheat Malt |
 | 0.1 lb | Rice Hulls (in mash, not fermentable) | 
 |                |                                |
 | _Hops_         |                                |
-| TODO oz        | Tettnang TODO % AA |
+| 0.3125 oz      | Tettnang 3.2 % AA  |
 |                |                                |
 | _Yeast_        |                                |
 | 1 packet\*     | Omega OYL-042 Belgian Saison 2 |
