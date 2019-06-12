@@ -2,6 +2,7 @@
 title: (To Brew) Summer Saison
 clock_header: Brew Countdown 
 clock_base: 2019-06-15 14:00
+profile_url: meh
 ---
 
 An attempt at making a refreshing, sessionable saison for hot days
@@ -73,3 +74,5 @@ This and [the transatlantic pale ale](2019-06-08-transatlantic-pale-ale.html)
 will be my first attempts to use local water. There is little 
 calcium from the tap so I'll be using calcium chloride to add it in, 
 as well as 10% phosphoric acid to drop the pH to the target. 
+
+$partial("templates/posts/brews/water-profile.html")$
