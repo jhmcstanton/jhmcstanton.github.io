@@ -86,4 +86,4 @@ Values are for 1 gallon batch.
 | 5 min                  | 1/2 tab Whirlfloc\* |
 | Flameout         | 0.1 oz Tettnang   |
 
-\* Should be sufficient for up to 5 gallons. 
+\* Should be sufficient for up to 5 gallons.

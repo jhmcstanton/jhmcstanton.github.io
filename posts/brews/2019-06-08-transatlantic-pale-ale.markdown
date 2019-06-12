@@ -90,6 +90,6 @@ Values are for 1 gallon batch.
 | 20 min                 | 0.06 oz Chinook 12.4% AA  |
 | 10 min                 | 0.1 oz East Kent Goldings |
 | 5 min                  | 1/2 tab Whirlfloc\*  |
-| Flameout               | 0.1 oz East Kent Goldings | 
+| Flameout               | 0.1 oz East Kent Goldings |
 
-\* Should be sufficient for up to 5 gallons. 
+\* Should be sufficient for up to 5 gallons.
