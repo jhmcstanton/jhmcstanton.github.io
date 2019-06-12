@@ -22,7 +22,7 @@ sharable.
 | Expected FG | 11        |
 | Actual FG   | TBD       |
 | ABV         | TBD       |
-| IBU         | 15      |
+| IBU         | 16      |
 | Mash | Single Infusion, 60 min, 151&deg;F |
 | Boil | 60 min |
 
@@ -38,7 +38,7 @@ Ingredients are per 1 gallon where applicable
 | 0.1 lb | Rice Hulls (in mash, not fermentable) | 
 |                |                                |
 | _Hops_         |                                |
-| 0.3125 oz      | Tettnang 3.2 % AA  |
+| 0.4 oz         | Tettnang 3.2 % AA  |
 |                |                                |
 | _Yeast_        |                                |
 | 1 packet\*     | Omega OYL-042 Belgian Saison 2 |
@@ -71,3 +71,19 @@ This and [the transatlantic pale ale](2019-06-08-transatlantic-pale-ale.html)
 will be my first attempts to use local water. There is little 
 calcium from the tap so I'll be using calcium chloride to add it in, 
 as well as 10% phosphoric acid to drop the pH to the target. 
+
+## Boil
+
+### Boil Schedule
+
+Values are for 1 gallon batch.
+
+| Time Remaining in Boil | Addition          |
+|------------------------|-------------------|
+| 60 min                 | 0.1 oz Tettnang   |
+| 20 min                 | 0.1 oz Tettnang   |
+| 10 min                 | 0.1 oz Tettnang   |
+| 5 min                  | 1/2 tab Whirlfloc\* |
+| Flameout         | 0.1 oz Tettnang   |
+
+\* Should be sufficient for up to 5 gallons. 

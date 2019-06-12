@@ -40,7 +40,7 @@ Ingredients are per 1 gallon where applicable
 | _Hops_         |                                |
 | 0.2 oz         | East Kent Goldings 3.9% AA     |
 | 0.1 oz         | Chinook 10.8 % AA\*\*           |
-| 0.14 oz        | Chinook 12.4 % AA\*\*           |
+| 0.1 oz        | Chinook 12.4 % AA\*\*           |
 |                |                                |
 | _Yeast_        |                                |
 | 1 packet\*     | Omega OYL-016 British Ale VIII |
@@ -75,3 +75,21 @@ This and [the summer saison](2019-06-08-summer-saison.html) will be
 my first attempts to use local water. There is little calcium from the tap
 so I'll be using calcium chloride to add it in, as well as 10% phosphoric
 acid to drop the pH to the target. 
+
+
+## Boil
+
+### Boil Schedule
+
+Values are for 1 gallon batch.
+
+| Time Remaining in Boil | Addition                  |
+|------------------------|---------------------------|
+| 60 min                 | 0.1 oz Chinook 10.8% AA   |
+|                        | 0.04 oz Chinook 12.4% AA  |
+| 20 min                 | 0.06 oz Chinook 12.4% AA  |
+| 10 min                 | 0.1 oz East Kent Goldings |
+| 5 min                  | 1/2 tab Whirlfloc\*  |
+| Flameout               | 0.1 oz East Kent Goldings | 
+
+\* Should be sufficient for up to 5 gallons. 
