@@ -13,6 +13,17 @@ import           Text.HTML.TagSoup
 
 import           Site.Posts.Brews.Types
 
+ids =
+  [
+    "Ca"
+  , "Mg"
+  , "Na"
+  , "Cl"
+  , "SO4"
+  , "Alk"
+  , "RA"
+  ]
+
 fetchProfile :: String -> IO WaterProfile
 fetchProfile = undefined
 
@@ -34,3 +45,15 @@ filterTable tags =
   enclosingTable -- takeWhile (~/= "<br>") .
   where
     enclosingTable = takeWhile (~/= "</table>") . dropWhile (~/= "<a name=section_OverallWater>") $ tags
+
+type TagFound = Bool
+
+tableContents :: [Tag BS.ByteString] -> [Tag BS.ByteString]
+tableContents tags = reverse contents where
+  (_, contents) = foldr acc (False, []) tags
+  ids' = fmap ("Overall_" ++ ) ids
+  acc :: Tag BS.ByteString -> (TagFound, [Tag BS.ByteString]) -> (TagFound, [Tag BS.ByteString])
+  acc found (True, acc) = (False, found : acc)
+  acc tag (False, acc)
+    | any (\id -> tag ~== ("<span id=" ++ id ++ ">")) ids' = (True, acc)
+    | otherwise = (False, acc)
