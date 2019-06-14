@@ -1,0 +1,6 @@
+#!/bin/bash
+
+java -Dwebdriver.gecko.driver=.bin/geckodriver -jar .bin/selenium.jar &
+trap "kill $!" SIGINT SIGTERM
+
+stack exec site watch

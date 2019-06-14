@@ -7,12 +7,27 @@ My own github pages site! This site is built with [`Hakyll`](https://jaspervdj.b
 First you'll need [`Stack`](https://docs.haskellstack.org/en/stable/README/) installed to build the project:
 
 ````sh
-stack install 
+stack build
 ```
 
 The first build may take a little while since it will pull down the dependencies _and_ the correct version of `GHC`. 
 
-Once built, the site can be generated like so:
+Next, you'll need [`selenium`](https://docs.seleniumhq.org/download/)
+and the [gecko driver](https://github.com/mozilla/geckodriver/releases).
+
+This is run with the following:
+
+```sh
+java -jar selenium-server-standalone-*.jar
+```
+
+It is recommended to download these to this repo's directory at
+`<directory-root>/.bin/selenium.jar` and 
+`<directory-root>/.bin/geckodriver` (included in `.gitignore`)
+to be able to use the development scripts below.
+
+Once the binary is built and selenium is running,
+the site can be generated like so:
 
 ```sh
 stack exec site build
@@ -25,7 +40,7 @@ Generally development is done in the `develop` branch. This keeps once branch th
 When writing posts it is also convenient to use 
 
 ```sh
-stack exec site watch
+[./watch](./watch)
 ```
 
 to build the site as it is being written and check the output with a test server.
