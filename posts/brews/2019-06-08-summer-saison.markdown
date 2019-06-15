@@ -81,9 +81,8 @@ Values are for 1 gallon batch.
 | Time Remaining in Boil | Addition          |
 |------------------------|-------------------|
 | 60 min                 | 0.1 oz Tettnang   |
-| 20 min                 | 0.1 oz Tettnang   |
-| 10 min                 | 0.1 oz Tettnang   |
+| 35 min               | 0.1 oz Tettnang   |
 | 5 min                  | 1/2 tab Whirlfloc\* |
-| Flameout         | 0.1 oz Tettnang   |
+| Flameout         | 0.2 oz Tettnang   |
 
 \* Should be sufficient for up to 5 gallons.
