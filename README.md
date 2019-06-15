@@ -12,8 +12,10 @@ stack build
 
 The first build may take a little while since it will pull down the dependencies _and_ the correct version of `GHC`. 
 
-Next, you'll need [`selenium`](https://docs.seleniumhq.org/download/)
-and the [gecko driver](https://github.com/mozilla/geckodriver/releases).
+Next, you'll need [`selenium 2`](http://selenium-release.storage.googleapis.com/2.53/selenium-server-standalone-2.53.1.jar)
+and [version 46.1 of firefox](https://ftp.mozilla.org/pub/firefox/releases/46.0.1/). These old versions are unfortunately necessary since the
+[`webdriver` library](http://hackage.haskell.org/package/webdriver) only
+supports `selenium` up through version 2 currently.
 
 This is run with the following:
 
@@ -22,7 +24,7 @@ java -jar selenium-server-standalone-*.jar
 ```
 
 It is recommended to download these to this repo's directory at
-`<directory-root>/.bin/selenium.jar` and 
+`<directory-root>/.bin/selenium.jar` and
 `<directory-root>/.bin/geckodriver` (included in `.gitignore`)
 to be able to use the development scripts below.
 
