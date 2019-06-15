@@ -200,6 +200,24 @@ Earthy and herbal again. A little cracker as well, but a bit sweeter.
 
 Light-end of medium again. Dry, although not all in the finish.
 
+
+## Clarity Test 3
+
+This test was on 6/14/19 after letting the beer crash for 48 hours at
+43&deg;F and then slowly brought back to room temperature since I
+typically don't continuously refill my coolers with ice.
+
+<div class="grid-container">
+  <img src="/images/posts/brews/2019-05-18-quarter-german/beer_3.jpg">
+  <img src="/images/posts/brews/2019-05-18-quarter-german/beer_4.jpg">
+</div>
+
+The cold crash cleared this right up. I haven't had that much luck with
+crashing before (not that I've done it often), but this turned out
+better than expected.
+
+So, clear, still blonde, with a soft white head that recedes quickly.
+
 # Things to do Better
 
 ## Efficiency
@@ -218,3 +236,9 @@ As mentioned in [mash](#mash) above, I've been using a rather high
 water-to-grist ratio of 1.5 quarts per pound of grain. A more typical
 number would be 1.25 quarts/pound, and I'd be curious if this would help
 with clarity at all.
+
+### Update
+
+Wow, the cold crash did wonders on this beer. I still plan on playing
+with some other things, but will be planning on cold crashing my beers
+in the future whenever possible.
