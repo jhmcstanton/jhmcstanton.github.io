@@ -1,6 +1,6 @@
 #!/bin/bash
 
-java -Dwebdriver.gecko.driver=.bin/geckodriver -jar .bin/selenium.jar &
+java -Dwebdriver.firefox.bin=.bin/firefox/firefox -jar .bin/selenium.jar &
 trap "kill $!" SIGINT SIGTERM
 
 stack exec site watch
