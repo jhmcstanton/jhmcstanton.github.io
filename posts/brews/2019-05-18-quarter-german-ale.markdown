@@ -1,5 +1,6 @@
 ---
 title: I'm a &frac14; German Ale
+water_profile_url: "https://www.brewersfriend.com/mash-chemistry-and-brewing-water-calculator/?id=XP9STS4"
 ---
 
 I'm looking to make several simple beers this summer that can appeal
@@ -74,6 +75,7 @@ to estimate the remaining alpha acid content of my leftover hops.
 All water for this recipe is Reverse Osmosis (RO) water. To add back in 
 the necessary minerals 
 
+$partial("templates/posts/brews/water-profile.html")$
 
 <div class="grid-container">
   <img src="/images/posts/brews/2019-05-18-quarter-german/ro_ph.jpg" >

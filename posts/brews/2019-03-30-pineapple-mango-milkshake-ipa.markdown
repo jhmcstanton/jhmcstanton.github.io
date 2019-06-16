@@ -1,5 +1,6 @@
 ---
 title: Pineapple Mango Milkshake IPA
+water_profile_url: "https://www.brewersfriend.com/mash-chemistry-and-brewing-water-calculator/?id=XTTX4LF"
 ---
 
 Milkshake and smoothie IPAs have been trendy on the coasts for a couple of years.
@@ -92,6 +93,8 @@ Hop quanities are for 1 gallon batch.
 #### Strike Water Additions
 
 I typically use Reverse Osmosis (RO) water for brews. Since there is minimal mineral content in RO water, some additions are needed to achieve the desired mash pH - for this beer Calcium Chloride and Gypsum were utilized to add back in the necessary calcium for enzyme activity and desired sulfate to emphasize the hops.
+
+$partial("templates/posts/brews/water-profile.html")$
 
 <div class="grid-container">
   <img src="/images/posts/brews/2019-03-30-pineapple-mango-milkshake-ipa/mash_1.jpg"> 
