@@ -1,0 +1,20 @@
+$if(water_profile)$
+<table id="waterProfile">
+    <tbody>
+      <tr>
+        <th>Ca<sup>+2</sup></th>
+        <th>Mg<sup>+2</sup></th>
+        <th>Na<sup>+</sup></th>
+        <th>Cl<sup>-</sup></th>
+        <th>SO<sub>4</sub><sup>-2</sup></th>
+        <th>Alkalinity</th>
+        <th>Residual Alkalinity</th>
+      </tr>
+      <tr>
+        $for(water_profile)$
+          <td>$element$</td>
+        $endfor$
+      </tr>
+    </tbody>
+</table>
+$endif$
