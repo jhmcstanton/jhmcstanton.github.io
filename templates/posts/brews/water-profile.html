@@ -5,7 +5,6 @@ $if(water_profile)$
         <th>Ca<sup>+2</sup></th>
         <th>Mg<sup>+2</sup></th>
         <th>Na<sup>+</sup></th>
-        <th>Na<sup>+</sup></th>
         <th>Cl<sup>-</sup></th>
         <th>SO<sub>4</sub><sup>-2</sup></th>
         <th>Alkalinity</th>
@@ -13,7 +12,7 @@ $if(water_profile)$
       </tr>
       <tr>
         $for(water_profile)$
-          <td>$item$</td>
+          <td>$element$</td>
         $endfor$
       </tr>
     </tbody>

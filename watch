@@ -3,4 +3,6 @@
 java -Dwebdriver.firefox.bin=.bin/firefox/firefox -jar .bin/selenium.jar &
 trap "kill $!" SIGINT SIGTERM
 
+sleep 2
+
 stack exec site watch
