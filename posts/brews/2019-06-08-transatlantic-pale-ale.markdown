@@ -1,7 +1,8 @@
 ---
-title: (To Brew) Transatlantic Pale Ale
-clock_header: Brew Countdown 
-clock_base: 2019-06-15 12:00
+title: (Fermentation-in-Progress) Transatlantic Pale Ale
+clock_header: Fermentation Time 
+clock_base: 2019-06-15 02:00
+water_profile_url: "https://www.brewersfriend.com/mash-chemistry-and-brewing-water-calculator/?id=Q10RZY9"
 ---
 
 Taking a crack at a British pale ale to get a handle on maris otter.
@@ -19,7 +20,7 @@ Goldings from the east side and Chinook from the West.
 | Batch Size  | 5 Gal     |
 | Batch Type  | All Grain |
 | Expected OG | 55        |
-| Actual OG   | TBD       |
+| Actual OG   | 54        |
 | Expected FG | 17        |
 | Actual FG   | TBD       |
 | ABV         | TBD       |
@@ -69,13 +70,24 @@ was needed, hence the inclusion of the 12.4% AA.
 | Strike Water Volume (1 gallon batch) | 0.71 gal |
 | Sparge Water volume (1 gallon batch)  | 1.14 gal |
 
-### Strike Water Additions
+### Strike Water Profile
 
 This and [the summer saison](2019-06-08-summer-saison.html) will be
 my first attempts to use local water. There is little calcium from the tap
 so I'll be using calcium chloride to add it in, as well as 10% phosphoric
 acid to drop the pH to the target. 
 
+$partial("templates/posts/brews/water-profile.html")$
+
+<div class="grid-container">
+  <img src="/images/posts/brews/2019-06-08-transatlantic-pale-ale/mash_1.jpg" alt="First Runnings">
+  <img src="/images/posts/brews/2019-06-08-transatlantic-pale-ale/mash_2.jpg" alt="Last Runnings First Lauter">
+  <img src="/images/posts/brews/2019-06-08-transatlantic-pale-ale/mash_3.jpg" alt="Collected Wort">
+</div>
+
+Just highlighting the clarity gains from running the wort back through
+the grain bed. I probably ran a few gallons back through, and managed
+to get a fair amount filtered out.
 
 ## Boil
 
@@ -93,3 +105,16 @@ Values are for 1 gallon batch.
 | Flameout               | 0.1 oz East Kent Goldings |
 
 \* Should be sufficient for up to 5 gallons.
+
+## Fermentation
+
+This wort is being fermented in the basement, typically hovering
+around 64&deg;F, with a fermwrap. The fermentation range is 
+67-71&deg;F to try to get some fruit flavor out of the yeast.
+
+<div class="grid-container">
+  <img src="/images/posts/brews/2019-06-08-transatlantic-pale-ale/fermentation_1.jpg" alt="Wrapped Carboy">
+</div>
+ 
+On last check, about 14 hours after pitching, no noticeable activity had
+started.
