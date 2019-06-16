@@ -5,7 +5,7 @@ set -e
 
 java -Dwebdriver.firefox.bin=.bin/firefox/firefox -jar .bin/selenium.jar &
 selenium_pid="$!"
-trap "kill $selenium_pid" SIGINT SIGTERM
+trap "kill $selenium_pid" SIGINT SIGTERM EXIT
 
 # Temporarily store uncommited changes
 git stash
@@ -19,7 +19,7 @@ stack exec site build
 
 # Get previous files
 git fetch --all
-git checkout -b master --track origin/master
+git checkout -b master --track origin/master || git checkout -b master
 
 # Overwrite existing files with new files
 cp -a _site/. .
