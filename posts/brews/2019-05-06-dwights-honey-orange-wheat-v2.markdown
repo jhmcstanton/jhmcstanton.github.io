@@ -1,5 +1,6 @@
 ---
 title: Dwight's Honey Orange Wheat v2
+water_profile_url: "https://www.brewersfriend.com/mash-chemistry-and-brewing-water-calculator/?id=MXDXLXX"
 ---
 
 Well, its summer time again and about time to brew a crowd pleaser from last year, [Dwight's Honey Orange Wheat](/posts/brews/2018-08-01-dwights-orange-honey-wheat.html). Last year this was an extract recipe that we tweaked a little to more closely follow Palmer's extract brewing method and added an addition of orange peel for some orange aromas. Since then I've [built a mash tun](/posts/brews/2018-10-10-lets-build-a-mash-tun.html) and started brewing all-grain recipes exclusively, so, naturally, I converted this extract recipe to all-grain as well. 
@@ -77,6 +78,8 @@ Ingredients are per 1 gallon where applicable.
 ### Strike Water Additions 
 
 This brew still used Reverse Osmosis (RO) water, and the strike water was treated with table salt and calcium chloride to hit the target pH.
+
+$partial("templates/posts/brews/water-profile.html")$
 
 <div class="grid-container">
   <img src="/images/posts/brews/2019-05-06-dwights-honey-orange-wheat-v2/mash_1.jpg" >
