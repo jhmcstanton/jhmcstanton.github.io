@@ -1,5 +1,12 @@
 # Always fail the script if anything bad happens
 set -e
+
+# Boot selenium
+
+java -Dwebdriver.firefox.bin=.bin/firefox/firefox -jar .bin/selenium.jar &
+selenium_pid="$!"
+trap "kill $selenium_pid" SIGINT SIGTERM
+
 # Temporarily store uncommited changes
 git stash
 
@@ -28,3 +35,5 @@ git push origin master:master
 git checkout develop
 git branch -D master
 git stash pop
+
+kill "$selenium_pid"
