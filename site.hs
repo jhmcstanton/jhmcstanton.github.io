@@ -5,6 +5,8 @@ import           Data.Monoid (mappend)
 import           Hakyll
 import           Text.Jasmine
 
+import           Site.Posts.Brews.Context
+
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
@@ -32,11 +34,14 @@ main = hakyll $ do
 
     match "posts/**/*" $ do
         route $ setExtension "html"
-        compile $ getResourceString
-            >>= applyAsTemplate postCtx -- allows posts to include partials
+        compile $ getUnderlying
+            >>= addWaterProfile
+            >>= \waterProf -> let postCtx' = postCtx <> waterProf in
+            getResourceString
+            >>= applyAsTemplate postCtx' -- allows posts to include partials
             >>= renderPandoc
-            >>= loadAndApplyTemplate "templates/post.html"    postCtx
-            >>= loadAndApplyTemplate "templates/default.html" postCtx
+            >>= loadAndApplyTemplate "templates/post.html"    postCtx'
+            >>= loadAndApplyTemplate "templates/default.html" postCtx'
             >>= relativizeUrls
 
     createArchiveLanding "posts/blog/index.html" "Posts" "posts/blog/*.markdown"
