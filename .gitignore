@@ -1,7 +1,9 @@
 .stack-work/
 _cache/
 _site/
+.bin/
 resume/resume.aux
 resume/resume.log
 resume/resume.out
 .bin/
+
