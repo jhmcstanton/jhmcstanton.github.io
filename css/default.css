@@ -176,6 +176,16 @@ article .header {
     margin: auto;
 }
 
+.grid-container figure {
+    width: 49%; height: auto;
+    margin: auto;
+}
+
+.grid-container figure img {
+    width: 100%; height: auto;
+    margin: auto;
+}
+
 .clock-wrapper {
     width: 90%; height: auto;
     border-style: solid;

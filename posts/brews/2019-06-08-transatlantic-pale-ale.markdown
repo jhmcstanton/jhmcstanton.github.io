@@ -113,8 +113,15 @@ around 64&deg;F, with a fermwrap. The fermentation range is
 67-71&deg;F to try to get some fruit flavor out of the yeast.
 
 <div class="grid-container">
-  <img src="/images/posts/brews/2019-06-08-transatlantic-pale-ale/fermentation_1.jpg" alt="Wrapped Carboy">
+  <figure>
+  <img src="/images/posts/brews/2019-06-08-transatlantic-pale-ale/fermentation_1.jpg" alt="Wrapped Carboy Post Boil">
+  <figcaption>Immediately After Pitching</figcaption>
+  </figure>
+  <figure>
+  <img src="/images/posts/brews/2019-06-08-transatlantic-pale-ale/fermentation_2.jpg" alt="After 30 hours">
+  <figcaption>30 Hours In</figcaption>
+  </figure>
 </div>
- 
-On last check, about 14 hours after pitching, no noticeable activity had
-started.
+
+Yeast activity was slow to start, with the first noticeable activity
+beginning 26 - 30 hours after pitching the yeast.
