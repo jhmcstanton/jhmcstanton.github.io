@@ -1,7 +1,7 @@
 ---
-title: (Fermentation-in-Progress) Transatlantic Pale Ale
+title: (Carbonation-in-Progress) Transatlantic Pale Ale
 clock_header: Fermentation Time 
-clock_base: 2019-06-15 02:00
+clock_base: 2019-06-24 22:30
 water_profile_url: "https://www.brewersfriend.com/mash-chemistry-and-brewing-water-calculator/?id=Q10RZY9"
 ---
 
@@ -22,8 +22,8 @@ Goldings from the east side and Chinook from the West.
 | Expected OG | 55        |
 | Actual OG   | 54        |
 | Expected FG | 17        |
-| Actual FG   | TBD       |
-| ABV         | TBD       |
+| Actual FG   | 14       |
+| ABV         | 5.25%       |
 | IBU         | 45        |
 | Mash | Single Infusion, 60 min, 152&deg;F |
 | Boil | 60 min |
@@ -124,4 +124,13 @@ around 64&deg;F, with a fermwrap. The fermentation range is
 </div>
 
 Yeast activity was slow to start, with the first noticeable activity
-beginning 26 - 30 hours after pitching the yeast.
+beginning 26 - 30 hours after pitching the yeast. Fermentation was
+definitely complete after 9 days.
+
+The gravity came out a little lower than expected, but within style.
+
+## Carbonation
+
+This is being carbonated in the keg at 64&deg;F at 22 PSI. This was
+supplemented with the rolling method - carbing at 35 PSI for 3-5 minutes
+while rolling the keg vigorously.
