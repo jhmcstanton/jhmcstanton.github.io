@@ -1,7 +1,5 @@
 ---
-title: (Carbonation-in-Progress) Transatlantic Pale Ale
-clock_header: Fermentation Time 
-clock_base: 2019-06-24 22:30
+title: Transatlantic Pale Ale
 water_profile_url: "https://www.brewersfriend.com/mash-chemistry-and-brewing-water-calculator/?id=Q10RZY9"
 ---
 
@@ -131,6 +129,62 @@ The gravity came out a little lower than expected, but within style.
 
 ## Carbonation
 
-This is being carbonated in the keg at 64&deg;F at 22 PSI. This was
+This was carbonated in the keg at 64&deg;F at 22 PSI. This was
 supplemented with the rolling method - carbing at 35 PSI for 3-5 minutes
 while rolling the keg vigorously.
+
+# Result
+
+## Taste Test 1
+
+This taste test was taken on 6/27/19, 2 days after force carbing the beer
+in the keg. The keg quickly cooled in a cooler, with the beer hitting
+a temperature of 47.8&deg;F. The keg had not been cooled long enough
+to cold crash the beer yet.
+
+<img src="/images/posts/brews/2019-06-08-transatlantic-pale-ale/beer_1.jpg" class="brew-photo">
+
+### Appearance
+
+Light brown, toasty head with mild retention. The liquid is an
+extremely hazy red-brown.
+
+### Aroma
+
+Primarily toffee and some caramel.
+
+### Taste
+
+Toffee. A little raisin with herbal earthiness. Slight bite to the finish.
+
+### Mouthfeel
+
+Medium body. Slightly acidic. It could probably stand to be carbonated
+a bit more.
+
+# Things to do Better
+
+So far, I'm pretty pleased with this beer. There are a few things I'd like
+to tweak, some of which I've said in other posts.
+
+## Efficiency
+
+This brew the original gravity was pretty well nailed, which is great.
+However, now that that is nailed I'd like to work on raising the
+efficiency above 65%.
+
+## Clarity
+
+The clarity out of the tun is frequently problematic. This time I lowered
+the water to grist ratio and added rice hulls, but the wort
+was still pretty hazy and grainy (worked pretty well with the [summer
+saison](./2019-06-08-summer-saison.html) though). I'll need to look
+into tweaking the tun in the future.
+
+## Water Experimentation
+
+Just for the heck of it, I'd like to brew this, or a similar beer, with
+an alternate water profile. This profile seemed to drive a strong malt
+presence, and I'd be curious how much this would differ of the profile
+emphasized hops more. It would also be interesting to just take a new
+recipe and try a couple of water profiles on it simultaneously.
