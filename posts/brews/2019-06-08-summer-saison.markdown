@@ -1,7 +1,7 @@
 ---
-title: (Fermentation-in-Progress) Summer Saison
-clock_header: Fermentation Time
-clock_base: 2019-06-15 00:00
+title: (Carbonation-in-Progress) Summer Saison
+clock_header: Carbing Time
+clock_base: 2019-07-05 16:15
 water_profile_url: "https://www.brewersfriend.com/mash-chemistry-and-brewing-water-calculator/?id=6JRXT0W"
 ---
 
@@ -21,8 +21,8 @@ sharable.
 | Expected OG | 42      |
 | Actual OG   | 43     |
 | Expected FG | 11        |
-| Actual FG   | TBD       |
-| ABV         | TBD       |
+| Actual FG   | 4       |
+| ABV         | 4.3%       |
 | IBU         | 16      |
 | Mash | Single Infusion, 60 min, 151&deg;F |
 | Boil | 60 min |
@@ -131,3 +131,9 @@ allow the yeast to warm itself.
 </div>
 
 Fermentation activity began within 16 hours.
+
+## Carbonation
+
+This is being force carbonated in the keg at 64&deg;F at 35 PSI. This
+was supplemented with the rolling method - carbing at 35 PSI for
+3-5 minutes while rolling the keg vigorously.
