@@ -1,7 +1,5 @@
 ---
-title: (Carbonation-in-Progress) Summer Saison
-clock_header: Carbing Time
-clock_base: 2019-07-05 16:15
+title: Summer Saison
 water_profile_url: "https://www.brewersfriend.com/mash-chemistry-and-brewing-water-calculator/?id=6JRXT0W"
 ---
 
@@ -137,3 +135,33 @@ Fermentation activity began within 16 hours.
 This is being force carbonated in the keg at 64&deg;F at 35 PSI. This
 was supplemented with the rolling method - carbing at 35 PSI for
 3-5 minutes while rolling the keg vigorously.
+
+# Result
+
+## Taste Test 1
+
+This taste test was taken on 7/13/19 at 60&deg;F . The beer has been carbonated
+but not cooled or cold crashed.
+
+<img src="/images/posts/brews/2019-06-08-summer-saison/beer_1.jpg" class="brew-photo">
+
+### Appearance
+
+Dark gold to bronze in color. Fluffy white rolling head that retreats quickly.
+The beer is clear enough to see through in a glass, but only just so.
+
+### Aroma
+
+Fruit dominates the aroma, particularly strawberry. Some bubblegum sweetness.
+
+### Flavor
+
+Reminiscent of a yeast bread, probably a croissant. There is fruity sweetness
+as well. The finish, again, reminds me of bubble gum, although not unpleasantly
+so. This is a nice surprise - after fermenting the bubble gum flavor was much
+stronger.
+
+### Mouthfeel
+
+Light, but undercarbonated. At some point the pressure was reduced to draw from
+the keg and not brought back up. This needs to be carbonated a bit more.
