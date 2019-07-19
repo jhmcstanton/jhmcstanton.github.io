@@ -6,7 +6,7 @@ My own github pages site! This site is built with [`Hakyll`](https://jaspervdj.b
 
 First you'll need [`Stack`](https://docs.haskellstack.org/en/stable/README/) installed to build the project:
 
-````sh
+```sh
 stack build
 ```
 
