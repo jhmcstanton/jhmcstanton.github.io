@@ -35,6 +35,10 @@ the site can be generated like so:
 stack exec site build
 ```
 
+### Resume
+
+Building the resume pdf requires `xelatex`.
+
 ## Development
 
 Generally development is done in the `develop` branch. This keeps once branch that is clean and easy to use for myself and then in the `master` branch files can be moved around as needed to match the expected structure for Github Pages.
