@@ -3,6 +3,8 @@
 import qualified Data.ByteString.Lazy.Char8 as C
 import           Data.Monoid (mappend)
 import           Hakyll
+import           Hakyll.Images
+import           Hakyll.Images.CompressJpg
 import           Text.Jasmine
 
 import           Site.Posts.Brews.Context
@@ -10,9 +12,13 @@ import           Site.Posts.Brews.Context
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
+    match "images/**.jpg" $ do
+        route   idRoute
+        compile $ loadImage >>= compressJpgCompiler 50
+
     match "images/**" $ do
         route   idRoute
-        compile copyFileCompiler
+        compile $ copyFileCompiler
 
     match "css/*" $ do
         route   idRoute
