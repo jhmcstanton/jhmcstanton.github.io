@@ -158,7 +158,8 @@ article .header {
 }
 
 .brew-photo {
-    width: 70%;
+    max-width: 70%;
+    max-height: 90vh;
     margin-left: auto;
     margin-right: auto;
     display: block;
@@ -172,7 +173,7 @@ article .header {
 }
 
 .grid-container img {
-    width: 49%; height: auto;
+    max-width: 49%; max-height: 60vh;
     margin: auto;
 }
 
