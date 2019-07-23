@@ -1,22 +1,36 @@
 --------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
+import           Control.Monad.IO.Class
+import           Control.Concurrent.ParallelIO
 import qualified Data.ByteString.Lazy.Char8 as C
-import           Data.Monoid (mappend)
+import           Data.List ((\\))
+import           Data.Monoid (mappend, All(..))
+import           GHC.Conc (numCapabilities)
 import           Hakyll
 import           Hakyll.Images
 import           Hakyll.Images.CompressJpg
+import           System.Directory.Extra (listFilesRecursive)
 import           Text.Jasmine
 
 import           Site.Posts.Brews.Context
 
 --------------------------------------------------------------------------------
 main :: IO ()
-main = hakyll $ do
-    match "images/**.jpg" $ do
-        route   idRoute
-        compile $ loadImage >>= compressJpgCompiler 50
+main = do
+  dirtyPaths      <- listFilesRecursive "."
+  let nonHidden   = filter (not . startsWith ".") . fmap (drop 2) $ dirtyPaths
+  let nonWork     = filter (not . startsWith "_") nonHidden
+  let allImages   = filter (startsWith "images/") nonWork
+  let jpgs        = filter (endsWith ".jpg") allImages
+  let otherImages = allImages \\ jpgs
+  let allRules    = reverse $ mainRules : compileJpgs jpgs
+  putStrLn $ "Attempting to compile with " <> show numCapabilities <> " cores"
+  parHakyll parallel allRules
+  stopGlobalPool
 
-    match "images/**" $ do
+mainRules :: Rules ()
+mainRules = do
+    match ("images/" .&&. complement "images/**.jpg") $ do
         route   idRoute
         compile $ copyFileCompiler
 
@@ -71,7 +85,6 @@ main = hakyll $ do
 
     match "templates/**" $ compile templateBodyCompiler
 
-
 --------------------------------------------------------------------------------
 postCtx :: Context String
 postCtx =
@@ -99,3 +112,19 @@ compressJsCompiler = do
   let minifyJS = C.unpack . minify . C.pack . itemBody
   s <- getResourceString
   return $ itemSetBody (minifyJS s) s
+
+---------------------------------------------------------------------
+-- helper matchers
+startsWith :: FilePath -> FilePath -> Bool
+startsWith xs ys = getAll . foldMap All $ zipWith (==) xs ys
+
+endsWith :: FilePath -> FilePath -> Bool
+endsWith xs ys = startsWith xs' ys' where
+  xs' = reverse xs
+  ys' = reverse ys
+
+compileJpgs :: [FilePath] -> [Rules ()]
+compileJpgs ps = match' <$> ps where
+  match' p = match (fromGlob p) $ do
+    route idRoute
+    compile $ loadImage >>= compressJpgCompiler 50
