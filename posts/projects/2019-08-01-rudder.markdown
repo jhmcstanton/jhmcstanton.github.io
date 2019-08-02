@@ -1,0 +1,26 @@
+---
+title: 'Rudder: The Concourse CI Pipeline DSL'
+---
+
+Announcing [`Rudder`](https://github.com/jhmcstanton/rudder), a domain specific language
+for building [Concourse CI](https://concourse-ci.org/) pipelines in Ruby.
+
+## Motivation
+
+At work we use Concourse for automating infrastructure and platform operations. The building
+blocks lead to clear workflows and are easily extendable. The only complaint that I have with
+it is the lack of abstraction. Many of our pipelines define the same resources, tasks, or, in
+some cases, entire pipeline segments. This is a limitation in defining pipelines in single
+yaml files - the only 'code' reuse are yaml anchors, which have many shortcomings and can't
+be reused in other files. We have done some templating, but that is mostly helpful for
+code reuse in a single file.
+
+That's where `rudder` comes in. `rudder` allows users to define Concourse pipelines using
+the full power of the host langage, ruby. The main primitives Concourse exposes match
+the concourse primitives, along with the powerful entrypoint `Pipeline` that
+can import any `rudder` primitive or pipeline to include in its own definition.
+
+## Gem
+
+The first version of `rudder` was published today to [rubygems](https://rubygems.org/gems/rudder).
+I'd love to receive some feedback from other Concourse users and Ruby developers.
