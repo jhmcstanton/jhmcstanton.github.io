@@ -3,7 +3,7 @@ title: Brainfeck
 ---
 
 [`Brainfeck`](https://github.com/jhmcstanton/brainfeck/) is yet another
-brainfuck implementation. The web UI can be found [over here](https://www.jhmcstanton.com/brainfeck/).
+brainfuck implementation. The web UI can be found [over here](https://brainfeck.jhmcstanton.com).
 
 `Brainfeck` is just an excuse to use [idris](https://www.idris-lang.org/) for a
 toy project since I've been working through
