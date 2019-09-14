@@ -4,18 +4,18 @@ module Site.Posts.Literate
   , module Diagrams.Backend.SVG
   , ResourceMode(..)
   , getArgs
-  , resourceHandle
-  , unsafeResourceHandle
-  , unsafeWriteHandle
-  , writeHandle
+  , overwriteWithFile
+  , withFile
   )
   where
 
-import Diagrams.Prelude
-import Diagrams.Backend.SVG
-import Diagrams.Backend.SVG.CmdLine
-import System.Environment
-import System.IO
+import           Diagrams.Prelude
+import           Diagrams.Backend.SVG
+import           Diagrams.Backend.SVG.CmdLine
+import           System.Directory
+import           System.Environment
+import           System.IO hiding (withFile)
+import qualified System.IO as S
 
 -- |Analagous to a 'System.IO.IOMode', but only
 -- supports write and append modes.
@@ -25,25 +25,16 @@ resourceToIOMode :: ResourceMode -> IOMode
 resourceToIOMode RWriteMode  = WriteMode
 resourceToIOMode RAppendMode = AppendMode
 
--- |Returns an open file 'System.IO.Handle' in 'Write' mode to the provided path.
--- Any directories missing in the path will be created.
-unsafeWriteHandle :: FilePath -> Handle
-unsafeWriteHandle = unsafeResourceHandle RWriteMode
+overwriteWithFile :: FilePath -> (Handle -> IO r) -> IO r
+overwriteWithFile f = withFile f RWriteMode
 
--- |Returns a file 'System.IO.Handle' in the specified 'ResourceMode' at the
--- provided path. Any directories missing in the path will be created.
-unsafeResourceHandle :: ResourceMode -> FilePath -> Handle
-unsafeResourceHandle mode path =
-  case resourceHandle mode path of
-    Nothing -> error $ "Path: " ++ path ++ " already exists!"
-    Just h  -> h
+-- |Performs the provided operation on the file. If the parent
+-- directories are missing they will be created as well.
+withFile :: FilePath -> ResourceMode -> (Handle -> IO r) -> IO r
+withFile p r op = do
+  createDirectoryIfMissing True (parentDir p)
+  let mode = resourceToIOMode r
+  S.withFile p mode op
 
--- |Returns a 'Just System.IO.Handle' at the provided path.
--- Any directories missing in the path will be created.
-writeHandle :: FilePath -> Maybe Handle
-writeHandle = resourceHandle RWriteMode
-
--- |Returns a 'Just System.IO.Handle' in the specified 'ResourceMode' at
--- the provided path. Any directories missing in the path will be created.
-resourceHandle :: ResourceMode -> FilePath -> Maybe Handle
-resourceHandle mode path = undefined
+parentDir :: FilePath -> FilePath
+parentDir = reverse . dropWhile (/= '/') . reverse
