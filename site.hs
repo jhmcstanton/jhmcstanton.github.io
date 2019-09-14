@@ -8,10 +8,15 @@ import           Hakyll.Images.CompressJpg
 import           Text.Jasmine
 
 import           Site.Posts.Brews.Context
+import           Site.Posts.Literate.Compile
 
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
+    match "posts/**/*.lhs" $ blogPostRules $ do
+      getResourceFilePath
+      >>= unsafeCompiler . runghcPost
+
     match "images/**.jpg" $ do
         route   idRoute
         compile $ loadImage >>= compressJpgCompiler 50
@@ -38,27 +43,20 @@ main = hakyll $ do
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 
-    match "posts/**/*" $ do
-        route $ setExtension "html"
-        compile $ getUnderlying
-            >>= addWaterProfile
-            >>= \waterProf -> let postCtx' = postCtx <> waterProf in
-            getResourceString
-            >>= applyAsTemplate postCtx' -- allows posts to include partials
-            >>= renderPandoc
-            >>= loadAndApplyTemplate "templates/post.html"    postCtx'
-            >>= loadAndApplyTemplate "templates/default.html" postCtx'
-            >>= relativizeUrls
+    match "posts/**/*.markdown" $ blogPostRules (pure ())
 
-    createArchiveLanding "posts/blog/index.html" "Posts" "posts/blog/*.markdown"
+    let postsPattern = "posts/blog/*" .&&. (complement "**/*.html")
+    createArchiveLanding "posts/blog/index.html" "Posts" postsPattern
     createArchiveLanding "posts/brews/index.html" "Brews" "posts/brews/*.markdown"
     createArchiveLanding "posts/projects/index.html" "Projects" "posts/projects/*.markdown"
-    createArchiveLanding "archive.html" "Archives" "posts/**/*.markdown"
+
+    let archivePattern = "posts/**/*" .&&. (complement "**/*.html")
+    createArchiveLanding "archive.html" "Archives" archivePattern
 
     match "index.html" $ do
         route idRoute
         compile $ do
-            allPosts <- recentFirst =<< loadAll "posts/**/*.markdown"
+            allPosts <- recentFirst =<< loadAll archivePattern
             let posts = take 10 allPosts
             let indexCtx =
                     listField "posts" postCtx (return posts) `mappend`
@@ -71,6 +69,21 @@ main = hakyll $ do
 
     match "templates/**" $ compile templateBodyCompiler
 
+--------------------------------------------------------------------------------
+blogPostRules :: Compiler () -> Rules ()
+blogPostRules preProcess = do
+  route $ setExtension "html"
+  compile $
+      preProcess
+      >> getUnderlying
+      >>= addWaterProfile
+      >>= \waterProf -> let postCtx' = postCtx <> waterProf in
+      getResourceString
+      >>= applyAsTemplate postCtx' -- allows posts to include partials
+      >>= renderPandoc
+      >>= loadAndApplyTemplate "templates/post.html"    postCtx'
+      >>= loadAndApplyTemplate "templates/default.html" postCtx'
+      >>= relativizeUrls
 
 --------------------------------------------------------------------------------
 postCtx :: Context String
