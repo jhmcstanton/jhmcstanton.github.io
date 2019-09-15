@@ -23,6 +23,6 @@ title: ""
 
 </details>
 
-<img src="images/404.svg" style="margin: auto; width: 100%"></img>
+<img src="/images/404.svg" style="margin: auto; width: 100%"></img>
 
 Woops, looks like that page doesn't exist.
