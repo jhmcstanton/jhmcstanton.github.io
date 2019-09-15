@@ -184,7 +184,7 @@ compilation step to compile and run them.
 -- inside hakyll main
     match "posts/**/*.markdown" (blogPostRules (pure ()))
 
-    match "posts/**/*.lhs" (blogPostRules (do
+    match "posts/**/*.lhs" (blogPostRules (
       getResourceFilePath
       >>= unsafeCompiler . runghcPost))
 ```
