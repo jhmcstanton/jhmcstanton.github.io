@@ -13,9 +13,16 @@ import           Site.Posts.Literate.Compile
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
-    match "posts/**/*.lhs" $ blogPostRules $ do
-      getResourceFilePath
-      >>= unsafeCompiler . runghcPost
+    match "posts/**/*.lhs" $ blogPostRules $
+      getResourceFilePath >>= unsafeCompiler . runghcPost
+
+    match "404.lhs" $ do
+        route $ setExtension "html"
+        compile $ 
+          getResourceFilePath
+          >>= unsafeCompiler . runghcPost
+          >> pandocCompiler
+          >>= loadAndApplyTemplate "templates/default.html" defaultContext
 
     match "images/**.jpg" $ do
         route   idRoute
@@ -23,7 +30,7 @@ main = hakyll $ do
 
     match "images/**" $ do
         route   idRoute
-        compile $ copyFileCompiler
+        compile copyFileCompiler
 
     match "css/*" $ do
         route   idRoute
