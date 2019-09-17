@@ -12,19 +12,21 @@ between the same nodes (although, I definitely recommend it!).
 
 This seemed like a good use case for
 [`diagrams`](http://hackage.haskell.org/package/diagrams). Instead
-of just building a program per blog post and manually ensuring
-the images generated are included with my site generation, I figured
-why not just build
+of building a diagrams definitions per blog post and manually ensuring
+the generated images are included with my site build, I figured
+why not just write
 [literate Haskell](https://wiki.haskell.org/Literate_programming) posts
 to describe the diagrams needed in the post itself and run the post
-as a Haskell program.
+as a Haskell program when my Hakyll site generater runs.
 
 So that's what this post is - a first literate post using some new tooling
-in my Hakyll site generator.
+in my Hakyll site generator. The literate post leverages new library
+code written for this purpose that should be relatively easy to apply
+to other Hakyll sites.
 
 <h2>Creating a Literate Post Module</h2>
 
-The first thing is to create a module of common functionality that literate
+The first thing is to create a library module of common functionality that literate
 posts may use. Note, in general this module isn't meant for _readers_ of
 the post, and is merely a handy module for the writer of the post. Contents
 of the post are likely to be runnable by the reader, and are possibly
