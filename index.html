@@ -5,7 +5,7 @@ title: 'Brewda: the Home Brew and Programming Blog'
 <img src="/images/self.jpg" style="float: right; margin: 10px; height: auto; width: 30%; min-width: 100px; max-width: 250px;" />
 
 <code>
-let brewda = foldMap syllable (zip ["Brew", "Lambda"] [1..])
+let brewda = fold (zipWith syllable ["Brew", "Lambda"] [1..])
 </code>
 
 <p>
