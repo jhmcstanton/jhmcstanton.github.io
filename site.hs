@@ -6,6 +6,8 @@ import           Hakyll
 import           Hakyll.Images
 import           Hakyll.Images.CompressJpg
 import           Text.Jasmine
+import           Text.Pandoc.Extensions
+import           Text.Pandoc.Options
 
 import           Site.Posts.Brews.Context
 import           Site.Posts.Literate.Compile
@@ -18,7 +20,7 @@ main = hakyll $ do
 
     match "404.lhs" $ do
         route $ setExtension "html"
-        compile $ 
+        compile $
           getResourceFilePath
           >>= unsafeCompiler . runghcPost
           >> pandocCompiler
@@ -77,6 +79,19 @@ main = hakyll $ do
     match "templates/**" $ compile templateBodyCompiler
 
 --------------------------------------------------------------------------------
+myWriterOptions :: WriterOptions
+myWriterOptions =
+  let exts = writerExtensions defaultHakyllWriterOptions in
+  defaultHakyllWriterOptions {
+    writerExtensions = enableExtension Ext_literate_haskell exts
+  }
+
+
+--------------------------------------------------------------------------------
+myRenderPandoc :: Item String -> Compiler (Item String)
+myRenderPandoc = renderPandocWith defaultHakyllReaderOptions myWriterOptions
+
+--------------------------------------------------------------------------------
 blogPostRules :: Compiler () -> Rules ()
 blogPostRules preProcess = do
   route $ setExtension "html"
@@ -87,7 +102,7 @@ blogPostRules preProcess = do
       >>= \waterProf -> let postCtx' = postCtx <> waterProf in
       getResourceString
       >>= applyAsTemplate postCtx' -- allows posts to include partials
-      >>= renderPandoc
+      >>= myRenderPandoc
       >>= loadAndApplyTemplate "templates/post.html"    postCtx'
       >>= loadAndApplyTemplate "templates/default.html" postCtx'
       >>= relativizeUrls

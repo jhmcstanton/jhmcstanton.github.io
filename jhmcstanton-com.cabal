@@ -1,5 +1,5 @@
 name:               jhmcstanton-com
-version:            0.0.9.0
+version:            0.0.10.0
 build-type:         Simple
 cabal-version:      >= 1.10
 
@@ -10,6 +10,7 @@ executable site
                   , hakyll        == 4.12.*
                   , hakyll-images == 0.4.2
                   , hjsmin        == 0.2.*
+                  , pandoc
                   , jhmcstanton-com
   ghc-options:      -threaded
   default-language: Haskell2010
