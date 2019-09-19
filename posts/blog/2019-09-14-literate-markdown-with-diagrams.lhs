@@ -1,28 +1,30 @@
 ---
-title: Literate Posts with Diagrams
+title: Literate Markdown with Diagrams
 ---
 
 Recently I have been thinking about working on a blog post about
 designing programs using iterations of finite state machines as
 the specification. Naturally this should include diagrams of said
 machines. After searching around, one of the nicer programs for building
-these was [this simple SPA](http://madebyevan.com/fsm/), but this one
-didn't work for me once there were multiple transitions that could exist
-between the same nodes (although, I definitely recommend it!).
+these was [this simple SPA](http://madebyevan.com/fsm/), but it
+doesn't support multiple cyclic transitions to the same node
+(although, I definitely recommend it!).
 
 This seemed like a good use case for
 [`diagrams`](http://hackage.haskell.org/package/diagrams). Instead
 of building a diagrams definitions per blog post and manually ensuring
 the generated images are included with my site build, I figured
-why not just write
-[literate Haskell](https://wiki.haskell.org/Literate_programming) posts
-to describe the diagrams needed in the post itself and run the post
-as a Haskell program when my Hakyll site generater runs.
+why not just include
+[literate Haskell](https://wiki.haskell.org/Literate_programming)
+in the raw post markdown
+to describe the diagrams needed in the post itself, then run the post
+as a Haskell program when my Hakyll site generater runs. This keeps
+the diagram up-to-date with the post, in source control, and automically
+includes the images in the website. Seemed easy enough.
 
-So that's what this post is - a first literate post using some new tooling
-in my Hakyll site generator. The literate post leverages new library
-code written for this purpose that should be relatively easy to apply
-to other Hakyll sites.
+So that's what this post is - a first literate post using some new tooling in my
+Hakyll site generator. The literate post leverages new library code written for
+this purpose that should be relatively easy to apply to other Hakyll sites.
 
 <h2>Creating a Literate Post Module</h2>
 
