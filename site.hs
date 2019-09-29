@@ -1,10 +1,11 @@
 --------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
 import qualified Data.ByteString.Lazy.Char8 as C
-import           Data.Monoid (mappend)
+import           Data.Monoid                 (mappend)
 import           Hakyll
 import           Hakyll.Images
 import           Hakyll.Images.CompressJpg
+import           Hakyll.Typescript.TS        (compressJtsCompiler)
 import           Text.Jasmine
 import           Text.Pandoc.Extensions
 import           Text.Pandoc.Options
@@ -39,8 +40,8 @@ main = hakyll $ do
         compile compressCssCompiler
 
     match "scripts/**" $ do
-        route   idRoute
-        compile compressJsCompiler
+        route $ setExtension "js"
+        compile compressJtsCompiler
 
     match "resume/*" $ do
         route   idRoute
@@ -128,9 +129,3 @@ createArchiveLanding page title glob =
                 >>= loadAndApplyTemplate (fromFilePath $ "templates/" <> page) archiveCtx
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= relativizeUrls
-
-compressJsCompiler :: Compiler (Item String)
-compressJsCompiler = do
-  let minifyJS = C.unpack . minify . C.pack . itemBody
-  s <- getResourceString
-  return $ itemSetBody (minifyJS s) s
