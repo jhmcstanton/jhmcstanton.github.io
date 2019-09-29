@@ -1,5 +1,5 @@
 name:               jhmcstanton-com
-version:            0.0.10.0
+version:            0.0.11.0
 build-type:         Simple
 cabal-version:      >= 1.10
 
@@ -9,6 +9,7 @@ executable site
                   , bytestring
                   , hakyll        == 4.12.*
                   , hakyll-images == 0.4.2
+                  , hakyll-typescript
                   , hjsmin        == 0.2.*
                   , pandoc
                   , jhmcstanton-com
