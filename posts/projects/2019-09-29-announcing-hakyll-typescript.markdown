@@ -19,7 +19,7 @@ is to be able to just drop the compiler into your site rules:
 import Hakyll.Typescript.TS
 
 main = hakyll (do
-  -- Matches any file inside a the directory ./scripts
+  -- Matches any file inside the directory ./scripts
   match "scripts/**" (do
     route   (setExtension "js")
     -- compiles all typescript and javascript to the js target
