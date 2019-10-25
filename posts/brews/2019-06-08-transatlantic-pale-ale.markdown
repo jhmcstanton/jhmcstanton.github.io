@@ -47,7 +47,7 @@ Ingredients are per 1 gallon where applicable
 |                | Yeast Energizer                |
 |                |                                |
 | _Other_        |                                |
-| 1/2 tab\*      | Whirlflocc                     |
+| &frac12; tab\* | Whirlflocc                     |
 
 \* Note that this should be enough for up to 5 gal.
 \*\* The 10.8% AA were hops I already had available, but some extra
@@ -64,7 +64,7 @@ was needed, hence the inclusion of the 12.4% AA.
 | Target Mash Temp | 152&deg;F |
 | Grain Temp | 70&deg;F 
 | Strike Water Temp | 163&deg;F |
-| Actual Mash Temp | TBD       |
+| Actual Mash Temp | 152&deg;F |
 | Strike Water Volume (1 gallon batch) | 0.71 gal |
 | Sparge Water volume (1 gallon batch)  | 1.14 gal |
 
