@@ -7,10 +7,10 @@ clock_base: 2019-10-27 14:30
 
 My first attempt at a pumpkin beer, this is a recipe from [Frank Clark and
 Beer & Brewing](https://beerandbrewing.com/anatomy-of-a-colonial-era-pumpkin-ale/).
-Clark is a food historian, and this is his attempt at creating a colonial
-style pumpkin beer with a few tweaks to match more modern expectations. These
-didn't typically include much in the way of spices, and pumpking was supposedly
-used since barley was an expensive import item.
+Clark is a food historian, and this recipe is what he thought might be an
+example of a colonial style pumpkin beer with a few tweaks thrown in to match
+more modern expectations. These didn't typically include much in the way of
+spices, and pumpkin was supposedly used since barley was an expensive import item.
 
 I'm swapping in 2-row barley for the 6 due to availability. This will result
 in a slightly higher yield than the original recipe, but not significantly so.
