@@ -111,9 +111,7 @@ of spices at flameout.
 
 This is being fermented at between 63-67&deg;F. The yeast was rehydrated in
 4oz of water for 30 minutes and pitched in the wort at ~74&deg;F to encourage
-a vigarous start. I'm not terribly concerned about temperature control on
-this beer since it is intended to have some old roots - colonial brewers
-didn't exactly have the benefit of tight temperature controls.
+a vigarous start. 
 
 <div class="grid-container">
   <img src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/ferm_1.jpg" alt="Carboy 1">
