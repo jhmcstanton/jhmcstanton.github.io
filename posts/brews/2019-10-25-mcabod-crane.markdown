@@ -5,6 +5,8 @@ clock_header: Fermentation Period
 clock_base: 2019-10-27 21:00
 ---
 
+<img src="/images/posts/brews/2019-10-25-mcabod-crane/pumpkins.jpg" alt="Pumpkins" class="brew-photo">
+
 My first attempt at a pumpkin beer, this is a recipe from [Frank Clark and
 Beer & Brewing](https://beerandbrewing.com/anatomy-of-a-colonial-era-pumpkin-ale/).
 Clark is a food historian, and this recipe is what he thought might be an
@@ -96,7 +98,9 @@ gravity than intended.
 
 This is being fermented at between 63-67&deg;F. The yeast was rehydrated in
 4oz of water for 30 minutes and pitched in the wort at ~74&deg;F to encourage
-a vigarous start.
+a vigarous start. I'm not terribly concerned about temperature control on
+this beer since it is intended to have some old roots - colonial brewers
+didn't exactly have the benefit of tight temperature controls.
 
 <div class="grid-container">
   <img src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/ferm_1.jpg" alt="Carboy 1">
