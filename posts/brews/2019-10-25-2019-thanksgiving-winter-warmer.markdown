@@ -1,8 +1,8 @@
 ---
-title: (To Brew) 2019 Thanksgiving Winter Warmer
-water_profile_url: "https://www.brewersfriend.com/mash-chemistry-and-brewing-water-calculator/?id=53JC678"
-clock_header: Brew Countdown
-clock_base: 2019-10-27 13:00
+title: (Fermentation-in-Progress) 2019 Thanksgiving Winter Warmer
+water_profile_url: "https://www.brewersfriend.com/mash-chemistry-and-brewing-water-calculator/?id=5DGFQXY"
+clock_header: Fermentation Period
+clock_base: 2019-10-27 20:00
 ---
 
 Recreating a recipe
@@ -22,7 +22,7 @@ I've heard a lot of good things about it.
 | Batch Size  | 3 Gal     |
 | Batch Type  | All Grain |
 | Expected OG | 94        |
-| Actual OG   | TBD       |
+| Actual OG   | 88        |
 | Expected FG | 25        |
 | Actual OG   | TBD       |
 | ABV         | TBD       |
@@ -40,36 +40,25 @@ Per gallon
 
 | Amount  | Ingredient                        |
 |---------|-----------------------------------|
-| 1.72 lb | Ashburne Mild Malt or Vienna Malt |
-| 1.72 lb | Pale Ale Malt                     |
-| 0.1 lb  | Caramel Malt 80&deg;L             |
-| 0.1 lb | Briess Special Malt |
+| 2 lb       | Ashburne Mild Malt or Vienna Malt |
+| 1 &frac23; lb | Pale Ale Malt                     |
+| &frac13; lb | Caramel Malt 80&deg;L             |
+| &frac13; lb | Briess Special Malt |
 | | |
-| 0.2912 lb | Molasses |
+| ⅑ lb                                   | Molasses |
 | | |
 | _Hops_ | |
-| 0.2 oz | Challenger 8.0% AA |
-| 0.4 oz | Kent Goldings 5.0% AA |
+| &frac13; oz | Challenger 8.0% AA |
+| &frac13; oz | Kent Goldings 5.0% AA |
 | | |
 | _Yeast_ | |
 | 1 Packet    | SafAle S-04 |
 | | |
 | _Other_ | |
 | **Steeped After Flame Out:** | |
-| 1/12 tsp | nutmeg |
-| 0.47 oz | dried orange peel |
-| 0.7 stick | cinnamon |
+| 0.383 oz | dried orange peel |
+| &frac23; stick | cinnamon |
 | &frac12; tab | Whirlflocc |
-| | |
-| **Dry:** | |
-| 0.7 sticks | cinnamon (sanitized in whiskey) |
-
-### Hop Schedule
-
-| Boil Time | Amount | Type |
-|-          |-       |--    |
-| 60 Min | 0.2 oz (All) | Challenger |
-| 10 Min | 0.4 oz (All) | Kent Goldings |
 
 ## Mash
 
@@ -78,12 +67,60 @@ Per gallon
 | Type | Single Infusion |
 | Sparge | Batch |
 | Water/Grist | 1.25 qt/lb |
-| Target pH | 5.4  |
-| Target Mash Temp | 153&deg;F |
+| Target pH | 5.39 |
+| Target Mash Temp | 154&deg;F |
 | Grain Temp | 68&deg;F 
 | Strike Water Temp | 166&deg;F |
-| Actual Mash Temp | TBD       |
+| Actual Mash Temp | 154&deg;F |
 
 ### Strike Water Profile
 
 $partial("templates/posts/brews/water-profile.html")$
+
+The strike water used for this infusion is the local water with some added
+calcium carbonate and gypsum. Previously I used untreated RO water
+for this recipe, this time around I'm trying to specifically target some baked
+good flavors, and the local water lends itself to those characteristics.
+
+## Boil
+
+This is another pretty typical boil - one hour boil with a 15 minute addition
+of spices at flameout.
+
+### Boil Schedule
+
+| Boil Time | Amount            | Type          |
+|-----------|-------------------|---------------|
+| 60 Min    | &frac13; oz (All) | Challenger    |
+| 10 Min    | &frac13; oz (All) | Kent Goldings |
+| 5 min     | &frac12; tab      | Whirlflocc    |
+| 0 min     | All               | Spices        |
+
+<div class="grid-container">
+  <figure>
+  <img src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/flameout.jpg" alt="Flame Out Spice Addition">
+  <figcaption>Flame Out Spice Addition</figcaption>
+  </figure>
+  <figure>
+  <img src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/og.jpg" alt="Original Gravity Reading">
+  <figcaption>Original Gravity</figcaption>
+  </figure>
+</div>
+
+## Fermentation (In Progress)
+
+This is being fermented at between 63-67&deg;F. The yeast was rehydrated in
+4oz of water for 30 minutes and pitched in the wort at ~74&deg;F to encourage
+a vigarous start. I'm not terribly concerned about temperature control on
+this beer since it is intended to have some old roots - colonial brewers
+didn't exactly have the benefit of tight temperature controls.
+
+<div class="grid-container">
+  <img src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/ferm_1.jpg" alt="Carboy 1">
+  <img src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/ferm_2.jpg" alt="Carboy 2">
+</div>
+
+Turns out that my dining room is just a little too warm for my target
+fermentation temperature. Instead I'm using my garage with a ferm wrap and a
+blanket to hit my desired temperature. On the left in the sheet is the
+[McAbod Crane](./2019-10-25-mcabod-crane.html).
