@@ -1,8 +1,8 @@
 ---
-title: (Fermentation-in-Progress) McAbod Crane Pumpkin Beer
+title: (Carbonation-in-Progress) McAbod Crane Pumpkin Beer
 water_profile_url: "https://www.brewersfriend.com/mash-chemistry-and-brewing-water-calculator/?id=40DXNX2"
-clock_header: Fermentation Period
-clock_base: 2019-10-27 21:00
+clock_header: Carbonation Period
+clock_base: 2019-11-13 16:45
 ---
 
 <img src="/images/posts/brews/2019-10-25-mcabod-crane/pumpkins.jpg" alt="Pumpkins" class="brew-photo">
@@ -26,8 +26,8 @@ in a slightly higher yield than the original recipe, but not significantly so.
 | Expected OG | 37      |
 | Actual OG   | 42        |
 | Expected FG | 10      |
-| Actual FG   | TBD      |
-| ABV         | TBD         |
+| Actual FG   | 16       |
+| ABV         | 3.15%       |
 | IBU         | 20        |
 | Mash | Single Infusion, 60 min, 152&deg;F |
 | Boil | 60 min |
@@ -94,9 +94,9 @@ and didn't notice how much was being boiled off. Probably lost about
 an extra third of a gallon - not a big deal, but this is a bit higher
 gravity than intended.
 
-## Fermentation (In Progress)
+## Fermentation
 
-This is being fermented at between 63-67&deg;F. The yeast was rehydrated in
+This was fermented at between 63-67&deg;F. The yeast was rehydrated in
 4oz of water for 30 minutes and pitched in the wort at ~74&deg;F to encourage
 a vigarous start. I'm not terribly concerned about temperature control on
 this beer since it is intended to have some old roots - colonial brewers
@@ -111,3 +111,12 @@ Turns out that my dining room is just a little too warm for my target
 fermentation temperature. Instead I'm using my garage with a ferm wrap and a
 blanket to hit my desired temperature. On the right in the sheet is the
 [Thanksgiving Winter Warmer](./2019-10-25-2019-thanksgiving-winter-warmer.html).
+
+*Kegging day update* I noticed after removing the sheet from around the carboy
+on keg day that the beer had two leaves from the outdoor boil still floating
+around. Just going to call it a colonial touch.
+
+## Carbonation (In Progress)
+
+This is being carbonated in the garage between 40&deg;F - 50&deg;F at 45 PSI
+for now.

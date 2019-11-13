@@ -1,8 +1,8 @@
 ---
-title: (Fermentation-in-Progress) 2019 Thanksgiving Winter Warmer
+title: (Carbonation-in-Progress) 2019 Thanksgiving Winter Warmer
 water_profile_url: "https://www.brewersfriend.com/mash-chemistry-and-brewing-water-calculator/?id=5DGFQXY"
-clock_header: Fermentation Period
-clock_base: 2019-10-27 20:00
+clock_header: Carbonation Period
+clock_base: 2019-11-13 16:45
 ---
 
 Recreating a recipe
@@ -24,8 +24,8 @@ I've heard a lot of good things about it.
 | Expected OG | 94        |
 | Actual OG   | 88        |
 | Expected FG | 25        |
-| Actual OG   | TBD       |
-| ABV         | TBD       |
+| Actual OG   | 34        |
+| ABV         | 7%        |
 
 ### Schedule
 
@@ -38,27 +38,30 @@ I've heard a lot of good things about it.
 
 Per gallon
 
-| Amount  | Ingredient                        |
-|---------|-----------------------------------|
-| 2 lb       | Ashburne Mild Malt or Vienna Malt |
-| 1 &frac23; lb | Pale Ale Malt                     |
-| &frac13; lb | Caramel Malt 80&deg;L             |
-| &frac13; lb | Briess Special Malt |
-| | |
-| ⅑ lb                                   | Molasses |
-| | |
-| _Hops_ | |
-| &frac13; oz | Challenger 8.0% AA |
-| &frac13; oz | Kent Goldings 5.0% AA |
-| | |
-| _Yeast_ | |
-| 1 Packet    | SafAle S-04 |
-| | |
-| _Other_ | |
-| **Steeped After Flame Out:** | |
-| 0.383 oz | dried orange peel |
-| &frac23; stick | cinnamon |
-| &frac12; tab | Whirlflocc |
+| Amount                       | Ingredient                        |
+|------------------------------|-----------------------------------|
+| 2 lb                         | Ashburne Mild Malt or Vienna Malt |
+| 1 &frac23; lb                | Pale Ale Malt                     |
+| &frac13; lb                  | Caramel Malt 80&deg;L             |
+| &frac13; lb                  | Briess Special Malt               |
+|                              |                                   |
+| ⅑ lb                         | Molasses                          |
+|                              |                                   |
+| _Hops_                       |                                   |
+| &frac13; oz                  | Challenger 8.0% AA                |
+| &frac13; oz                  | Kent Goldings 5.0% AA             |
+|                              |                                   |
+| _Yeast_                      |                                   |
+| 1 Packet                     | SafAle S-04                       |
+|                              |                                   |
+| _Other_                      |                                   |
+| **Steeped After Flame Out:** |                                   |
+| 0.383 oz                     | dried orange peel                 |
+| &frac23; stick               | cinnamon                          |
+| &frac12; tab                 | Whirlflocc                        |
+|                              |                                   |
+| _Dry Additions_              |                                   |
+| 2 Sticks                     | Cinnamon |
 
 ## Mash
 
@@ -107,9 +110,9 @@ of spices at flameout.
   </figure>
 </div>
 
-## Fermentation (In Progress)
+## Fermentation
 
-This is being fermented at between 63-67&deg;F. The yeast was rehydrated in
+This was fermented at between 63-67&deg;F. The yeast was rehydrated in
 4oz of water for 30 minutes and pitched in the wort at ~74&deg;F to encourage
 a vigarous start. 
 
@@ -122,3 +125,22 @@ Turns out that my dining room is just a little too warm for my target
 fermentation temperature. Instead I'm using my garage with a ferm wrap and a
 blanket to hit my desired temperature. On the left in the sheet is the
 [McAbod Crane](./2019-10-25-mcabod-crane.html).
+
+## Carbonation (In Progress)
+
+This is being carbonated in the garage between 40&deg;F - 50&deg;F at 45 PSI
+for now. I also added two cinnamon sticks sanitized in Fire and Cane
+Glenfiddich.
+
+<div class="grid-container">
+  <img src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/sticks.jpg" alt="Cinnamon Sticks">
+</div>
+
+## Things to do Better
+
+This time around my OG and attenuation were both lower than I would have liked
+I believe that the OG was caused by a last minute decision to mash at
+154&deg;F, which was probably waaay higher than it should have been. The
+attenuation issues may have been caused by not using a yeast starter. This brew
+was only 3 gallons, but the high gravity was seemingly too much for the single
+rehydrated packet.
