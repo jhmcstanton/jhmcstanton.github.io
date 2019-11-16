@@ -118,5 +118,12 @@ around. Just going to call it a colonial touch.
 
 ## Carbonation (In Progress)
 
-This is being carbonated in the garage between 40&deg;F - 50&deg;F at 45 PSI
-for now.
+Carbonation was started in the garage between 40&deg;F - 50&deg;F at 45 PSI
+for several days, alternating between this keg and the 2019 Winter Warmer, until
+I could be bothered setting up my freezer for carbonating. Now this is being
+carbonated between 38&deg;F - 48&deg;F at 10 PSI until serving time (about 1
+week). The C02 tank is still being alternated between this and the Winter Warmer.
+
+<div class="grid-container">
+  <img src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/carb1.jpg" alt="Carbonating in the Freezer">
+</div>

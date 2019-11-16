@@ -126,14 +126,19 @@ fermentation temperature. Instead I'm using my garage with a ferm wrap and a
 blanket to hit my desired temperature. On the left in the sheet is the
 [McAbod Crane](./2019-10-25-mcabod-crane.html).
 
-## Carbonation (In Progress)
+## Kegging & Carbonation (In Progress)
 
-This is being carbonated in the garage between 40&deg;F - 50&deg;F at 45 PSI
-for now. I also added two cinnamon sticks sanitized in Fire and Cane
-Glenfiddich.
+When racking to the keg I added two cinnamon sticks sanitized in Fire and Cane
+Glenfiddich. Carbonation was started in the garage between 40&deg; - 50+&deg;F at
+45 PSI, alternating with the McAbod Crane so PSI fluctuated considerably.
+Temperature control was increased after 2 days by moving the keg to a temperature
+managed freezer. This is now being carbed between 38&deg; - 48&deg;F at 10 PSI
+until serving time (about 1 week). The C02 tank is still being alternated between
+this and the McAbod in the mean time.
 
 <div class="grid-container">
   <img src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/sticks.jpg" alt="Cinnamon Sticks">
+  <img src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/carb1.jpg" alt="Carbonating in the Freezer">
 </div>
 
 ## Things to do Better
