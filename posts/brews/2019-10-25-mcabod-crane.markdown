@@ -1,8 +1,6 @@
 ---
-title: (Carbonation-in-Progress) McAbod Crane Pumpkin Beer
+title: McAbod Crane Pumpkin Beer
 water_profile_url: "https://www.brewersfriend.com/mash-chemistry-and-brewing-water-calculator/?id=40DXNX2"
-clock_header: Carbonation Period
-clock_base: 2019-11-13 16:45
 ---
 
 <img src="/images/posts/brews/2019-10-25-mcabod-crane/pumpkins.jpg" alt="Pumpkins" class="brew-photo">
@@ -116,14 +114,44 @@ blanket to hit my desired temperature. On the right in the sheet is the
 on keg day that the beer had two leaves from the outdoor boil still floating
 around. Just going to call it a colonial touch.
 
-## Carbonation (In Progress)
+## Carbonation
 
 Carbonation was started in the garage between 40&deg;F - 50&deg;F at 45 PSI
 for several days, alternating between this keg and the 2019 Winter Warmer, until
-I could be bothered setting up my freezer for carbonating. Now this is being
+I could be bothered setting up my freezer for carbonating. Once I got around
+to that this was moved into the freezer and 
 carbonated between 38&deg;F - 48&deg;F at 10 PSI until serving time (about 1
-week). The C02 tank is still being alternated between this and the Winter Warmer.
+week). The C02 tank was still being alternated between this and the Winter Warmer.
 
 <div class="grid-container">
   <img src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/carb1.jpg" alt="Carbonating in the Freezer">
 </div>
+
+## Result
+
+<img src="/images/posts/brews/2019-10-25-mcabod-crane/beer.jpg" alt="Final Result" class="brew-photo">
+
+### Appearance
+
+Burnt orange, hazy, and off-white, brownish head. Cleared up a bit more after
+settling, and will probably clear up more while carbonating.
+
+### Aroma
+
+Pumpkin or squash, somewhat starchy. Has a bit of a medicinal smell.
+
+### Flavor
+
+Squash again. Very mild flavor and not much going on at all.
+
+### Mouthfeel
+
+Medium body with a bit of a slickness.
+
+## Conclusion
+
+This was a fun brew. It's interesting to see how beer may have been in a different
+place and time, even if the recipe has been slightly updated. I'm glad I tried it
+out but, realistically, this would be a one and done for me. I'd recommend to
+other brewers interested in historical brews since it _is_ drinkable, but its 
+not a great beer by itself.

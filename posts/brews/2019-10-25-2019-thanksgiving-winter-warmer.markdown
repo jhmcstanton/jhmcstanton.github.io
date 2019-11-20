@@ -1,8 +1,6 @@
 ---
-title: (Carbonation-in-Progress) 2019 Thanksgiving Winter Warmer
+title: 2019 Thanksgiving Winter Warmer
 water_profile_url: "https://www.brewersfriend.com/mash-chemistry-and-brewing-water-calculator/?id=5DGFQXY"
-clock_header: Carbonation Period
-clock_base: 2019-11-13 16:45
 ---
 
 Recreating a recipe
@@ -126,7 +124,7 @@ fermentation temperature. Instead I'm using my garage with a ferm wrap and a
 blanket to hit my desired temperature. On the left in the sheet is the
 [McAbod Crane](./2019-10-25-mcabod-crane.html).
 
-## Kegging & Carbonation (In Progress)
+## Kegging & Carbonation
 
 When racking to the keg I added two cinnamon sticks sanitized in Fire and Cane
 Glenfiddich. Carbonation was started in the garage between 40&deg; - 50+&deg;F at
@@ -141,6 +139,27 @@ this and the McAbod in the mean time.
   <img src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/carb1.jpg" alt="Carbonating in the Freezer">
 </div>
 
+## Result
+
+<img src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/beer.jpg" alt="Final Result" class="brew-photo">
+
+### Appearance
+
+Hazy, redbrown. Creamy and airy brown head that lingers.
+
+### Aroma
+
+Primarily cinnamon. Overall a very subdued and mild aroma. There is a mild
+malt sweetness but it is subtle enough that no obvious notes jump out.
+
+### Flavor
+
+Brown sugar, cinnamon, molasses cookies.
+
+### Mouthfeel
+
+Heavy and creamy.
+
 ## Things to do Better
 
 This time around my OG and attenuation were both lower than I would have liked
@@ -149,3 +168,8 @@ I believe that the OG was caused by a last minute decision to mash at
 attenuation issues may have been caused by not using a yeast starter. This brew
 was only 3 gallons, but the high gravity was seemingly too much for the single
 rehydrated packet.
+
+Flavor wise this winter warmer is more approachable than last year, probably from
+a combination of the lower ABV and smaller spice additions. I do miss the nutmeg
+from last year, even if it was overwhelming. A hint would be a welcome addition,
+and may be added to some glasses to try out.
