@@ -2,6 +2,8 @@
 title: Advent of Code 2019!
 ---
 
+<img src="/images/posts/blog/2019-12-13-advent-of-code/advent-cheer.jpg" alt="Fireplace Happy Holidays" class="brew-photo">
+
 Just wanted to throw out a quick reminder that the annual
 [Advent of Code](https://adventofcode.com/) is going on throughout the
 month of December. For those unfamiliar with the event, every day up to
