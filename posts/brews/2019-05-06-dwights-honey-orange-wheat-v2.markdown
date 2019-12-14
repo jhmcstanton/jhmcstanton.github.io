@@ -1,6 +1,5 @@
 ---
 title: Dwight's Honey Orange Wheat v2
-water_profile_url: "https://www.brewersfriend.com/mash-chemistry-and-brewing-water-calculator/?id=MXDXLXX"
 ---
 
 Well, its summer time again and about time to brew a crowd pleaser from last year, [Dwight's Honey Orange Wheat](/posts/brews/2018-08-01-dwights-orange-honey-wheat.html). Last year this was an extract recipe that we tweaked a little to more closely follow Palmer's extract brewing method and added an addition of orange peel for some orange aromas. Since then I've [built a mash tun](/posts/brews/2018-10-10-lets-build-a-mash-tun.html) and started brewing all-grain recipes exclusively, so, naturally, I converted this extract recipe to all-grain as well. 
@@ -79,7 +78,57 @@ Ingredients are per 1 gallon where applicable.
 
 This brew still used Reverse Osmosis (RO) water, and the strike water was treated with table salt and calcium chloride to hit the target pH.
 
-$partial("templates/posts/brews/water-profile.html")$
+<!-- Copied from previously generated html -->
+<table id="waterProfile">
+<tbody>
+<tr>
+<th>
+Ca<sup>+2</sup>
+</th>
+<th>
+Mg<sup>+2</sup>
+</th>
+<th>
+Na<sup>+</sup>
+</th>
+<th>
+Cl<sup>-</sup>
+</th>
+<th>
+SO<sub>4</sub><sup>-2</sup>
+</th>
+<th>
+Alkalinity
+</th>
+<th>
+Residual Alkalinity
+</th>
+</tr>
+<tr>
+<td>
+39.3
+</td>
+<td>
+0.0
+</td>
+<td>
+9.4
+</td>
+<td>
+84.1
+</td>
+<td>
+0.0
+</td>
+<td>
+2.6
+</td>
+<td>
+-25.4
+</td>
+</tr>
+</tbody>
+</table>
 
 <div class="grid-container">
   <img src="/images/posts/brews/2019-05-06-dwights-honey-orange-wheat-v2/mash_1.jpg" >

@@ -1,6 +1,5 @@
 ---
 title: 2019 Thanksgiving Winter Warmer
-water_profile_url: "https://www.brewersfriend.com/mash-chemistry-and-brewing-water-calculator/?id=5DGFQXY"
 ---
 
 Recreating a recipe
@@ -76,7 +75,57 @@ Per gallon
 
 ### Strike Water Profile
 
-$partial("templates/posts/brews/water-profile.html")$
+<!-- Copied from previously generated html -->
+<table id="waterProfile">
+<tbody>
+<tr>
+<th>
+Ca<sup>+2</sup>
+</th>
+<th>
+Mg<sup>+2</sup>
+</th>
+<th>
+Na<sup>+</sup>
+</th>
+<th>
+Cl<sup>-</sup>
+</th>
+<th>
+SO<sub>4</sub><sup>-2</sup>
+</th>
+<th>
+Alkalinity
+</th>
+<th>
+Residual Alkalinity
+</th>
+</tr>
+<tr>
+<td>
+117.1
+</td>
+<td>
+2.7
+</td>
+<td>
+46.0
+</td>
+<td>
+174.7
+</td>
+<td>
+201.6
+</td>
+<td>
+2.5
+</td>
+<td>
+-82.5
+</td>
+</tr>
+</tbody>
+</table>
 
 The strike water used for this infusion is the local water with some added
 calcium carbonate and gypsum. Previously I used untreated RO water

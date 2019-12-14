@@ -1,6 +1,5 @@
 ---
 title: McAbod Crane Pumpkin Beer
-water_profile_url: "https://www.brewersfriend.com/mash-chemistry-and-brewing-water-calculator/?id=40DXNX2"
 ---
 
 <img src="/images/posts/brews/2019-10-25-mcabod-crane/pumpkins.jpg" alt="Pumpkins" class="brew-photo">
@@ -65,7 +64,56 @@ Per gallon
 
 ### Strike Water Profile
 
-$partial("templates/posts/brews/water-profile.html")$
+<!-- Copied from previously generated HTML -->
+<table id="waterProfile">
+<tbody>
+<tr>
+<th>
+Ca<sup>+2</sup>
+</th>
+<th>
+Mg<sup>+2</sup>
+</th>
+<th>
+Na<sup>+</sup>
+</th>
+<th>
+Cl<sup>-</sup>
+</th>
+<th>
+SO<sub>4</sub><sup>-2</sup>
+</th>
+<th>
+Alkalinity
+</th>
+<th>
+Residual Alkalinity
+</th>
+</tr>
+<tr>
+<td>
+20.0
+</td>
+<td>
+2.7
+</td>
+<td>
+46.0
+</td>
+<td>
+78.0
+</td>
+<td>
+100.0
+</td>
+<td>
+2.5
+</td>
+<td>
+-13.4
+</td>
+</tr>
+</tbody>
 
 This is just the local water with gypsum and calcium carbonate added.
 

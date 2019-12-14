@@ -1,6 +1,5 @@
 ---
 title: Transatlantic Pale Ale
-water_profile_url: "https://www.brewersfriend.com/mash-chemistry-and-brewing-water-calculator/?id=Q10RZY9"
 ---
 
 Taking a crack at a British pale ale to get a handle on maris otter.
@@ -75,7 +74,57 @@ my first attempts to use local water. There is little calcium from the tap
 so I'll be using calcium chloride to add it in, as well as 10% phosphoric
 acid to drop the pH to the target. 
 
-$partial("templates/posts/brews/water-profile.html")$
+<!-- Copied from Previously Generated HTML -->
+<table id="waterProfile">
+<tbody>
+<tr>
+<th>
+Ca<sup>+2</sup>
+</th>
+<th>
+Mg<sup>+2</sup>
+</th>
+<th>
+Na<sup>+</sup>
+</th>
+<th>
+Cl<sup>-</sup>
+</th>
+<th>
+SO<sub>4</sub><sup>-2</sup>
+</th>
+<th>
+Alkalinity
+</th>
+<th>
+Residual Alkalinity
+</th>
+</tr>
+<tr>
+<td>
+83.4
+</td>
+<td>
+2.7
+</td>
+<td>
+46.0
+</td>
+<td>
+190.1
+</td>
+<td>
+100.0
+</td>
+<td>
+-37.0
+</td>
+<td>
+-98.0
+</td>
+</tr>
+</tbody>
+</table>
 
 <div class="grid-container">
   <img src="/images/posts/brews/2019-06-08-transatlantic-pale-ale/mash_1.jpg" alt="First Runnings">
