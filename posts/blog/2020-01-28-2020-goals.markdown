@@ -1,0 +1,63 @@
+---
+title: 2020 Goals
+---
+
+Happy New Year!
+
+The holidays are over and I'm finally getting back in a groove from vacation
+time. It's been a few months since I've updated or posted anything new on here,
+and figure its about time to get that rolling again with a small post.
+
+In 2019 I made some small professional and personal goals that I kept mostly
+to myself. This year I'm planning on renewing these goals and taking them a
+bit further - hopefully posting them here will keep me on it.
+
+## 12 Fermentations
+
+Last year I set a goal for 12 fermentations and ended up short (landing 
+on 8 total). This year I'm going to shoot for 12 again. This could be any 
+multi-day fermentation - pretty much anything besides bread.
+
+## 12 Open Source Contributions
+
+My previous contribution goal was 5 pull requests to repositories I appreciate.
+This wasn't terribly difficult, so this year I'm going to bump that to 12.
+
+## Read 3 Engineering Books
+
+In 2019 I read 3 engineering books, and in 2020 I plan on continuing
+that trend. The majority of my reading list is STEM related, but this may also
+include professional or team development reads.
+
+## Read 6 Thoughtful Books
+
+Last year my overall reading goal was 24 books. This worked out fine, but by
+the end of the list I noticed just how many of these were not that memorable. I
+still plan on reading for fun, but would like to make sure I'm also
+intentionally picking up more works to challenge myself or my views.
+
+In 2019 I did pick up a handful of books that I'd say fall into this category:
+
+- [_Black Leopard, Red Wolf_](https://en.wikipedia.org/wiki/Black_Leopard%2C_Red_Wolf) - fascinating and occasionally dense story telling with lore that varies
+greatly from a traditional western hemisphere point-of-view
+- [_Give People Money_](https://www.penguinrandomhouse.com/books/551618/give-people-money-by-annie-lowrey/) - a one sided take on Universal Basic Income that
+touts many of its hypothetical, and ocassionally known, benefits.
+- [_How To Be An Antiracist_](https://www.ibramxkendi.com/how-to-be-an-antiracist-1) - delves into what it means to be an antiracist and how that differs significantly from being apathetic and simply not racist.
+- [_Wordslut_](http://amandamontell.com/book/) - a recent examination of language from a feminist angle. Extremely accessible while still treading unfamiliar
+ground.
+
+In 2020 I plan to specifically seek out more works like these alongside
+whatever technical and fun reading I end up doing.
+
+## 2020, Let's Go
+
+There it is, an actionable list to hold myself accountable for this year. Looks
+like I have a decent chunk of work to get started on, but it should be a fun
+trek. In the spirit of accountability I'll even keep track of these goals here.
+
+| | | | | | | | | | | | | |
+|-|-|-|-|-|-|-|-|-|-|-|-|-|
+| Fermentations | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; |
+| Open Source Pull Requests | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; |
+| Engineering Reading List | &#10060; | &#10060; | &#10060; | | | | | | | | | |
+| Thoughtful Reading List | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | | | | | | |
