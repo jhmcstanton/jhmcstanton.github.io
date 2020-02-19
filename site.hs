@@ -3,9 +3,11 @@
 import qualified Data.ByteString.Lazy.Char8 as C
 import           Data.Monoid                 (mappend)
 import           Hakyll
+import qualified Hakyll.Core.Configuration  as Config
 import           Hakyll.Images
 import           Hakyll.Images.CompressJpg
 import           Hakyll.Typescript.TS        (compressJtsCompiler)
+import           System.Environment          (getArgs)
 import           Text.Jasmine
 import           Text.Pandoc.Extensions
 import           Text.Pandoc.Options
@@ -15,7 +17,10 @@ import           Site.Posts.Literate.Compile
 
 --------------------------------------------------------------------------------
 main :: IO ()
-main = hakyll $ do
+main = do
+  args <- getArgs
+  options <- handleParseResult $ defaultParserPure Config.defaultConfiguration args
+  hakyllWithArgs Config.defaultConfiguration options $ do
     match "posts/**/*.lhs" $ blogPostRules $
       getResourceFilePath >>= unsafeCompiler . runghcPost
 
