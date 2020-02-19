@@ -7,6 +7,7 @@ import qualified Hakyll.Core.Configuration  as Config
 import           Hakyll.Images
 import           Hakyll.Images.CompressJpg
 import           Hakyll.Typescript.TS        (compressJtsCompiler)
+import qualified Options.Applicative       as OA
 import           System.Environment          (getArgs)
 import           Text.Jasmine
 import           Text.Pandoc.Extensions
@@ -15,74 +16,86 @@ import           Text.Pandoc.Options
 import           Site.Posts.Brews.Context
 import           Site.Posts.Literate.Compile
 
+data SiteOptions = SiteOptions { test :: Bool, hakyllOpts :: Options} deriving Show
+
+parser :: OA.Parser SiteOptions
+parser = SiteOptions <$> simpleParser <*> optionParser (Config.defaultConfiguration) where
+  simpleParser = OA.switch (OA.long "example" <> OA.short 'e' <> OA.help "Example option")
+
+parserInfo :: OA.ParserInfo SiteOptions
+parserInfo = OA.info (OA.helper <*> parser) (OA.fullDesc <> OA.progDesc "jhmcstanton.com site builder")
+
 --------------------------------------------------------------------------------
 main :: IO ()
 main = do
   args <- getArgs
-  options <- handleParseResult $ defaultParserPure Config.defaultConfiguration args
-  hakyllWithArgs Config.defaultConfiguration options $ do
-    match "posts/**/*.lhs" $ blogPostRules $
-      getResourceFilePath >>= unsafeCompiler . runghcPost
-
-    match "404.lhs" $ do
-        route $ setExtension "html"
-        compile $
-          getResourceFilePath
-          >>= unsafeCompiler . runghcPost
-          >> pandocCompiler
-          >>= loadAndApplyTemplate "templates/default.html" defaultContext
-
-    match "images/**.jpg" $ do
-        route   idRoute
-        compile $ loadImage >>= compressJpgCompiler 50
-
-    match "images/**" $ do
-        route   idRoute
-        compile copyFileCompiler
-
-    match "css/*" $ do
-        route   idRoute
-        compile compressCssCompiler
-
-    match "scripts/**" $ do
-        route $ setExtension "js"
-        compile compressJtsCompiler
-
-    match "resume/*" $ do
-        route   idRoute
-        compile copyFileCompiler
-
-    match (fromList ["about.rst", "contact.markdown"]) $ do
-        route   $ setExtension "html"
-        compile $ pandocCompiler
+  options <- handleParseResult $ OA.execParserPure defaultParserPrefs parserInfo args
+  if test options
+  then putStrLn "You are using test mode. Bye!"
+  else
+    hakyllWithArgs Config.defaultConfiguration (hakyllOpts options) $ do
+      match "posts/**/*.lhs" $ blogPostRules $
+        getResourceFilePath >>= unsafeCompiler . runghcPost
+  
+      match "404.lhs" $ do
+          route $ setExtension "html"
+          compile $
+            getResourceFilePath
+            >>= unsafeCompiler . runghcPost
+            >> pandocCompiler
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
-            >>= relativizeUrls
-
-    match "posts/**/*.markdown" $ blogPostRules (pure ())
-
-    let postsPattern = "posts/blog/*" .&&. (complement "**/*.html")
-    createArchiveLanding "posts/blog/index.html" "Posts" postsPattern
-    createArchiveLanding "posts/brews/index.html" "Brews" "posts/brews/*.markdown"
-    createArchiveLanding "posts/projects/index.html" "Projects" "posts/projects/*.markdown"
-
-    let archivePattern = "posts/**/*" .&&. (complement "**/*.html")
-    createArchiveLanding "archive.html" "Archives" archivePattern
-
-    match "index.html" $ do
-        route idRoute
-        compile $ do
-            allPosts <- recentFirst =<< loadAll archivePattern
-            let posts = take 10 allPosts
-            let indexCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    defaultContext
-
-            getResourceBody
-                >>= applyAsTemplate indexCtx
-                >>= loadAndApplyTemplate "templates/default.html" indexCtx
-                >>= relativizeUrls
-
-    match "templates/**" $ compile templateBodyCompiler
+  
+      match "images/**.jpg" $ do
+          route   idRoute
+          compile $ loadImage >>= compressJpgCompiler 50
+  
+      match "images/**" $ do
+          route   idRoute
+          compile copyFileCompiler
+  
+      match "css/*" $ do
+          route   idRoute
+          compile compressCssCompiler
+  
+      match "scripts/**" $ do
+          route $ setExtension "js"
+          compile compressJtsCompiler
+  
+      match "resume/*" $ do
+          route   idRoute
+          compile copyFileCompiler
+  
+      match (fromList ["about.rst", "contact.markdown"]) $ do
+          route   $ setExtension "html"
+          compile $ pandocCompiler
+              >>= loadAndApplyTemplate "templates/default.html" defaultContext
+              >>= relativizeUrls
+  
+      match "posts/**/*.markdown" $ blogPostRules (pure ())
+  
+      let postsPattern = "posts/blog/*" .&&. (complement "**/*.html")
+      createArchiveLanding "posts/blog/index.html" "Posts" postsPattern
+      createArchiveLanding "posts/brews/index.html" "Brews" "posts/brews/*.markdown"
+      createArchiveLanding "posts/projects/index.html" "Projects" "posts/projects/*.markdown"
+  
+      let archivePattern = "posts/**/*" .&&. (complement "**/*.html")
+      createArchiveLanding "archive.html" "Archives" archivePattern
+  
+      match "index.html" $ do
+          route idRoute
+          compile $ do
+              allPosts <- recentFirst =<< loadAll archivePattern
+              let posts = take 10 allPosts
+              let indexCtx =
+                      listField "posts" postCtx (return posts) `mappend`
+                      defaultContext
+  
+              getResourceBody
+                  >>= applyAsTemplate indexCtx
+                  >>= loadAndApplyTemplate "templates/default.html" indexCtx
+                  >>= relativizeUrls
+  
+      match "templates/**" $ compile templateBodyCompiler
 
 --------------------------------------------------------------------------------
 myWriterOptions :: WriterOptions
