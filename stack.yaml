@@ -18,7 +18,7 @@
 #
 # resolver: ./custom-snapshot.yaml
 # resolver: https://example.com/snapshots/2018-01-01.yaml
-resolver: lts-12.26
+resolver: lts-15.1
 
 # User packages to be built.
 # Various formats can be used as shown in the example below.
@@ -35,11 +35,12 @@ resolver: lts-12.26
 #  - wai
 packages:
 - .
-- ../../../Software/haskell/hakyll
 # Dependency packages to be pulled from upstream that are not in the resolver
 # using the same syntax as the packages field.
 # (e.g., acme-missiles-0.3)
 extra-deps: 
+- git: https://github.com/jaspervdj/hakyll.git
+  commit: e94ceb6c05a914515a5b9600c041a0442bc75542
 - hakyll-images-0.4.2@sha256:0e9b923272fcba5e5e172f632a1eb1a8a8e7cd3058be151ce815dedd1958bbce,2302
 - hakyll-typescript-0.0.1.0
 # Override default flag values for local packages and extra-deps
