@@ -15,7 +15,7 @@ git checkout develop
 
 # Build new files
 stack exec site clean
-stack exec site build
+stack exec site build --use-water-profiles --compress-jpgs
 
 # Get previous files
 git fetch --all
