@@ -16,11 +16,18 @@ import           Text.Pandoc.Options
 import           Site.Posts.Brews.Context
 import           Site.Posts.Literate.Compile
 
-data SiteOptions = SiteOptions { test :: Bool, hakyllOpts :: Options} deriving Show
+data WaterProfiles = WPActive | WPInactive deriving Show
+data CompressJpgs  = CJActive | CJInactive deriving Show
+data SiteOptions = SiteOptions {
+    useWaterProfiles :: WaterProfiles,
+    compressJpgs :: CompressJpgs,
+    hakyllOpts :: Options
+  } deriving Show
 
 parser :: OA.Parser SiteOptions
-parser = SiteOptions <$> simpleParser <*> optionParser (Config.defaultConfiguration) where
-  simpleParser = OA.switch (OA.long "example" <> OA.short 'e' <> OA.help "Example option")
+parser = SiteOptions <$> water <*> compress <*> optionParser (Config.defaultConfiguration) where
+  water    = OA.flag WPInactive WPActive (OA.long "use-water-profiles" <> OA.help "Pull water profiles defined in posts")
+  compress = OA.flag CJInactive CJActive (OA.long "compress-jpgs" <> OA.help "Compress jpgs")
 
 parserInfo :: OA.ParserInfo SiteOptions
 parserInfo = OA.info (OA.helper <*> parser) (OA.fullDesc <> OA.progDesc "jhmcstanton.com site builder")
@@ -29,73 +36,75 @@ parserInfo = OA.info (OA.helper <*> parser) (OA.fullDesc <> OA.progDesc "jhmcsta
 main :: IO ()
 main = do
   args <- getArgs
-  options <- handleParseResult $ OA.execParserPure defaultParserPrefs parserInfo args
-  if test options
-  then putStrLn "You are using test mode. Bye!"
-  else
-    hakyllWithArgs Config.defaultConfiguration (hakyllOpts options) $ do
-      match "posts/**/*.lhs" $ blogPostRules $
-        getResourceFilePath >>= unsafeCompiler . runghcPost
-  
-      match "404.lhs" $ do
-          route $ setExtension "html"
-          compile $
-            getResourceFilePath
-            >>= unsafeCompiler . runghcPost
-            >> pandocCompiler
+  options <- OA.handleParseResult $ OA.execParserPure defaultParserPrefs parserInfo args
+  let blogPostRules' = blogPostRules (useWaterProfiles options)
+  hakyllWithArgs Config.defaultConfiguration (hakyllOpts options) $ do
+    match "posts/**/*.lhs" $ blogPostRules' $
+      getResourceFilePath >>= unsafeCompiler . runghcPost
+
+    match "404.lhs" $ do
+        route $ setExtension "html"
+        compile $
+          getResourceFilePath
+          >>= unsafeCompiler . runghcPost
+          >> pandocCompiler
+          >>= loadAndApplyTemplate "templates/default.html" defaultContext
+
+    match "images/**.jpg" $ do
+        route   idRoute
+        imageCompressionRules (compressJpgs options)
+        -- let compressionAmt = case compressJpgs options of
+        --                        CJActive   -> 50
+        --                        CJInactive -> 0
+        -- compile $ loadImage >>= compressJpgCompiler compressionAmt
+
+    match "images/**" $ do
+        route   idRoute
+        compile copyFileCompiler
+
+    match "css/*" $ do
+        route   idRoute
+        compile compressCssCompiler
+
+    match "scripts/**" $ do
+        route $ setExtension "js"
+        compile compressJtsCompiler
+
+    match "resume/*" $ do
+        route   idRoute
+        compile copyFileCompiler
+
+    match (fromList ["about.rst", "contact.markdown"]) $ do
+        route   $ setExtension "html"
+        compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
-  
-      match "images/**.jpg" $ do
-          route   idRoute
-          compile $ loadImage >>= compressJpgCompiler 50
-  
-      match "images/**" $ do
-          route   idRoute
-          compile copyFileCompiler
-  
-      match "css/*" $ do
-          route   idRoute
-          compile compressCssCompiler
-  
-      match "scripts/**" $ do
-          route $ setExtension "js"
-          compile compressJtsCompiler
-  
-      match "resume/*" $ do
-          route   idRoute
-          compile copyFileCompiler
-  
-      match (fromList ["about.rst", "contact.markdown"]) $ do
-          route   $ setExtension "html"
-          compile $ pandocCompiler
-              >>= loadAndApplyTemplate "templates/default.html" defaultContext
-              >>= relativizeUrls
-  
-      match "posts/**/*.markdown" $ blogPostRules (pure ())
-  
-      let postsPattern = "posts/blog/*" .&&. (complement "**/*.html")
-      createArchiveLanding "posts/blog/index.html" "Posts" postsPattern
-      createArchiveLanding "posts/brews/index.html" "Brews" "posts/brews/*.markdown"
-      createArchiveLanding "posts/projects/index.html" "Projects" "posts/projects/*.markdown"
-  
-      let archivePattern = "posts/**/*" .&&. (complement "**/*.html")
-      createArchiveLanding "archive.html" "Archives" archivePattern
-  
-      match "index.html" $ do
-          route idRoute
-          compile $ do
-              allPosts <- recentFirst =<< loadAll archivePattern
-              let posts = take 10 allPosts
-              let indexCtx =
-                      listField "posts" postCtx (return posts) `mappend`
-                      defaultContext
-  
-              getResourceBody
-                  >>= applyAsTemplate indexCtx
-                  >>= loadAndApplyTemplate "templates/default.html" indexCtx
-                  >>= relativizeUrls
-  
-      match "templates/**" $ compile templateBodyCompiler
+            >>= relativizeUrls
+
+    match "posts/**/*.markdown" $ blogPostRules' (pure ())
+
+    let postsPattern = "posts/blog/*" .&&. (complement "**/*.html")
+    createArchiveLanding "posts/blog/index.html" "Posts" postsPattern
+    createArchiveLanding "posts/brews/index.html" "Brews" "posts/brews/*.markdown"
+    createArchiveLanding "posts/projects/index.html" "Projects" "posts/projects/*.markdown"
+
+    let archivePattern = "posts/**/*" .&&. (complement "**/*.html")
+    createArchiveLanding "archive.html" "Archives" archivePattern
+
+    match "index.html" $ do
+        route idRoute
+        compile $ do
+            allPosts <- recentFirst =<< loadAll archivePattern
+            let posts = take 10 allPosts
+            let indexCtx =
+                    listField "posts" postCtx (return posts) `mappend`
+                    defaultContext
+
+            getResourceBody
+                >>= applyAsTemplate indexCtx
+                >>= loadAndApplyTemplate "templates/default.html" indexCtx
+                >>= relativizeUrls
+
+    match "templates/**" $ compile templateBodyCompiler
 
 --------------------------------------------------------------------------------
 myWriterOptions :: WriterOptions
@@ -111,13 +120,15 @@ myRenderPandoc :: Item String -> Compiler (Item String)
 myRenderPandoc = renderPandocWith defaultHakyllReaderOptions myWriterOptions
 
 --------------------------------------------------------------------------------
-blogPostRules :: Compiler () -> Rules ()
-blogPostRules preProcess = do
+blogPostRules :: WaterProfiles -> Compiler () -> Rules ()
+blogPostRules useWaterProfile preProcess = do
   route $ setExtension "html"
   compile $
       preProcess
       >> getUnderlying
-      >>= addWaterProfile
+      >>= (case useWaterProfile of
+             WPActive   -> addWaterProfile
+             WPInactive -> pure . const mempty)
       >>= \waterProf -> let postCtx' = postCtx <> waterProf in
       getResourceString
       >>= applyAsTemplate postCtx' -- allows posts to include partials
@@ -125,6 +136,11 @@ blogPostRules preProcess = do
       >>= loadAndApplyTemplate "templates/post.html"    postCtx'
       >>= loadAndApplyTemplate "templates/default.html" postCtx'
       >>= relativizeUrls
+
+--------------------------------------------------------------------------------
+imageCompressionRules :: CompressJpgs -> Rules ()
+imageCompressionRules CJActive   = compile $ loadImage >>= compressJpgCompiler 50
+imageCompressionRules CJInactive = compile copyFileCompiler
 
 --------------------------------------------------------------------------------
 postCtx :: Context String
