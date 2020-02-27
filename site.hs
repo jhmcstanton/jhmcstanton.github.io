@@ -3,9 +3,12 @@
 import qualified Data.ByteString.Lazy.Char8 as C
 import           Data.Monoid                 (mappend)
 import           Hakyll
+import qualified Hakyll.Core.Configuration  as Config
 import           Hakyll.Images
 import           Hakyll.Images.CompressJpg
 import           Hakyll.Typescript.TS        (compressJtsCompiler)
+import qualified Options.Applicative       as OA
+import           System.Environment          (getArgs)
 import           Text.Jasmine
 import           Text.Pandoc.Extensions
 import           Text.Pandoc.Options
@@ -13,10 +16,30 @@ import           Text.Pandoc.Options
 import           Site.Posts.Brews.Context
 import           Site.Posts.Literate.Compile
 
+data WaterProfiles = WPActive | WPInactive deriving Show
+data CompressJpgs  = CJActive | CJInactive deriving Show
+data SiteOptions = SiteOptions {
+    useWaterProfiles :: WaterProfiles,
+    compressJpgs :: CompressJpgs,
+    hakyllOpts :: Options
+  } deriving Show
+
+parser :: OA.Parser SiteOptions
+parser = SiteOptions <$> water <*> compress <*> optionParser (Config.defaultConfiguration) where
+  water    = OA.flag WPInactive WPActive (OA.long "use-water-profiles" <> OA.help "Pull water profiles defined in posts")
+  compress = OA.flag CJInactive CJActive (OA.long "compress-jpgs" <> OA.help "Compress jpgs")
+
+parserInfo :: OA.ParserInfo SiteOptions
+parserInfo = OA.info (OA.helper <*> parser) (OA.fullDesc <> OA.progDesc "jhmcstanton.com site builder")
+
 --------------------------------------------------------------------------------
 main :: IO ()
-main = hakyll $ do
-    match "posts/**/*.lhs" $ blogPostRules $
+main = do
+  args <- getArgs
+  options <- OA.handleParseResult $ OA.execParserPure defaultParserPrefs parserInfo args
+  let blogPostRules' = blogPostRules (useWaterProfiles options)
+  hakyllWithArgs Config.defaultConfiguration (hakyllOpts options) $ do
+    match "posts/**/*.lhs" $ blogPostRules' $
       getResourceFilePath >>= unsafeCompiler . runghcPost
 
     match "404.lhs" $ do
@@ -29,7 +52,11 @@ main = hakyll $ do
 
     match "images/**.jpg" $ do
         route   idRoute
-        compile $ loadImage >>= compressJpgCompiler 50
+        imageCompressionRules (compressJpgs options)
+        -- let compressionAmt = case compressJpgs options of
+        --                        CJActive   -> 50
+        --                        CJInactive -> 0
+        -- compile $ loadImage >>= compressJpgCompiler compressionAmt
 
     match "images/**" $ do
         route   idRoute
@@ -53,7 +80,7 @@ main = hakyll $ do
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 
-    match "posts/**/*.markdown" $ blogPostRules (pure ())
+    match "posts/**/*.markdown" $ blogPostRules' (pure ())
 
     let postsPattern = "posts/blog/*" .&&. (complement "**/*.html")
     createArchiveLanding "posts/blog/index.html" "Posts" postsPattern
@@ -93,13 +120,15 @@ myRenderPandoc :: Item String -> Compiler (Item String)
 myRenderPandoc = renderPandocWith defaultHakyllReaderOptions myWriterOptions
 
 --------------------------------------------------------------------------------
-blogPostRules :: Compiler () -> Rules ()
-blogPostRules preProcess = do
+blogPostRules :: WaterProfiles -> Compiler () -> Rules ()
+blogPostRules useWaterProfile preProcess = do
   route $ setExtension "html"
   compile $
       preProcess
       >> getUnderlying
-      >>= addWaterProfile
+      >>= (case useWaterProfile of
+             WPActive   -> addWaterProfile
+             WPInactive -> pure . const mempty)
       >>= \waterProf -> let postCtx' = postCtx <> waterProf in
       getResourceString
       >>= applyAsTemplate postCtx' -- allows posts to include partials
@@ -107,6 +136,11 @@ blogPostRules preProcess = do
       >>= loadAndApplyTemplate "templates/post.html"    postCtx'
       >>= loadAndApplyTemplate "templates/default.html" postCtx'
       >>= relativizeUrls
+
+--------------------------------------------------------------------------------
+imageCompressionRules :: CompressJpgs -> Rules ()
+imageCompressionRules CJActive   = compile $ loadImage >>= compressJpgCompiler 50
+imageCompressionRules CJInactive = compile copyFileCompiler
 
 --------------------------------------------------------------------------------
 postCtx :: Context String

@@ -13,6 +13,7 @@ executable site
                   , hjsmin        == 0.2.*
                   , pandoc
                   , jhmcstanton-com
+                  , optparse-applicative
   ghc-options:      -threaded
   default-language: Haskell2010
 
