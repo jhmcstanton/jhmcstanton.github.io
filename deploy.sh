@@ -1,3 +1,4 @@
+#!/bin/bash
 # Always fail the script if anything bad happens
 set -e
 
