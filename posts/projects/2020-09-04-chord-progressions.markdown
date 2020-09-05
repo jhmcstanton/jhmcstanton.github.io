@@ -19,12 +19,13 @@ A small tool to help easily identify chords in different keys.
     <option value="A">A</option>
     <option value="A#">A#</option>
     <option value="B">B</option>
-    <option value="C">C</option>
+    <option value="C" selected="selected">C</option>
     <option value="C#">C#</option>
     <option value="D">D</option>
     <option value="D#">D#</option>
     <option value="E">E</option>
     <option value="F">F</option>
+    <option value="F#">F#</option>
     <option value="G">G</option>
     <option value="G#">G#</option>
   </select>
