@@ -12,3 +12,6 @@
 #pattern-editor {
     width: 100%;
 }
+.cursor-note {
+    fill: red;
+}

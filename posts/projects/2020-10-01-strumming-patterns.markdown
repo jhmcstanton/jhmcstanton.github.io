@@ -30,7 +30,7 @@ Click a block to add it to your strumming pattern. Each block corresponds to 1 b
 
 <div id="blocks"></div>
 
-Version 1.0
+Version 1.1
 <details>
   <summary><h3>Future Goals</h3>
   <ul>
@@ -42,8 +42,10 @@ Version 1.0
   </ul>
   </summary>
   <h3>Changelog</h3>
+  <h4>1.1</h4>
+  Added note highlighting while playing audio.
   <h4>1.0</h4>
-  <p>Initial version, basic 4/4 support</p>
+  <p>Initial version, basic 4/4 support.</p>
 </details>
 
 <link rel="stylesheet" href="/css/2020-10-01-strumming-patterns.css"/>

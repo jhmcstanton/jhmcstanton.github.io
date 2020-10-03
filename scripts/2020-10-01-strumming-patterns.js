@@ -16,7 +16,6 @@ M: ${meter}
 let beats          = ["c2c2", "c3c", "ccc2", "c2cw"];
 // Audio control options
 let audioEnabled   = false;
-let cursorControl  = { };
 let displayOptions = {
     displayLoop     : true,
     displayRestart  : true,
@@ -32,7 +31,7 @@ let blockPatterns = [
     "c4", "c2c2", "cccc", "c2cc", "ccc2", "c3c", "cc3"
 ];
 
-blocksSection = document.getElementById("blocks");
+let blocksSection   = document.getElementById("blocks");
 for (let i=0; i < blockPatterns.length; i++) {
     let pattern = blockPatterns[i];
     let abc = `X:${i+2}
@@ -45,6 +44,11 @@ ${pattern}`;
     ABCJS.renderAbc(blockId, abc);
 }
 
+let eventCallback = function(ev) {
+    document.querySelectorAll('.cursor-note').forEach((el) => el.classList.remove('cursor-note'));
+    let elements = ev['elements'].forEach((el) => el[0].classList.add('cursor-note'));
+};
+
 let updateMidi = function(tune) {
     if (!document.getElementById("audioEnabled").checked) {
         document.getElementById("audio").innerHTML = "";
@@ -52,7 +56,7 @@ let updateMidi = function(tune) {
     }
     if (ABCJS.synth.supportsAudio()) {
         let synthControl = new ABCJS.synth.SynthController();
-        synthControl.load("#audio", cursorControl, displayOptions);
+        synthControl.load("#audio", { onEvent: eventCallback }, displayOptions);
     } else {
         document.getElementById("audio").innerHTML = "Audio not supported in this browser";
         return;
@@ -102,7 +106,8 @@ let updateMeasureView = function() {
 let update = function() {
     let abc = buildAbc();
     document.getElementById("pattern-editor").innerHTML = abc;
-    let tune = ABCJS.renderAbc("paper", abc)[0];
+    let tune = ABCJS.renderAbc("paper", abc, { responsive: "resize" })[0];
+
     updateMidi(tune);
 };
 update();
