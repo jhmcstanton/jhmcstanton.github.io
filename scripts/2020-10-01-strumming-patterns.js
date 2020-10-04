@@ -39,7 +39,10 @@ L: ${defaultL}
 K: C treble style=rhythm
 ${pattern}`;
     let blockId   = `block-${i}`;
-    let blockHtml = `<div class="block" id="${blockId}" onclick="append(${i})()"></div>`;
+    let blockHtml = `<div class="block">
+<div id="${blockId}" onclick="append(${i})()"></div>
+<label>Leading tie <input type="checkbox" id="${blockId}-tie"></label>
+</div>`;
     blocksSection.innerHTML += blockHtml;
     ABCJS.renderAbc(blockId, abc);
 }
@@ -77,7 +80,11 @@ let clearScore = function() {
 
 let append = function(i) {
     return function() {
-        beats.push(blockPatterns[i]);
+        let pattern = blockPatterns[i];
+        if (document.getElementById(`block-${i}-tie`).checked) {
+            pattern = "-" + pattern;
+        }
+        beats.push(pattern);
         update();
     };
 };

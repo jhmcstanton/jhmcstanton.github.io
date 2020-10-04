@@ -30,18 +30,19 @@ Click a block to add it to your strumming pattern. Each block corresponds to 1 b
 
 <div id="blocks"></div>
 
-Version 1.1
+Version 1.2
 <details>
   <summary><h3>Future Goals</h3>
   <ul>
     <li>Add more patterns</li>
     <li>Generate measures from blocks</li>
-    <li>Add tie support</li>
     <li>Support other time signatures</li>
     <li>Add support for direct editing of the ABC markdown</li>
   </ul>
   </summary>
   <h3>Changelog</h3>
+  <h4>1.2</h4>
+  Added basic tie support.
   <h4>1.1</h4>
   Added note highlighting while playing audio.
   <h4>1.0</h4>
