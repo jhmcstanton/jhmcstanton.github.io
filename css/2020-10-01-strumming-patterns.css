@@ -15,3 +15,6 @@
 .cursor-note {
     fill: red;
 }
+label {
+    display: block;
+}

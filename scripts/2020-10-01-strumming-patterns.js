@@ -1,18 +1,9 @@
 let count           = 4;
 let beatType        = 4;
-let meter           = `${count}/${beatType}`;
 let tempo           = "60";
 let n               = "c";
 let defaultL        = "1/16";
 let measuresPerLine = 2;
-let abcHeader       = `X: 1
-T: Your Cool Strumming Pattern
-C: You
-L: ${defaultL}
-K: C treble style=rhythm
-Q: 1/4=${tempo}
-M: ${meter}
-`;
 let beats          = ["c2c2", "c3c", "ccc2", "c2cw"];
 // Audio control options
 let audioEnabled   = false;
@@ -73,7 +64,6 @@ let updateMidi = function(tune) {
 };
 
 let clearScore = function() {
-    console.log("inside clear");
     beats.length = 0;
     update();
 };
@@ -90,7 +80,16 @@ let append = function(i) {
 };
 
 let buildAbc = function() {
-    let abc = abcHeader;
+    let count = parseInt(document.getElementById("beatsPerMeasure").value);
+    let meter = `${count}/${beatType}`;
+    let abc   = `X: 1
+T: Your Cool Strumming Pattern
+C: You
+L: ${defaultL}
+K: C treble style=rhythm
+Q: 1/4=${tempo}
+M: ${meter}
+`;
     for(let i=1; i<=beats.length; i++) {
         let beat = beats[i-1];
         abc += beat + " ";

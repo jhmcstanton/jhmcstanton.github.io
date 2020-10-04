@@ -15,12 +15,14 @@ properly composing music.
 
 <div id="paper"></div>
 <div id="audio"></div>
-<label>
-  Enable/Disable audio. Audio playback requires additional downloads.
+<form>
+  <label for="Enable Audio">Enable/Disable audio. Audio playback requires additional downloads.</label>
   <input type="checkbox" id="audioEnabled" onClick="update()">
-  Number of measures per line.
+  <label for="Measures per line">Number of measures per line</label>
   <input type="number" id="measuresPerLine" onChange="updateMeasureView()" min="1" value="2">
-<label>
+  <label for="Beats per measure">Number of beats per measure</label>
+  <input type="number" id="beatsPerMeasure" onChange="updateMeasureView()" min="1" value="4">
+</form>
 
 <button onClick="clearScore()">Clear Score</button>
 
@@ -30,7 +32,7 @@ Click a block to add it to your strumming pattern. Each block corresponds to 1 b
 
 <div id="blocks"></div>
 
-Version 1.2
+Version 1.3
 <details>
   <summary><h3>Future Goals</h3>
   <ul>
@@ -41,6 +43,8 @@ Version 1.2
   </ul>
   </summary>
   <h3>Changelog</h3>
+  <h4>1.3</h4>
+  Added support for changing number of beats per measure
   <h4>1.2</h4>
   Added basic tie support.
   <h4>1.1</h4>
