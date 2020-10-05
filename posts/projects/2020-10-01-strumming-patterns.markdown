@@ -16,14 +16,41 @@ properly composing music.
 <div id="paper"></div>
 <div id="audio"></div>
 <form>
+  <label for="Title">Title:</label>
+  <input type="text" value="Your Cool Strumming Pattern" id="title" onChange="update()">
+  <label for="Composer">Composer:</label>
+  <input type="text" value="You" id="composer" onChange="update()">
   <label for="Enable Audio">Enable/Disable audio. Audio playback requires additional downloads.</label>
   <input type="checkbox" id="audioEnabled" onClick="update()">
   <label for="Measures per line">Number of measures per line</label>
   <input type="number" id="measuresPerLine" onChange="updateMeasureView()" min="1" value="2">
   <label for="Beats per measure">Number of beats per measure</label>
   <input type="number" id="beatsPerMeasure" onChange="updateMeasureView()" min="1" value="4">
+  <label for="key">Key of Score</label>
+  <select name="key" id="key" onchange="update()" selected="C">
+    <option value="Ab">A♭</option>
+    <option value="A">A</option>
+    <option value="A#">A♯</option>
+    <option value="Bb">B♭</option>
+    <option value="B">B</option>
+    <option value="C">C</option>
+    <option value="C#">C♯</option>
+    <option value="Db">D♭</option>
+    <option value="D">D</option>
+    <option value="D#">D♯</option>
+    <option value="Eb">E♭</option>
+    <option value="E">E</option>
+    <option value="F">F</option>
+    <option value="F#">F♯</option>
+    <option value="Gb">G♭</option>
+    <option value="G">G</option>
+    <option value="G#">G♯</option>
+  </select>
+  <label for="next chord">Next Chord:</label>
+  <input type="text" id="nextChord" value="C">
 </form>
 
+<button onClick="removeLastBeat()">Remove Last Beat</button>
 <button onClick="clearScore()">Clear Score</button>
 
 ## Strumming Blocks
@@ -32,7 +59,7 @@ Click a block to add it to your strumming pattern. Each block corresponds to 1 b
 
 <div id="blocks"></div>
 
-Version 1.3
+Version 1.4
 <details>
   <summary><h3>Future Goals</h3>
   <ul>
@@ -43,8 +70,12 @@ Version 1.3
   </ul>
   </summary>
   <h3>Changelog</h3>
+  <h4>1.4</h4>
+  Added chord support.
+  Added title and composer editing.
+  Added remove last beat button.
   <h4>1.3</h4>
-  Added support for changing number of beats per measure
+  Added support for changing number of beats per measure.
   <h4>1.2</h4>
   Added basic tie support.
   <h4>1.1</h4>

@@ -1,13 +1,12 @@
 let count           = 4;
 let beatType        = 4;
 let tempo           = "60";
-let n               = "c";
 let defaultL        = "1/16";
 let measuresPerLine = 2;
-let beats          = ["c2c2", "c3c", "ccc2", "c2cw"];
+let beats           = [{pattern:"c2c2", chord:"C"}, {pattern: "c3c", chord: "C"}, {pattern: "ccc2", chord:"D"}, {pattern:"c2cw", chord: "D"}];
 // Audio control options
-let audioEnabled   = false;
-let displayOptions = {
+let audioEnabled    = false;
+let displayOptions  = {
     displayLoop     : true,
     displayRestart  : true,
     displayPlay     : true,
@@ -15,7 +14,7 @@ let displayOptions = {
     displayWarp     : true
 };
 let audioOptions   = {
-    chordsOff: true
+    chordsOff: false
 };
 
 let blockPatterns = [
@@ -68,31 +67,47 @@ let clearScore = function() {
     update();
 };
 
+let removeLastBeat = function() {
+    beats.pop();
+    update();
+};
+
 let append = function(i) {
     return function() {
         let pattern = blockPatterns[i];
         if (document.getElementById(`block-${i}-tie`).checked) {
             pattern = "-" + pattern;
         }
-        beats.push(pattern);
+        let beat = {pattern: pattern, chord: document.getElementById('nextChord').value };
+        beats.push(beat);
         update();
     };
 };
 
 let buildAbc = function() {
-    let count = parseInt(document.getElementById("beatsPerMeasure").value);
-    let meter = `${count}/${beatType}`;
-    let abc   = `X: 1
-T: Your Cool Strumming Pattern
-C: You
+    let title    = document.getElementById("title").value;
+    let composer = document.getElementById("composer").value;
+    let count    = parseInt(document.getElementById("beatsPerMeasure").value);
+    let key      = document.getElementById("key").value.replace(/(.+)#/, "^$1").replace(/(.+)b/, "_$1");
+    let meter    = `${count}/${beatType}`;
+    let abc      = `X: 1
+T: ${title}
+C: ${composer}
 L: ${defaultL}
-K: C treble style=rhythm
+K: ${key} treble style=rhythm
 Q: 1/4=${tempo}
 M: ${meter}
 `;
+    let previousChord = null;
     for(let i=1; i<=beats.length; i++) {
-        let beat = beats[i-1];
-        abc += beat + " ";
+        let beat    = beats[i-1];
+        let chord   = beat['chord'];
+        let pattern = beat['pattern'].replaceAll('c', chord[0]);
+        if (previousChord !== chord){
+            abc += `"${chord}"`;
+        }
+        previousChord = chord;
+        abc += pattern + " ";
         if (i % count === 0 && i !== beats.length) {
             abc += "| ";
         }
