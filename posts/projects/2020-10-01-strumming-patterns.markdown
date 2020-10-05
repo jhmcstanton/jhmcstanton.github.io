@@ -27,13 +27,13 @@ properly composing music.
   <label for="Beats per measure">Number of beats per measure</label>
   <input type="number" id="beatsPerMeasure" onChange="updateMeasureView()" min="1" value="4">
   <label for="key">Key of Score</label>
-  <select name="key" id="key" onchange="update()" selected="C">
+  <select name="key" id="key" onchange="update()">
     <option value="Ab">A♭</option>
     <option value="A">A</option>
     <option value="A#">A♯</option>
     <option value="Bb">B♭</option>
     <option value="B">B</option>
-    <option value="C">C</option>
+    <option value="C" selected="selected">C</option>
     <option value="C#">C♯</option>
     <option value="Db">D♭</option>
     <option value="D">D</option>
