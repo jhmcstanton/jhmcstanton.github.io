@@ -53,10 +53,6 @@ main = do
     match "images/**.jpg" $ do
         route   idRoute
         imageCompressionRules (compressJpgs options)
-        -- let compressionAmt = case compressJpgs options of
-        --                        CJActive   -> 50
-        --                        CJInactive -> 0
-        -- compile $ loadImage >>= compressJpgCompiler compressionAmt
 
     match "images/**" $ do
         route   idRoute
@@ -86,6 +82,7 @@ main = do
     createArchiveLanding "posts/blog/index.html" "Posts" postsPattern
     createArchiveLanding "posts/brews/index.html" "Brews" "posts/brews/*.markdown"
     createArchiveLanding "posts/projects/index.html" "Projects" "posts/projects/*.markdown"
+    createArchiveLanding "posts/music/index.html" "Music" "posts/music/*.markdown"
 
     let archivePattern = "posts/**/*" .&&. (complement "**/*.html")
     createArchiveLanding "archive.html" "Archives" archivePattern
