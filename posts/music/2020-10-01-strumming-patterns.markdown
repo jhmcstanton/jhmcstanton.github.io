@@ -17,15 +17,15 @@ properly composing music.
 <div id="audio"></div>
 <form>
   <label for="Title">Title:</label>
-  <input type="text" value="Your Cool Strumming Pattern" id="title" onChange="update()">
+  <input type="text" value="Your Cool Strumming Pattern" id="title" oninput="update()">
   <label for="Composer">Composer:</label>
-  <input type="text" value="You" id="composer" onChange="update()">
+  <input type="text" value="You" id="composer" oninput="update()">
   <label for="Enable Audio">Enable/Disable audio. Audio playback requires additional downloads.</label>
   <input type="checkbox" id="audioEnabled" onClick="update()">
   <label for="Measures per line">Number of measures per line</label>
   <input type="number" id="measuresPerLine" onChange="updateMeasureView()" min="1" value="2">
   <label for="Beats per measure">Number of beats per measure</label>
-  <input type="number" id="beatsPerMeasure" onChange="updateMeasureView()" min="1" value="4">
+  <input type="number" id="beatsPerMeasure" oninput="updateMeasureView()" min="1" value="4">
   <label for="key">Key of Score</label>
   <select name="key" id="key" onchange="update()">
     <option value="Ab">A♭</option>
@@ -52,6 +52,8 @@ properly composing music.
 
 <button onClick="removeLastBeat()">Remove Last Beat</button>
 <button onClick="clearScore()">Clear Score</button>
+<button onClick="generateMeasure()">Generate New Measure</button>
+<button onClick="generate()">Generate New Score</button>
 
 ## Strumming Blocks
 
@@ -59,17 +61,19 @@ Click a block to add it to your strumming pattern. Each block corresponds to 1 b
 
 <div id="blocks"></div>
 
-Version 1.4
+Version 1.5
 <details>
   <summary><h3>Future Goals</h3>
   <ul>
     <li>Add more patterns</li>
-    <li>Generate measures from blocks</li>
+    <li>Add more generation support</li>
     <li>Support other time signatures</li>
     <li>Add support for direct editing of the ABC markdown</li>
   </ul>
   </summary>
   <h3>Changelog</h3>
+  <h4>1.5</h4>
+  Added support for generating new scores and new measures.
   <h4>1.4</h4>
   Added chord support.
   Added title and composer editing.

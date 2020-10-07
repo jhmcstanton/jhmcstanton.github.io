@@ -72,22 +72,36 @@ let removeLastBeat = function() {
     update();
 };
 
+let appendHelper = function(pattern, useTie, chord) {
+    if (useTie) {
+        pattern = "-" + pattern;
+    }
+    let beat = {pattern: pattern, chord: chord };
+    beats.push(beat);
+    update();
+};
+
 let append = function(i) {
     return function() {
         let pattern = blockPatterns[i];
-        if (document.getElementById(`block-${i}-tie`).checked) {
-            pattern = "-" + pattern;
-        }
-        let beat = {pattern: pattern, chord: document.getElementById('nextChord').value };
-        beats.push(beat);
-        update();
+        let useTie  = document.getElementById(`block-${i}-tie`).checked;
+        let chord   = getChord();
+        appendHelper(pattern, useTie, chord);
     };
+};
+
+let getCount = function() {
+    return parseInt(document.getElementById("beatsPerMeasure").value);
+};
+
+let getChord = function() {
+    return document.getElementById('nextChord').value;
 };
 
 let buildAbc = function() {
     let title    = document.getElementById("title").value;
     let composer = document.getElementById("composer").value;
-    let count    = parseInt(document.getElementById("beatsPerMeasure").value);
+    let count    = getCount();
     let key      = document.getElementById("key").value.replace(/(.+)#/, "^$1").replace(/(.+)b/, "_$1");
     let meter    = `${count}/${beatType}`;
     let abc      = `X: 1
@@ -121,6 +135,34 @@ M: ${meter}
 
 let updateMeasureView = function() {
     measuresPerLine = parseInt(document.getElementById("measuresPerLine").value);
+    update();
+};
+
+let rand = function(n) {
+    return Math.floor(Math.random() * n);
+};
+
+let generateMeasure = function() {
+    let count            = getCount();
+    let measureRemainder = count - (beats.length % count);
+    let chord            = getChord();
+    for (let i = 0; i < measureRemainder; i++) {
+        let pattern = blockPatterns[rand(blockPatterns.length)];
+        let useTie  = rand(11) < 2;
+        appendHelper(pattern, useTie, chord);
+    }
+    update();
+};
+
+let generate = function() {
+    clearScore();
+    let chords = ['G', 'G', 'G', 'G', 'D', 'D', 'D', 'D', 'C', 'C', 'C', 'C', 'G', 'G', 'G', 'G'];
+    chords.forEach((chord) => {
+        let pattern = blockPatterns[rand(blockPatterns.length)];
+        let useTie  = rand(11) < 2;
+        appendHelper(pattern, useTie, chord);
+    });
+    document.getElementById('key').selectedIndex = 15; // Key of G
     update();
 };
 
