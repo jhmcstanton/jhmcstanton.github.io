@@ -48,8 +48,11 @@ properly composing music.
   </select>
   <label for="next chord">Next Chord:</label>
   <input type="text" id="nextChord" value="C">
+  <label for="measure to copy">Measure to Copy:</label>
+  <input type="number" id="copyMeasure" value="1" min="1" onChange="checkCopyMeasure(this.value)">
 </form>
 
+<button onClick="copyMeasure()">Copy Measure</button>
 <button onClick="removeLastBeat()">Remove Last Beat</button>
 <button onClick="clearScore()">Clear Score</button>
 <button onClick="generateMeasure()">Generate New Measure</button>
@@ -61,7 +64,7 @@ Click a block to add it to your strumming pattern. Each block corresponds to 1 b
 
 <div id="blocks"></div>
 
-Version 1.5
+Version 1.6
 <details>
   <summary><h3>Future Goals</h3>
   <ul>
@@ -72,6 +75,8 @@ Version 1.5
   </ul>
   </summary>
   <h3>Changelog</h3>
+  <h4>1.6</h4>
+  Added support for appending copies of previous measures to the score.
   <h4>1.5</h4>
   Added support for generating new scores and new measures.
   <h4>1.4</h4>
