@@ -64,7 +64,7 @@ Click a block to add it to your strumming pattern. Each block corresponds to 1 b
 
 <div id="blocks"></div>
 
-Version 1.7
+Version 1.7.1
 <details>
   <summary><h3>Future Goals</h3>
   <ul>
@@ -75,6 +75,8 @@ Version 1.7
   </ul>
   </summary>
   <h3>Changelog</h3>
+  <h4>1.7.1</h4>
+  Fixed where up and down arrows render when chord is not present at beginning of line.
   <h4>1.7</h4>
   Added strumming arrows to beats.
   <h4>1.6</h4>

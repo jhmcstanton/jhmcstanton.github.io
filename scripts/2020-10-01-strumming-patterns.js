@@ -134,16 +134,27 @@ K: ${key} treble style=rhythm
 Q: 1/4=${tempo}
 M: ${meter}
 `;
-    let previousChord   = null;
+    const linesWithChords = beats.reduce((d, beat, i) => {
+        const line = Math.floor(i / (count * measuresPerLine));
+        if (d['previousChord'] !== beat['chord']) {
+            d[line] = true;
+            d['previousChord'] = beat['chord'];
+        }
+        return d;
+    }, {previousChord: null});
+    let previousChord     = null;
+    let currentLine       = 0;
     const eighthOffbeat = usesSixteenths() ? down : up;
     for(let i=1; i<=beats.length; i++) {
-        const beat    = beats[i-1];
-        const chord   = beat['chord'];
-        const pattern = beat['pattern'].replaceAll('c', chord[0]);
-        console.log(`pchord: ${previousChord}| chord: ${chord}`);
+        const beat  = beats[i-1];
+        const chord = beat['chord'];
+        let pattern = beat['pattern'].replaceAll('c', chord[0]);
+        const line  = Math.floor((i-1) / (count * measuresPerLine));
+        pattern     = line in linesWithChords ? pattern :  pattern.replaceAll('""', '');
         if (previousChord === chord) {
-            console.log('adding space');
-            abc += '""';
+            if (line in linesWithChords) {
+                abc += '""';
+            }
         } else {
             abc += `"${chord}"`;
         }
@@ -154,6 +165,7 @@ M: ${meter}
         }
         if (i % (measuresPerLine * count) === 0 && i !== beats.length) {
             abc += "\n";
+            currentLine++;
         }
     }
 
