@@ -3,7 +3,15 @@ const beatType         = 4;
 const tempo            = "60";
 const defaultL         = "1/16";
 const measuresPerLine  = 2;
-const beats          = [{pattern:"c2c2", chord:"C"}, {pattern: "c3c", chord: "C"}, {pattern: "ccc2", chord:"D"}, {pattern:"c2cw", chord: "D"}];
+const down             = "↓";
+const up               = "↑";
+const strumPlaceholder = "S";
+const beats          = [
+    {pattern:`"↓"c2"""S"c2`      , chord: "C"},
+    {pattern: `"↓"c3"""↑"c`      , chord: "C"},
+    {pattern: `"↓"c"""↑"c"""↓"c2`, chord: "D"},
+    {pattern: `"↓"c2"""S"c2`     , chord: "D"}
+];
 // Audio control options
 const audioEnabled   = false;
 const displayOptions = {
@@ -17,25 +25,39 @@ const audioOptions   = {
     chordsOff: false
 };
 
-const blockPatterns = [
-    "c4", "c2c2", "cccc", "c2cc", "ccc2", "c3c", "cc3"
-];
+const blockPatterns = [`"↓"c4`, `"↓"c2"""S"c2`, `"↓"c"""↑"c"""↓"c"""↑"c`, `"↓"c2"""↓"c"""↑"c`, `"↓"c"""↑"c"""↓"c2`, `"↓"c3"""↑"c`, `"↓"c"""↑"c3`];
 
 const blocksSection   = document.getElementById("blocks");
 for (const i=0; i < blockPatterns.length; i++) {
-    const pattern = blockPatterns[i];
+    const pattern = blockPatterns[i].replaceAll('""', '');
     const abc = `X:${i+2}
 L: ${defaultL}
 K: C treble style=rhythm
 ${pattern}`;
     const blockId   = `block-${i}`;
     const blockHtml = `<div class="block">
-<div id="${blockId}" onclick="append(${i})()"></div>
+<div id="${blockId}" onclick="append(${i})()" ></div>
 <label>Leading tie <input type="checkbox" id="${blockId}-tie"></label>
 </div>`;
     blocksSection.innerHTML += blockHtml;
     ABCJS.renderAbc(blockId, abc);
 }
+
+const usesSixteenths = function() {
+    return beats.some((b) => b['pattern'].includes('"c"'));
+};
+
+const updateEighths = function() {
+    const blockId       = `block-1`;
+    const eighthOffbeat = usesSixteenths() ? down : up;
+    const pattern       = blockPatterns[1].replace(strumPlaceholder, eighthOffbeat).replace('""', '');
+    const el            = document.getElementById(blockId);
+    const abc = `X:3
+L: ${defaultL}
+K: C treble style=rhythm
+${pattern}`;
+    ABCJS.renderAbc(blockId, abc);
+};
 
 const eventCallback = function(ev) {
     document.querySelectorAll('.cursor-note').forEach((el) => el.classList.remove('cursor-note'));
@@ -112,16 +134,21 @@ K: ${key} treble style=rhythm
 Q: 1/4=${tempo}
 M: ${meter}
 `;
-    const previousChord = null;
+    let previousChord   = null;
+    const eighthOffbeat = usesSixteenths() ? down : up;
     for(let i=1; i<=beats.length; i++) {
         const beat    = beats[i-1];
         const chord   = beat['chord'];
         const pattern = beat['pattern'].replaceAll('c', chord[0]);
-        if (previousChord !== chord){
+        console.log(`pchord: ${previousChord}| chord: ${chord}`);
+        if (previousChord === chord) {
+            console.log('adding space');
+            abc += '""';
+        } else {
             abc += `"${chord}"`;
         }
         previousChord = chord;
-        abc += pattern + " ";
+        abc += pattern.replace(strumPlaceholder, eighthOffbeat) + " ";
         if (i % count === 0 && i !== beats.length) {
             abc += "| ";
         }
@@ -193,7 +220,7 @@ const update = function() {
     const abc = buildAbc();
     document.getElementById("pattern-editor").innerHTML = abc;
     const tune = ABCJS.renderAbc("paper", abc, { responsive: "resize" })[0];
-
+    updateEighths();
     updateMidi(tune);
 };
 update();
