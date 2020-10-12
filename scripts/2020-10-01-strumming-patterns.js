@@ -96,7 +96,7 @@ const removeLastBeat = function() {
 
 const appendHelper = function(pattern, useTie, chord) {
     if (useTie) {
-        pattern = "-" + pattern;
+        pattern = '-""' + pattern.substring(3); // Drops the leading strum direction
     }
     const beat = {pattern: pattern, chord: chord };
     beats.push(beat);
