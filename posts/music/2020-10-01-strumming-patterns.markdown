@@ -57,6 +57,7 @@ properly composing music.
 <button onClick="clearScore()">Clear Score</button>
 <button onClick="generateMeasure()">Generate New Measure</button>
 <button onClick="generate()">Generate New Score</button>
+<button onClick="share()">Share Strumming Pattern!</button>
 
 ## Strumming Blocks
 
@@ -64,7 +65,7 @@ Click a block to add it to your strumming pattern. Each block corresponds to 1 b
 
 <div id="blocks"></div>
 
-Version 1.7.2
+Version 1.8
 <details>
   <summary><h3>Future Goals</h3>
   <ul>
@@ -75,6 +76,8 @@ Version 1.7.2
   </ul>
   </summary>
   <h3>Changelog</h3>
+  <h4>1.8</h4>
+  Added share strumming pattern feature.
   <h4>1.7.2</h4>
   Strum direction now removed on ties.
   <h4>1.7.1</h4>

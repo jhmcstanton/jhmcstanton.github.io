@@ -120,11 +120,23 @@ const getChord = function() {
     return document.getElementById('nextChord').value;
 };
 
+const getTitle = function() {
+    return document.getElementById("title").value;
+};
+
+const getComposer = function() {
+    return document.getElementById("composer").value;
+};
+
+const getKey = function() {
+    return document.getElementById("key").value;
+};
+
 const buildAbc = function() {
-    const title    = document.getElementById("title").value;
-    const composer = document.getElementById("composer").value;
+    const title    = getTitle();
+    const composer = getComposer();
     const count    = getCount();
-    const key      = document.getElementById("key").value.replace(/(.+)#/, "^$1").replace(/(.+)b/, "_$1");
+    const key      = getKey().replace(/(.+)#/, "^$1").replace(/(.+)b/, "_$1");
     const meter    = `${count}/${beatType}`;
     let abc        = `X: 1
 T: ${title}
@@ -235,4 +247,61 @@ const update = function() {
     updateEighths();
     updateMidi(tune);
 };
+
+const share = function() {
+    const beatShare = beats.reduceRight((p, b) => {
+        return `${p}${b['pattern']
+.replaceAll('"', 'q')
+.replaceAll('↓', 'r')
+.replaceAll('↑', 't')
+.replaceAll(' ', '')}u${b['chord']}n`;
+    }, '');
+    const title    = encodeURIComponent(getTitle());
+    const composer = encodeURIComponent(getComposer());
+    const count    = getCount();
+    const key      = encodeURIComponent(getKey());
+    const url = `${window.location.href}?title=${title}&composer=${composer}&count=${count}&key=${key}&beats=${encodeURIComponent(beatShare)}`;
+    const dummyArea = document.createElement("textarea");
+    document.body.appendChild(dummyArea);
+    dummyArea.value = url;
+    dummyArea.select();
+    document.execCommand("copy");
+    document.body.removeChild(dummyArea);
+    alert('Share URL copied to clipboard!');
+};
+const parseShare = function() {
+    const params     = new URLSearchParams(window.location.search);
+    const beatsParam = params.get('beats');
+    if (beatsParam) {
+        clearScore();
+        new URLSearchParams(window.location.search).get('beats').split('n').forEach((patC) => {
+            if(patC === '') {
+                return;
+            }
+            const patCs = patC.split('u');
+            const pat   = patCs[0];
+            const chord = patCs[1];
+            beats.push({chord: chord, pattern: pat
+                        .replaceAll('q', '"')
+                        .replaceAll('r', '↓')
+                        .replaceAll('t', '↑')
+                       });
+        });
+        beats.reverse();
+
+        if (params.get('title')) {
+            document.getElementById('title').value = decodeURIComponent(params.get('title'));
+        }
+        if (params.get('composer')) {
+            document.getElementById('composer').value = decodeURIComponent(params.get('composer'));
+        }
+        if (params.get('key')) {
+            document.getElementById('key').value = decodeURIComponent(params.get('key'));
+        }
+        if (params.get('count')) {
+            document.getElementById('beatsPerMeasure').value = params.get('count');
+        }
+    }
+};
+parseShare();
 update();
