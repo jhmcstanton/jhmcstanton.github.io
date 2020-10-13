@@ -65,7 +65,7 @@ Click a block to add it to your strumming pattern. Each block corresponds to 1 b
 
 <div id="blocks"></div>
 
-Version 1.8
+Version 1.8.1
 <details>
   <summary><h3>Future Goals</h3>
   <ul>
@@ -76,6 +76,8 @@ Version 1.8
   </ul>
   </summary>
   <h3>Changelog</h3>
+  <h4>1.8.1</h4>
+  Added fix to share button that strips query params off of the current url prior to sharing.
   <h4>1.8</h4>
   Added share strumming pattern feature.
   <h4>1.7.2</h4>

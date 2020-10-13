@@ -260,7 +260,7 @@ const share = function() {
     const composer = encodeURIComponent(getComposer());
     const count    = getCount();
     const key      = encodeURIComponent(getKey());
-    const url = `${window.location.href}?title=${title}&composer=${composer}&count=${count}&key=${key}&beats=${encodeURIComponent(beatShare)}`;
+    const url = `${window.location.href.split('?')[0]}?title=${title}&composer=${composer}&count=${count}&key=${key}&beats=${encodeURIComponent(beatShare)}`;
     const dummyArea = document.createElement("textarea");
     document.body.appendChild(dummyArea);
     dummyArea.value = url;
