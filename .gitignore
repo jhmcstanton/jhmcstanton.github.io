@@ -6,4 +6,8 @@ resume/resume.aux
 resume/resume.log
 resume/resume.out
 .bin/
-
+posts/music/daily/*.count
+posts/music/daily/*.eps
+posts/music/daily/*.png
+posts/music/daily/*-systems*
+posts/music/daily/*.tex
