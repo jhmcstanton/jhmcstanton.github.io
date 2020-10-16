@@ -6,8 +6,9 @@ import           Hakyll
 import qualified Hakyll.Core.Configuration  as Config
 import           Hakyll.Images
 import           Hakyll.Images.CompressJpg
+import           Hakyll.Process
 import           Hakyll.Typescript.TS        (compressJtsCompiler)
-import qualified Options.Applicative       as OA
+import qualified Options.Applicative        as OA
 import           System.Environment          (getArgs)
 import           Text.Jasmine
 import           Text.Pandoc.Extensions
@@ -47,7 +48,7 @@ main = do
         compile $
           getResourceFilePath
           >>= unsafeCompiler . runghcPost
-          >> pandocCompiler
+          >>  pandocCompiler
           >>= loadAndApplyTemplate "templates/default.html" defaultContext
 
     match "images/**.jpg" $ do
@@ -66,9 +67,9 @@ main = do
         route $ setExtension "js"
         compile compressJtsCompiler
 
-    match "resume/*" $ do
-        route   idRoute
-        compile copyFileCompiler
+    match "resume/*.tex" $ do
+        route   $ setExtension "pdf"
+        compile $ execCompilerWith (execName "xelatex") [ProcArg "-output-directory=resume/", HakFilePath] (newExtOutFilePath "pdf")
 
     match (fromList ["about.rst", "contact.markdown"]) $ do
         route   $ setExtension "html"
@@ -79,12 +80,20 @@ main = do
     match "posts/**/*.markdown" $ blogPostRules' (pure ())
 
     let postsPattern = "posts/blog/*" .&&. (complement "**/*.html")
-    createArchiveLanding "posts/blog/index.html" "Posts" postsPattern
-    createArchiveLanding "posts/brews/index.html" "Brews" "posts/brews/*.markdown"
-    createArchiveLanding "posts/projects/index.html" "Projects" "posts/projects/*.markdown"
-    createArchiveLanding "posts/music/index.html" "Music" "posts/music/*.markdown"
+    createArchiveLanding "posts/blog/index.html"        "Posts"    postsPattern
+    createArchiveLanding "posts/brews/index.html"       "Brews"    "posts/brews/*.markdown"
+    createArchiveLanding "posts/projects/index.html"    "Projects" "posts/projects/*.markdown"
+    createArchiveLanding "posts/music/index.html"       "Music"    "posts/music/*.markdown"
+    createArchiveLanding "posts/music/daily/index.html" "Daily"    "posts/music/daily/*.markdown"
+    match "posts/music/daily/*.ly" $ do
+      route   $ setExtension "png"
+      compile $ execCompilerWith (execName "lilypond")
+                  [ProcArg "-dbackend=eps", ProcArg "-dno-gs-load-fonts", ProcArg "-dinclude-eps-fonts",
+                   ProcArg "--output=posts/music/daily/", ProcArg "--png", HakFilePath]
+                  (newExtOutFilePath "png")
+                >>= saveSnapshot "_final"
 
-    let archivePattern = "posts/**/*" .&&. (complement "**/*.html")
+    let archivePattern = "posts/**/*" .&&. (complement "**/*.html") .&&. (complement "**/music/daily/*")
     createArchiveLanding "archive.html" "Archives" archivePattern
 
     match "index.html" $ do

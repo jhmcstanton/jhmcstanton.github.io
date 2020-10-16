@@ -51,6 +51,10 @@ When writing posts it is also convenient to use
 
 to build the site as it is being written and check the output with a test server.
 
+### Music files
+
+Lilypond (.ly) requires lilypond to be insalled locally.
+
 ## Deployment
 
 Deployment is straightforward - `master` just needs to have an `index.html` in the root and the generated posts need to be moved from the target directory, [`_site`](./site), and into the expected relative paths.
