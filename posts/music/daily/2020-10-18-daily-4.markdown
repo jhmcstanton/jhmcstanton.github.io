@@ -1,0 +1,10 @@
+---
+title: Daily 4
+---
+
+This is another for a Coursera course to make a slow jazz melody inspired by "Blue in Green" by Bill Evans.
+
+This attempts to contrast slow leaps with fast steps. It also attempts to guide the listener in the step
+segments with the use of accidentals.
+
+![](./daily-4.png "Music Piece")
