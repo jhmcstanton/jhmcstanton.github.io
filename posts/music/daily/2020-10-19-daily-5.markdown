@@ -1,0 +1,8 @@
+---
+title: Daily 5
+---
+
+This is another for a Coursera course to make a small folky melody with a limited mode and simple enough for
+someone to write lyrics on top of.
+
+![](./daily-5.png "Music Piece")
