@@ -1,0 +1,7 @@
+---
+title: Daily 7
+---
+
+A lead line over a 12 bar blues.
+
+![](./daily-7.png "Music Piece")
