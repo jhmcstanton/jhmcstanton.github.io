@@ -4,4 +4,9 @@ title: Daily 7
 
 A lead line over a 12 bar blues.
 
+<button onclick="MIDIjs.play('./daily-7.mid')">Play</button>
+<button onclick="MIDIjs.stop()">Stop</button>
+
 ![](./daily-7.png "Music Piece")
+
+<script type="text/javascript" src="https://www.midijs.net/lib/midi.js"></script>

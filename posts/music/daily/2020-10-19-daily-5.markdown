@@ -5,4 +5,9 @@ title: Daily 5
 This is another for a Coursera course to make a small folky melody with a limited mode and simple enough for
 someone to write lyrics on top of.
 
+<button onclick="MIDIjs.play('./daily-5.mid')">Play</button>
+<button onclick="MIDIjs.stop()">Stop</button>
+
 ![](./daily-5.png "Music Piece")
+
+<script type="text/javascript" src="https://www.midijs.net/lib/midi.js"></script>

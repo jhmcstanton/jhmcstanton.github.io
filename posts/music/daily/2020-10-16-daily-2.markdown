@@ -9,5 +9,9 @@ melody note the 7th of the underlying chord.
 
 Last thought here: it is kind of hilarious how long these tiny pieces take to make.
 
+<button onclick="MIDIjs.play('./daily-2.mid')">Play</button>
+<button onclick="MIDIjs.stop()">Stop</button>
 
 ![](./daily-2.png "Music Piece")
+
+<script type="text/javascript" src="https://www.midijs.net/lib/midi.js"></script>

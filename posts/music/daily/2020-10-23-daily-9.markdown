@@ -6,4 +6,9 @@ A piece in F Lydian. This is my first experience writing in this mode and really
 chord progression is a common I - II - I - II - iv - V - iv - V - I with an extra I at the end for some extra
 repetition and closure. 
 
+<button onclick="MIDIjs.play('./daily-9.mid')">Play</button>
+<button onclick="MIDIjs.stop()">Stop</button>
+
 ![](./daily-9.png "Music Piece")
+
+<script type="text/javascript" src="https://www.midijs.net/lib/midi.js"></script>

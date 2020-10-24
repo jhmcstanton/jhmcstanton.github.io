@@ -7,4 +7,9 @@ This is another for a Coursera course to make a slow jazz melody inspired by "Bl
 This attempts to contrast slow leaps with fast steps. It also attempts to guide the listener in the step
 segments with the use of accidentals.
 
+<button onclick="MIDIjs.play('./daily-4.mid')">Play</button>
+<button onclick="MIDIjs.stop()">Stop</button>
+
 ![](./daily-4.png "Music Piece")
+
+<script type="text/javascript" src="https://www.midijs.net/lib/midi.js"></script>

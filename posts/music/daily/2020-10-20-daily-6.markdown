@@ -6,4 +6,11 @@ A small droning guitar effect. The approach is to play the low note on its own s
 the piece, and play the majority of the remaining notes on the next, higher string. Once the double stops are
 involved play them using the next highest string and allow it to ring as long as possible as well.
 
+<button onclick="MIDIjs.play('./daily-6.mid')">Play</button>
+<button onclick="MIDIjs.stop()">Stop</button>
+
+Note: the midi playback will not include the repeats.
+
 ![](./daily-6.png "Music Piece")
+
+<script type="text/javascript" src="https://www.midijs.net/lib/midi.js"></script>
