@@ -89,9 +89,12 @@ main = do
       route   $ setExtension "png"
       compile $ execCompilerWith (execName "lilypond")
                   [ProcArg "-dbackend=eps", ProcArg "-dno-gs-load-fonts", ProcArg "-dinclude-eps-fonts",
-                   ProcArg "--output=posts/music/daily/", ProcArg "--png", HakFilePath]
+                   ProcArg "-dmidi-extension=mid", ProcArg "--output=posts/music/daily/", ProcArg "--png", HakFilePath]
                   (newExtOutFilePath "png")
                 >>= saveSnapshot "_final"
+    match "posts/music/daily/*.mid" $ do
+      route   idRoute
+      compile copyFileCompiler
 
     let archivePattern = "posts/**/*" .&&. (complement "**/*.html") .&&. (complement "**/music/daily/*")
     createArchiveLanding "archive.html" "Archives" archivePattern
