@@ -1,0 +1,9 @@
+---
+title: Daily 9
+---
+
+A piece in F Lydian. This is my first experience writing in this mode and really like the joyful feel of it. The
+chord progression is a common I - II - I - II - iv - V - iv - V - I with an extra I at the end for some extra
+repetition and closure. 
+
+![](./daily-9.png "Music Piece")
