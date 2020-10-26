@@ -1,6 +1,6 @@
 #!/usr/local/bin/fish
 
-for f in posts/music/daily/*.markdown posts/music/daily/*.ly posts/music/daily/*.mid
+for f in posts/music/daily/*.markdown posts/music/daily/*.ly
     git add $f
 end
 

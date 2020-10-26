@@ -1,0 +1,12 @@
+---
+title: Daily 11
+---
+
+Messing with Mixolydian to have a tritone within the key based off of the tonic.
+
+<button onclick="MIDIjs.play('./daily-11.mid')">Play</button>
+<button onclick="MIDIjs.stop()">Stop</button>
+
+![](./daily-11.png "Music Piece")
+
+<script type="text/javascript" src="https://www.midijs.net/lib/midi.js"></script>
