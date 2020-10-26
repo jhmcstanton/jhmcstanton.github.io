@@ -1,0 +1,14 @@
+---
+title: Daily 10
+---
+
+This piece is heavily structurely based on / lifted off of the intro of first track of
+[Frances the Mute by The Mars Volta](https://en.wikipedia.org/wiki/Frances_the_Mute), "Cygnus.... Vismund Cygnus",
+mostly because it was stuck in my head.
+
+<button onclick="MIDIjs.play('./daily-10.mid')">Play</button>
+<button onclick="MIDIjs.stop()">Stop</button>
+
+![](./daily-10.png "Music Piece")
+
+<script type="text/javascript" src="https://www.midijs.net/lib/midi.js"></script>
