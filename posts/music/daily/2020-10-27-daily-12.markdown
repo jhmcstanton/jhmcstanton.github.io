@@ -1,0 +1,30 @@
+---
+title: "Daily 12: A few things"
+---
+
+Had a hard time sleeping early this morning so put a couple of these together, then added a third one a bit later.
+
+This first is a little melody in G Major, based around some ideas taken from a Coursera class around repetition.
+
+<button onclick="MIDIjs.play('./daily-12-a.mid')">Play</button>
+<button onclick="MIDIjs.stop()">Stop</button>
+
+![](./daily-12-a.png "Music Piece")
+
+This second one is playing around with harmonizing a chord in the melody using 7ths, 9ths, 11ths, etc.
+
+<button onclick="MIDIjs.play('./daily-12-b.mid')">Play</button>
+<button onclick="MIDIjs.stop()">Stop</button>
+
+![](./daily-12-b.png "Music Piece")
+
+<button onclick="MIDIjs.play('./daily-12-c.mid')">Play</button>
+<button onclick="MIDIjs.stop()">Stop</button>
+
+This is just playing with the Harmonic Minor. When playing around on guitar the harmonic minor with its
+various half-steps between scale degrees sounds mysterious and interesting. Not sure that this was pulled
+off here by strictly writing it out, but a fun exercise nonetheless.
+
+![](./daily-12-c.png "Music Piece")
+
+<script type="text/javascript" src="https://www.midijs.net/lib/midi.js"></script>
