@@ -1,5 +1,5 @@
 ---
-title: Daily 6
+title: "Daily 6: Droning Guitar"
 ---
 
 A small droning guitar effect. The approach is to play the low note on its own string and let it ring throughout

@@ -1,5 +1,5 @@
 ---
-title: Daily 5
+title: "Daily 5: Simple Folk"
 ---
 
 This is another for a Coursera course to make a small folky melody with a limited mode and simple enough for

@@ -1,5 +1,5 @@
 ---
-title: Daily 3
+title: "Daily 3: Gregorian Chant"
 ---
 
 <button onclick="MIDIjs.play('./daily-3.mid')">Play</button>

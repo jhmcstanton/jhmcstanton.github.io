@@ -1,5 +1,5 @@
 ---
-title: Daily 7
+title: "Daily 7: 12 Bar Blues"
 ---
 
 A lead line over a 12 bar blues.

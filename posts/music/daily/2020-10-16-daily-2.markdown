@@ -1,5 +1,5 @@
 ---
-title: Daily 2
+title: "Daily 2: Melody in C# Major"
 ---
 
 Another tiny piece. This one is in C# Major and started off as messing with a melody that has large jumps then small steps and back.

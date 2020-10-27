@@ -1,5 +1,5 @@
 ---
-title: Daily 11
+title: "Daily 11: Mixolydian mode"
 ---
 
 Messing with Mixolydian to have a tritone within the key based off of the tonic.
