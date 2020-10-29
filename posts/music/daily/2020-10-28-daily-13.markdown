@@ -1,0 +1,20 @@
+---
+title: "Daily 13: Romantic and Early 20th Century Pieces"
+---
+
+These are both for a coursera class I am currently taking. This first piece is based on 19th century
+romantic compositions.
+
+<button onclick="MIDIjs.play('./daily-13-a.mid')">Play</button>
+<button onclick="MIDIjs.stop()">Stop</button>
+
+![](./daily-13-a.png "Music Piece")
+
+This second one is based on early 20th century atonal compositions.
+
+<button onclick="MIDIjs.play('./daily-13-b.mid')">Play</button>
+<button onclick="MIDIjs.stop()">Stop</button>
+
+![](./daily-13-b.png "Music Piece")
+
+<script type="text/javascript" src="https://www.midijs.net/lib/midi.js"></script>
