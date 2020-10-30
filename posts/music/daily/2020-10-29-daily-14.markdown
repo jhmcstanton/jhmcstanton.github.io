@@ -1,0 +1,17 @@
+---
+title: "Daily 14: Longer tune"
+---
+
+A goofy tune written today after seeing a few of the pups chewing on snack bones and singing a few lines
+to them. First time actually writing lyrics (and to a melody), so this was a fun little exercise.
+
+The lyrics are awkward and the harmony is super simple and off in some spaces, but meh. Had a fun
+time putting something down on paper.
+
+
+<button onclick="MIDIjs.play('./daily-14.mid')">Play</button>
+<button onclick="MIDIjs.stop()">Stop</button>
+
+![](./daily-14.png "Music Piece")
+
+<script type="text/javascript" src="https://www.midijs.net/lib/midi.js"></script>
