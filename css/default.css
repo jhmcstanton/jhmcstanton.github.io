@@ -157,6 +157,10 @@ article .header {
   }
 }
 
+img {
+    max-width: 80%; margin: auto;
+}
+
 .brew-photo {
     max-width: 70%;
     max-height: 90vh;

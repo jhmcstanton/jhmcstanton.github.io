@@ -1,0 +1,15 @@
+---
+title: "Daily 15: Earworm Assignment"
+---
+
+This is for a coursera assignment to write an earworm.
+
+Side note, the lead synth instrument used on this really freaks out of one our dogs.
+
+
+<button onclick="MIDIjs.play('./daily-15.mid')">Play</button>
+<button onclick="MIDIjs.stop()">Stop</button>
+
+![](./daily-15.png "Music Piece")
+
+<script type="text/javascript" src="https://www.midijs.net/lib/midi.js"></script>
