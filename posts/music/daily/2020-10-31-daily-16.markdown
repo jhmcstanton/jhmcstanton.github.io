@@ -1,0 +1,15 @@
+---
+title: "Daily 16: Melody for vocals"
+---
+
+This is just playing around with a melody for a lead and a backup vocal. The idea would be to use
+this as an intro with some percussion. Not very familiar with writing melodies for vocals other
+than to limit the amount of jumps, so most of the movement is stepwise with only a few leaps.
+
+
+<button onclick="MIDIjs.play('./daily-16.mid')">Play</button>
+<button onclick="MIDIjs.stop()">Stop</button>
+
+![](./daily-16.png "Music Piece")
+
+<script type="text/javascript" src="https://www.midijs.net/lib/midi.js"></script>
