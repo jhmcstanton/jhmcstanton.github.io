@@ -42,7 +42,7 @@ extra-deps:
 - git: https://github.com/jaspervdj/hakyll.git
   commit: e94ceb6c05a914515a5b9600c041a0442bc75542
 - hakyll-images-0.4.2@sha256:0e9b923272fcba5e5e172f632a1eb1a8a8e7cd3058be151ce815dedd1958bbce,2302
-- hakyll-typescript-0.0.1.0
+- hakyll-typescript-0.0.2.0
 - hakyll-process-0.0.2.0
 # Override default flag values for local packages and extra-deps
 # flags: {}
