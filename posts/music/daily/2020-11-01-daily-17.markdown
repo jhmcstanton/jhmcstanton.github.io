@@ -1,0 +1,12 @@
+---
+title: "Daily 17: Mid to Late 20th Century Melody"
+---
+
+Another melody for a coursera course.
+
+<button onclick="MIDIjs.play('./daily-17.mid')">Play</button>
+<button onclick="MIDIjs.stop()">Stop</button>
+
+![](./daily-17.png "Music Piece")
+
+<script type="text/javascript" src="https://www.midijs.net/lib/midi.js"></script>
