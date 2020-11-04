@@ -15,7 +15,7 @@ all abc on a page that it finds.
 </div>
 <div id="audio"></div>
 </summary>
-Click anywhere on the score to see the ABC notation of this and even edit it yourself.
+<p>Click anywhere on the score to see the ABC notation of this and even edit it yourself.</p>
 <textarea autocomplete="off" id="score" oninput="render()" class="abcscore" rows=20>
 L: 1/8
 K: D treble

@@ -221,3 +221,7 @@ img {
 img[src$='.svg'] {
     max-width: 100%;
 }
+
+.abcscore {
+    width: 100%;
+}
