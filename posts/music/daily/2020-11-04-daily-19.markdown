@@ -1,0 +1,31 @@
+---
+title: "Daily 19: E Melodic Minor"
+---
+
+Just goofing with the E melodic minor and checking out the differences between
+running up and down the key.
+
+<details>
+<summary>
+<div id="paper">
+</div>
+<div id="audio"></div>
+</summary>
+<p>Click anywhere on the score to see the ABC notation of this and even edit it yourself.</p>
+<textarea autocomplete="off" id="score" oninput="render()" class="abcscore" rows=20>
+L: 1/8
+K: Em treble
+Q: 1/4=90
+M: 6/8
+g,a,b, a,b,^c | b,^c^d cde- | e2f ede | dcd cb,a, | g,f,e, f,g,2 |
+g,/2g,/2g,b, b,b,2 | a,/2a,/2a,^d dcc2 | b,/2b,/2^c^d- d3 | f3 z3 |
+ede ded | ede ded | cb,c b,cb, | cb,c b,cb, | a,g,a, g,a,g, | a,g,a, g,a,g, |
+f,3 z3 | a,/2a,/2^ce a,/2a,/2ce | ge/2e/2c ge/2e/2c | a,/2a,/2^ce a,/2a,/2ce | ge/2e/2c ge/2e/2c |
+e/2e/2c/2c/2a, a,3 | d/2d/2b,/2b,/2f, f,3 | a,b,/2b,/2^c/2^d/2 de2 | e3- e3 |]
+</textarea>
+</details>
+
+
+<script type="text/javascript" src="/scripts/abcjs_basic_5.11.0-min.js"></script>
+<script type="text/javascript" src="/scripts/abc_post.js"></script>
+<link rel="stylesheet" href="/css/abcjs-audio.css"/>
