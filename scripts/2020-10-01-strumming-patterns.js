@@ -22,7 +22,7 @@ const displayOptions = {
     displayWarp     : true
 };
 const audioOptions   = {
-    chordsOff: false
+    chordsOff: true
 };
 
 const blockPatterns = [`"↓"c4`, `"↓"c2"""S"c2`, `"↓"c"""↑"c"""↓"c"""↑"c`, `"↓"c2"""↓"c"""↑"c`, `"↓"c"""↑"c"""↓"c2`, `"↓"c3"""↑"c`, `"↓"c"""↑"c3`];
