@@ -23,6 +23,13 @@ packages:
   original:
     hackage: hakyll-images-0.4.2@sha256:0e9b923272fcba5e5e172f632a1eb1a8a8e7cd3058be151ce815dedd1958bbce,2302
 - completed:
+    hackage: hakyll-typescript-0.0.2.0@sha256:4b42bc9e779c9b4607e2dfabeea27a211172da511834f8ab9d093abc799ac95e,2131
+    pantry-tree:
+      size: 760
+      sha256: d7aef405a571f09d052213d305f9f5df8c79b7136a24ddd8efd59294eff1065c
+  original:
+    hackage: hakyll-typescript-0.0.2.0
+- completed:
     hackage: hakyll-process-0.0.2.0@sha256:3cd0d44e3aab801126d9572d8e1466021f3eb41022363c5eff5e61c40b136528,1121
     pantry-tree:
       size: 321
