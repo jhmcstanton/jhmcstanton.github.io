@@ -5,17 +5,15 @@ title: Chord Progressions
 A small tool to help easily identify chords in different keys.
 
 <form>
-  <p>Select a key type</p>
-  <input type="radio" id="major" name="keytype" value="Major" onchange="updateProgression()" checked>
-  <label for="major">Major</label>
-  <input type="radio" id="minor" name="keytype" value="Natural Minor" onchange="updateProgression()">
-  <label for="minor">Minor</label>
-  <input type="radio" id="hminor" name="keytype" value="Harmonic Minor" onchange="updateProgression()">
+  <p>Select a mode type</p>
+  <input type="radio" id="church" name="keytype" value="Church" onchange="createModeList(this.value)" checked>
+  <label for="church">Church</label>
+  <input type="radio" id="hminor" name="keytype" value="Harmonic Minor" onchange="createModeList(this.value)">
   <label for="hminor">Harmonic Minor</label>
-  <input type="radio" id="mminor" name="keytype" value="Melodic Minor" onchange="updateProgression()">
+  <input type="radio" id="mminor" name="keytype" value="Melodic Minor" onchange="createModeList(this.value)">
   <label for="mminor">Melodic Minor</label>
   <p>Select a root note</p>
-  <select name="rootnote" id="rootnote" onchange="updateProgression()">
+  <select name="tonic" id="tonic" onchange="updateProgression()">
     <option value="Ab">Ab</option>
     <option value="A">A</option>
     <option value="Bb">Bb</option>
@@ -31,6 +29,8 @@ A small tool to help easily identify chords in different keys.
     <option value="Gb">Gb</option>
     <option value="G">G</option>
   </select>
+  <p>Select Mode</p>
+  <select name="modeList "id="modelist" onchange="updateProgression()"></select>
 </form>
 
 <table>

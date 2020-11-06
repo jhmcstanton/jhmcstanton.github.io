@@ -8,8 +8,7 @@ const M2     = 2;
 const m3     = 3;
 const M3     = 4;
 const intervals = {
-    "Major":          [unison, M2, M2, m2, M2, M2, M2],
-    "Natural Minor":  [unison, M2, m2, M2, M2, m2, M2],
+    "Church":         [unison, M2, M2, m2, M2, M2, M2],
     "Harmonic Minor": [unison, M2, m2, M2, M2, m2, m3],
     "Melodic Minor":  [unison, M2, m2, M2, M2, M2, M2]
 };
@@ -25,10 +24,14 @@ const flatNotes = [
 ];
 flatNotes      = flatNotes.concat(flatNotes);
 const flatKeys = ['F', 'Bb', 'Eb', 'Ab', 'Db', 'Gb', 'Cb'];
-const major      = "Major";
-const minor      = "Minor";
-const diminished = "Diminished";
-const augmented  = "Augmented";
+const major       = "Major";
+const minor       = "Minor";
+const diminished  = "Diminished";
+const augmented   = "Augmented";
+const churchModes = ["Major", "Dorian", "Phrygian", "Lydian", "Mixolydian", "Minor", "Locrian"];
+const hminor      = ["Harmonic Minor", "Locrian #6", "Ionian #5", "Dorian #4", "Phrygian Dominant", "Lydian #2", "Superlocrian"];
+const mminor      = ["Melodic Minor", "Dorian b2", "Lydian Augmented", "Lydian Dominant", "Mixolydian b6", "Aeolian b5", "Superlocrian"];
+const getModeList = { Church: churchModes, "Harmonic Minor": hminor, "Melodic Minor": mminor };
 
 const chordNumber = function(num, chordType) {
     switch (chordType) {
@@ -49,15 +52,22 @@ const dropWhile = function(f, arr) {
     return arr.slice(i);
 };
 
-const buildKey = function(note, keyType) {
-    const potentialNotes = dropWhile((n) => n !== note, flatKeys.includes(note) ? flatNotes : notes);
-    const keyIntervals = intervals[keyType];
-    const keyNotes = [];
+const buildKey = function(note, keyType, modeIndex) {
+    const keyIntervals   = intervals[keyType];
+    const knotes         = flatKeys.includes(note) ? flatNotes : notes;
+    const relatedNote    = knotes[knotes.indexOf(note) + 12 - keyIntervals.slice(0, modeIndex + 1).reduce((l, r) => l + r, 0) ];
+    const potentialNotes = dropWhile((n) => n !== relatedNote, knotes);
+    const keyNotes       = [];
     let i = 0;
     keyIntervals.forEach((interval) => {
         i += interval;
         keyNotes.push(potentialNotes[i]);
     });
+    i = 0;
+    while (i < modeIndex) {
+        keyNotes.push(keyNotes.shift());
+        i++;
+    }
     return keyNotes.concat(keyNotes);
 };
 
@@ -106,21 +116,36 @@ const buildChord = function(root, key) {
     return { "name" : cName, "chord" : chord, "number": chordNumber(chordNum, cType)};
 };
 
-const updateProgression = function() {
-    let rootNote   = document.getElementById("rootnote").value;
-    let keyType    = "unknown";
-    let typeRadios = document.getElementsByName("keytype");
+const createModeList = function(modeType) {
+    const modeList = document.getElementById("modelist");
+    const modes    = getModeList[modeType];
+    while( modeList.firstChild ) {
+        modeList.removeChild(modeList.firstChild);
+    }
+    modes.forEach( n => {
+        const l    = document.createElement('option');
+        l.appendChild(document.createTextNode(n));
+        modeList.appendChild(l);
+    });
+    updateProgression();
+};
+
+const getModeType = function() {
+    const typeRadios = document.getElementsByName("keytype");
     for (let i = 0; i < typeRadios.length; i++) {
         if (typeRadios[i].checked) {
-            keyType = typeRadios[i].value;
-            break;
+            return typeRadios[i].value;
         }
     }
-    if (keyType === "unknown") {
-        alert("Something went wrong while determining the key");
-        return;
-    }
-    let key = buildKey(rootNote, keyType);
+    alert("Something went wrong while determining the key");
+};
+
+const updateProgression = function() {
+    const tonic      = document.getElementById("tonic").value;
+    const modeType   = getModeType();
+    const mode       = document.getElementById('modelist').value;
+
+    let key = buildKey(tonic, modeType, getModeList[modeType].indexOf(mode));
     for(let i = 0; i < 7; i++) {
         let headerId     = "chordnum" + (i + 1);
         let dataId       = "chord"    + (i + 1);
@@ -132,4 +157,5 @@ const updateProgression = function() {
     }
 };
 
+createModeList(getModeType());
 updateProgression();
