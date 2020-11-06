@@ -1,0 +1,12 @@
+---
+title: "Daily 20: Tune in Gm"
+---
+
+This is working in G minor with harmony and chord inversions.
+
+<button onclick="MIDIjs.play('./daily-20.mid')">Play</button>
+<button onclick="MIDIjs.stop()">Stop</button>
+
+![](./daily-20.png "Music Piece")
+
+<script type="text/javascript" src="https://www.midijs.net/lib/midi.js"></script>
