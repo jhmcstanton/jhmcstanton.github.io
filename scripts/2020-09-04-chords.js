@@ -1,35 +1,36 @@
-let convertNote = {
+const convertNote = {
     "Ab": "G#", "A": "A", "A#": "Bb", "B": "B", "C": "C", "C#": "Db",
     "D": "D", "D#": "Eb", "E": "E", "F": "F", "F#": "Gb", "G": "G"
 };
-let unison = 0;
-let m2     = 1;
-let M2     = 2;
-let m3     = 3;
-let M3     = 4;
-let intervals = {
+const unison = 0;
+const m2     = 1;
+const M2     = 2;
+const m3     = 3;
+const M3     = 4;
+const intervals = {
     "Major":          [unison, M2, M2, m2, M2, M2, M2],
     "Natural Minor":  [unison, M2, m2, M2, M2, m2, M2],
     "Harmonic Minor": [unison, M2, m2, M2, M2, m2, m3],
     "Melodic Minor":  [unison, M2, m2, M2, M2, M2, M2]
 };
-let chordNumbers = [
+const chordNumbers = [
     "I", "II", "III", "IV", "V", "VI", "VII"
 ];
-let notes = [
+const notes = [
     "A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"
 ];
 notes = notes.concat(notes);
-let flatNotes = [
+const flatNotes = [
     "Ab", "A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G"
 ];
 flatNotes      = flatNotes.concat(flatNotes);
-let major      = "Major";
-let minor      = "Minor";
-let diminished = "Diminished";
-let augmented  = "Augmented";
+const flatKeys = ['F', 'Bb', 'Eb', 'Ab', 'Db', 'Gb', 'Cb'];
+const major      = "Major";
+const minor      = "Minor";
+const diminished = "Diminished";
+const augmented  = "Augmented";
 
-let chordNumber = function(num, chordType) {
+const chordNumber = function(num, chordType) {
     switch (chordType) {
     case minor:      return num.toLowerCase();
     case major:      return num.toUpperCase();
@@ -40,7 +41,7 @@ let chordNumber = function(num, chordType) {
     return "Should not happen";
 };
 
-let dropWhile = function(f, arr) {
+const dropWhile = function(f, arr) {
     let i = 0;
     while (i < arr.length && f(arr[i])) {
         i++;
@@ -48,10 +49,10 @@ let dropWhile = function(f, arr) {
     return arr.slice(i);
 };
 
-let buildKey = function(note, keyType) {
-    let potentialNotes = dropWhile((n) => n !== note, notes);
-    let keyIntervals = intervals[keyType];
-    let keyNotes = [];
+const buildKey = function(note, keyType) {
+    const potentialNotes = dropWhile((n) => n !== note, flatKeys.includes(note) ? flatNotes : notes);
+    const keyIntervals = intervals[keyType];
+    const keyNotes = [];
     let i = 0;
     keyIntervals.forEach((interval) => {
         i += interval;
@@ -60,32 +61,32 @@ let buildKey = function(note, keyType) {
     return keyNotes.concat(keyNotes);
 };
 
-let isChordHelper = function(expectedIntervals) {
-    return (chord) => {
-        let notesFromRoot = dropWhile((note) => note !== chord[0], notes);
+const isChordHelper = function(expectedIntervals) {
+    return (chord, key) => {
+        const notesFromRoot = dropWhile((note) => note !== chord[0], flatKeys.includes(key) ? flatNotes : notes);
         return notesFromRoot.indexOf(chord[1]) - notesFromRoot.indexOf(chord[0]) == expectedIntervals[0] &&
             notesFromRoot.indexOf(chord[2]) - notesFromRoot.indexOf(chord[1]) == expectedIntervals[1];
     };
 };
-let isMajorChord = isChordHelper([M3, m3]);
-let isMinorChord = isChordHelper([m3, M3]);
-let isDimChord   = isChordHelper([m3, m3]);
-let isAugChord   = isChordHelper([M3, M3]);
-let chordType    = function(chord) {
-    if (isMajorChord(chord)) {
+const isMajorChord = isChordHelper([M3, m3]);
+const isMinorChord = isChordHelper([m3, M3]);
+const isDimChord   = isChordHelper([m3, m3]);
+const isAugChord   = isChordHelper([M3, M3]);
+const chordType    = function(chord, key) {
+    if (isMajorChord(chord, key)) {
         return major;
-    } else if (isMinorChord(chord)) {
+    } else if (isMinorChord(chord, key)) {
         return minor;
-    } else if (isDimChord(chord)) {
+    } else if (isDimChord(chord, key)) {
         return diminished;
-    } else if (isAugChord(chord)) {
+    } else if (isAugChord(chord, key)) {
         return augmented;
     } else {
         console.log("Unknown chord type for chord: " + chord);
         return "Should not happen, chord: " + chord;
     }
 };
-let chordName     = function(chord, chordType) {
+const chordName     = function(chord, chordType) {
     switch(chordType) {
     case major:      return chord[0];
     case minor:      return chord[0] + "min";
@@ -96,16 +97,16 @@ let chordName     = function(chord, chordType) {
     return "Should not happen, chord: " + chord;
 };
 
-let buildChord = function(root, key) {
-    let rootIndex = key.indexOf(root);
-    let chord     = [key[rootIndex], key[rootIndex + 2], key[rootIndex + 4]];
-    let cType     = chordType(chord);
-    let cName     = chordName(chord, cType);
-    let chordNum  = chordNumbers[rootIndex];
+const buildChord = function(root, key) {
+    const rootIndex = key.indexOf(root);
+    const chord     = [key[rootIndex], key[rootIndex + 2], key[rootIndex + 4]];
+    const cType     = chordType(chord, key[0]);
+    const cName     = chordName(chord, cType);
+    const chordNum  = chordNumbers[rootIndex];
     return { "name" : cName, "chord" : chord, "number": chordNumber(chordNum, cType)};
 };
 
-let updateProgression = function() {
+const updateProgression = function() {
     let rootNote   = document.getElementById("rootnote").value;
     let keyType    = "unknown";
     let typeRadios = document.getElementsByName("keytype");

@@ -16,18 +16,20 @@ A small tool to help easily identify chords in different keys.
   <label for="mminor">Melodic Minor</label>
   <p>Select a root note</p>
   <select name="rootnote" id="rootnote" onchange="updateProgression()">
+    <option value="Ab">Ab</option>
     <option value="A">A</option>
-    <option value="A#">A#</option>
+    <option value="Bb">Bb</option>
     <option value="B">B</option>
     <option value="C" selected="selected">C</option>
     <option value="C#">C#</option>
+    <option value="Db">Db</option>
     <option value="D">D</option>
-    <option value="D#">D#</option>
+    <option value="Eb">Eb</option>
     <option value="E">E</option>
     <option value="F">F</option>
     <option value="F#">F#</option>
+    <option value="Gb">Gb</option>
     <option value="G">G</option>
-    <option value="G#">G#</option>
   </select>
 </form>
 
