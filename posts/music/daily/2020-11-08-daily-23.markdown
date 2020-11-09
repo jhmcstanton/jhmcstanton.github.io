@@ -1,0 +1,30 @@
+---
+title: "Daily 23: Working in 3/4"
+---
+
+Small melody in 3/4 to feel it out. Uses a 2-5-1 progression (or 1-2-5 rather) throughout. 
+
+<details>
+<summary>
+<div id="paper">
+</div>
+<div id="audio"></div>
+</summary>
+<p>Click anywhere on the score to see the ABC notation of this and even edit it yourself.</p>
+<textarea autocomplete="off" id="score" oninput="render()" class="abcscore" rows=20>
+L: 1/4
+K: C treble
+Q: 1/4=160
+M: 3/4
+c, e g | e g e | d, f a | f a f | g, b d' | b d' b |
+c, e g | e g e | d, f a | f a f | g, b d' | b d' b |
+c, e g | e/2g/2 a ^c | d, f a | a/2c'/2 d' ^f | g, b d' | f/2a/2 b d |
+c, e g | e g e | d, f a | f a f | g, b d' | b d' b |
+c, e g | e g e | c,- c,- c, |]
+</textarea>
+</details>
+
+
+<script type="text/javascript" src="/scripts/abcjs_basic_5.11.0-min.js"></script>
+<script type="text/javascript" src="/scripts/abc_post.js"></script>
+<link rel="stylesheet" href="/css/abcjs-audio.css"/>
