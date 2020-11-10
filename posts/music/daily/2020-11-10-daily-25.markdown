@@ -1,0 +1,17 @@
+---
+title: "Daily 25: Riff in E Phyrgian"
+---
+
+Had an idea this morning for some riffs so wrote them out. This is written right in the middle of the
+treble clef but should be transposed down for a downtuned guitar. The rhythm is a little off from what
+is intended, so that should be played with as well.
+
+
+Hopefully I will come back to this to make a longer piece.
+
+<button onclick="MIDIjs.play('./daily-25.mid')">Play</button>
+<button onclick="MIDIjs.stop()">Stop</button>
+
+![](./daily-25.png "Music Piece")
+
+<script type="text/javascript" src="https://www.midijs.net/lib/midi.js"></script>
