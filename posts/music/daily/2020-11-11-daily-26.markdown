@@ -1,0 +1,23 @@
+---
+title: "Daily 26: Dorian Melodies"
+---
+
+Today I'm posting two melodies. Both are in D Dorian and 9/8 time.
+
+This first one plays around with the beats in 9/8 and is kind of fun.
+
+<button onclick="MIDIjs.play('./daily-26-a.mid')">Play</button>
+<button onclick="MIDIjs.stop()">Stop</button>
+
+![](./daily-26-a.png "Music Piece")
+
+This second one is almost exclusively playing with arpeggios to sus out the beats and
+cadence. It does play with some quartal arpeggios which are a little interesting.
+
+
+<button onclick="MIDIjs.play('./daily-26-b.mid')">Play</button>
+<button onclick="MIDIjs.stop()">Stop</button>
+
+![](./daily-26-b.png "Music Piece")
+
+<script type="text/javascript" src="https://www.midijs.net/lib/midi.js"></script>
