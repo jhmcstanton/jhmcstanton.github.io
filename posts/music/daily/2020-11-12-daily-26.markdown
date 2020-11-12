@@ -1,0 +1,18 @@
+---
+title: "Daily 27: F Minor Melody"
+---
+
+This in the melody for today. It is in F minor and works in little melodic minor on occasion.
+
+Side note, also checked out the `\modalTranpose` function of lilypond for shifting a motif
+around a scale, which is pretty handy.
+[Check out the docs if you are curious](http://lilypond.org/doc/v2.18/Documentation/notation/changing-multiple-pitches)
+
+
+<button onclick="MIDIjs.play('./daily-27.mid')">Play</button>
+<button onclick="MIDIjs.stop()">Stop</button>
+
+![](./daily-27.png "Music Piece")
+
+
+<script type="text/javascript" src="https://www.midijs.net/lib/midi.js"></script>
