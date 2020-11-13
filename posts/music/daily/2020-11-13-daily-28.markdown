@@ -1,0 +1,42 @@
+---
+title: "Daily 28: Simple Melody in C Major"
+---
+
+Like the title says, just a simple melody in C Major. The overall progression is I-IV-V-I
+but internally uses ii-V-I just to play with it.
+
+<details>
+<summary>
+<div id="paper">
+</div>
+<div id="audio"></div>
+</summary>
+<p>Click anywhere on the score to see the ABC notation of this and even edit it yourself.</p>
+<textarea autocomplete="off" id="score" oninput="render()" class="abcscore" rows=20>
+L: 1/8
+K: C treble
+Q: 1/4=90
+M: 4/4
+%%MIDI voice instrument=30
+ed- dc ed- dc | ed- d[c,e,g,] [c,e,g,]4 |
+gd- d_b, ed- dc | fa,- a,[f,a,c,] [f,a,c,]4 |
+ae- eb, da,- a,^f, | g,b,- b,[g,,b,d,f,] [g,,b,d,f,]4 |
+f,d a,b, g,d b,c | _b,g de cg ef |
+ca e,^f, d,a, fg | [f,a,c]2 [e,g,b,d]2 [g,,b,d,f,]2  [c,e,g,b,]2 | [c,e,g,b,]8 |]
+</textarea>
+</details>
+
+<!--<textarea autocomplete="off" id="score" oninput="render()" class="abcscore" rows=20>
+L: 1/4
+K: C treble
+Q: 1/4=90
+M: 4/4
+c2- c z | c/2 c- c2 | c2- c z | c/2 c- c2 |
+(3e,/2f,/2g,/2  (3f,/2g,/2a,/2 (3g,/2a,/2b,/2 a,/2 b, | 
+c2- c z | c/2 c- c2 | c2- c z | c/2 c- c2 |
+</textarea>-->
+
+
+<script type="text/javascript" src="/scripts/abcjs_basic_5.11.0-min.js"></script>
+<script type="text/javascript" src="/scripts/abc_post.js"></script>
+<link rel="stylesheet" href="/css/abcjs-audio.css"/>
