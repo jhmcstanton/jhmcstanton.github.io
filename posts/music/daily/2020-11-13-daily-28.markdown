@@ -17,7 +17,6 @@ L: 1/8
 K: C treble
 Q: 1/4=90
 M: 4/4
-%%MIDI voice instrument=30
 ed- dc ed- dc | ed- d[c,e,g,] [c,e,g,]4 |
 gd- d_b, ed- dc | fa,- a,[f,a,c,] [f,a,c,]4 |
 ae- eb, da,- a,^f, | g,b,- b,[g,,b,d,f,] [g,,b,d,f,]4 |
