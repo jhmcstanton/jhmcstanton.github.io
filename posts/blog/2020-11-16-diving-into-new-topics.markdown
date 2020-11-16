@@ -106,7 +106,7 @@ Bottom line, this should be a rewarding experience. If you miss a day don't beat
 yourself up about it. Consider making it up on another day or at the end of the
 30 days or drop that day entirely, this is all for self-fulfillment after all.
 If you check out the
-[first 30 daily melodies I wrote](http://localhost:8000/posts/music/daily/) I
+[first 30 daily melodies I wrote](/posts/music/daily/) I
 missed two days - it's really not a big deal. Finally, if you aren't getting
 anything out of it after a week, consider changing expectations or even
 dropping this entirely. Again, this is for self-fulfillment and betterment, not
