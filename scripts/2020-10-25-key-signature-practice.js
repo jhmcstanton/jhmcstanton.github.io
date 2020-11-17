@@ -1,7 +1,9 @@
-let key  = "C";
-let keys = ["Ab", "A", "Bb", "B", "Cb", "C", "C#", "Db", "D", "Eb", "E", "F", "F#", "Gb", "G"];
-const answerEl = document.getElementById('answer');
-const resultEl = document.getElementById('result');
+let key    = "C";
+const keys = ["Ab", "A", "Bb", "B", "Cb", "C", "C#", "Db", "D", "Eb", "E", "F", "F#", "Gb", "G"];
+const answerEl   = document.getElementById('answer');
+const resultEl   = document.getElementById('result');
+const clefEl     = document.getElementById('clef');
+const keyTypeEl  = document.getElementById('keytype');
 
 function checkAnswer() {
     const answer = answerEl.value;
@@ -35,13 +37,13 @@ function newKey() {
         newKey = keys[Math.floor(Math.random() * keys.length)];
     }
     key = newKey;
-    renderKey(key, false);
+    renderKey(key, keyTypeEl.value, clefEl.value, false);
 }
 
-function renderKey(key, consolelog) {
+function renderKey(key, ktype, clef, consolelog) {
     const abc  = `X: 1
 L: 1/1
-K: ${key}maj treble
+K: ${key}${ktype} ${clef}
 |]`;
     if (consolelog) {
         console.log(abc);
