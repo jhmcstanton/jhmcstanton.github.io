@@ -172,4 +172,4 @@ creatable measurements and unit conversions. Definitely worth a look.
 
 Hopefully this gives you some ideas of how to use types in different ways in
 your projects, even if it is "just" wrapping your inputs in explicit types
-like in the haskell example. 
+like in the haskell example. I mean, that's what I would do.
