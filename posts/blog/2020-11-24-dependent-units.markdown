@@ -1,9 +1,9 @@
 ---
-title: Dependent Units
+title: Dependent Units of Measure
 ---
 
 Recently I have been thinking about what a simple implementation of dependent
-units would look like. When working with a handful of values with various
+units of measure would look like. When working with a handful of values with various
 units it is easy to make a mistake with a calculation or conversion simply
 because they typically have a shared or similar underlying primitive type.
 The goal with this post is to make a simple module for working with values
@@ -31,9 +31,9 @@ speed :: Fractional a => a -> a -> a
 speed length time = time / length
 ```
 
-Clearly, this overly simplified, but these things happen in larger functions and
+Clearly this is overly simplified, but these things happen in larger functions and
 code bases (at least to me). A common fix for this is to create new types for
-all the types your code base works in (even Java uses this approach).
+all the types your code base works in - even Java programmers uses this approach.
 
 ```haskell
 newtype Length a = Length { unlength :: a }
@@ -45,13 +45,16 @@ speed length time = Speed (unlength l / unlength t)
 ```
 
 This is quite a bit better:
+
 - Each parameter has its own type so its hard to mix them up
-- The return type is also specific and harder to mess up
-- The type is clearer
+- The return type is also specific and enforces that the implementation
+  acknowledges it
+- The type is clearer at a glance
 
 This approach works well in practice, and can be seen in many code bases. It
-can still be messed up, but using the record datatype makes that at least more
-obvious. In general, I would reccommend just going with this approach.
+can still be goofed, but using the record datatype should make that harder to do
+and easier to resolve in the event that it happens. In general, I would
+recommend just going with this approach.
 
 But what if we wanted an even more type safe approach, just for fun? That's what
 the next section tries to accomplish.
@@ -65,7 +68,7 @@ tagging and composing together types by their measure.
 
 ```idris
 > data BaseMeasure =
->   Time | Length | Mass | Current | Temperatue | Lumin | SubstanceAmount | Scalar
+>   Time | Length | Mass | Current | Temperatue | Lumin | SubstanceAmount
 ```
 
 Here `BaseMeasure` is a simple data type to represent the various base quantities
@@ -88,8 +91,7 @@ measurements types. These can be composed like so:
 > Speed = M Length <</>> M Time
 ```
 
-So far all we have are types without scalar values. Let's make another type for
-that.
+So far all we have are units without values. Let's make another type for that.
 
 ```idris
 > data Value : Type -> Measure -> Type where
@@ -98,7 +100,7 @@ that.
 
 This datatype is a vessel for a value and its (type level) measure. Note that
 the constructor does not carry around the measurement, it is a purely type
-level value. `Values` is used like this
+level value. `Value` is used like this
 
 ```idris
 carSpeed : Value Int Speed
@@ -111,7 +113,7 @@ level operators.
 
 ### Basic Operators
 
-So now to implement the operators we will start with the basic addition and
+So now to implement the operators we will start with addition and
 subtraction. These do not affect units so they are straight forward.
 
 ```idris
@@ -135,8 +137,12 @@ Next lets implement unit affecting operators.
 ```
 
 These operators will perform the expected mathematical operators on the
-underlying numeric representation and on the units themselves. Let's
-try making a `speed` function with these.
+underlying numeric representation _and on the units themselves_. In other
+words, the operator `<*>` says "give me two values with any two units and 
+I'll give you back their values _and_ units multiplied." When using these
+operators you will always get back the expected units.
+
+Let's try making a `speed` function with these.
 
 ```idis
 > speed : Fractional a => Value a (M Length) -> Value a (M Time) -> Value a Speed
@@ -160,15 +166,19 @@ at:
 
 ## Conclusion
 
-This is a super minimal example of how to build out a type safe library for
-working with units. It could be extended quite a bit - compound units ought
-to be simplified (units with the same measure in the divisor in dividend
-cancel out, for example). Obviously more operations are needed as well, and I
-encourage you to try extending this if you're interested. If you are looking
-for more example you can check out 
-[the quantities library](https://github.com/timjb/quantities). It is an actually
-usable idris library that has similar goals to this post, complete with user
-creatable measurements and unit conversions. Definitely worth a look.
+
+This is a super minimal example of how to build a type safe library for working
+with units of measure. It's incomplete for a real-life use: a number of
+operators are missing, it could use a `reduce` function to simplify units
+after each operation, and really ought to provide proof helpers for convincing
+idris that two units that are mathematically the same, but structurally
+different, are the same (idris would not believe that
+`Time <<*>> Temperature` and `Temperature <<*>> Time` are the same without some
+coaxing).
+
+While writing this I ran into a library with similar goals as this post, but
+more fleshed out and complete. If you're interested in more examples defintely
+check out [the quantities library](https://github.com/timjb/quantities).
 
 Hopefully this gives you some ideas of how to use types in different ways in
 your projects, even if it is "just" wrapping your inputs in explicit types
