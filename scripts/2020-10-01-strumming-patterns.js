@@ -196,7 +196,7 @@ const checkCopyMeasure = function(measure) {
     if (measure < 1) {
         measure = 1;
     } else if(measure > totalMeasures) {
-        measure = totalMeasures;
+        measure = Math.max(totalMeasures, 1);
     }
     el.value = measure;
     return measure - 1;
@@ -205,8 +205,8 @@ const checkCopyMeasure = function(measure) {
 const copyMeasure = function() {
     const copyMeasure = checkCopyMeasure(document.getElementById("copyMeasure").value);
     const start       = copyMeasure * count;
-    const end         = beats.length < start + count ? beats.length : start + count;
-    for (let i = start + beats.length % count; i < end; i++) {
+    const end         = Math.min(beats.length, start + count);
+    for (let i = start; i < end; i++) {
         beats.push(beats[i]);
     }
     update();
