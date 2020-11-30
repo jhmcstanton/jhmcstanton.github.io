@@ -71,7 +71,7 @@ main = do
         route   $ setExtension "pdf"
         compile $ execCompilerWith (execName "xelatex") [ProcArg "-output-directory=resume/", HakFilePath] (newExtOutFilePath "pdf")
 
-    match (fromList ["about.rst", "contact.markdown"]) $ do
+    match (fromList ["about.rst"]) $ do
         route   $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
@@ -98,6 +98,8 @@ main = do
 
     let archivePattern = "posts/**/*" .&&. (complement "**/*.html") .&&. (complement "**/music/daily/*")
     createArchiveLanding "archive.html" "Archives" archivePattern
+
+    createArchiveLanding "contact.html" "Contact" ""
 
     match "index.html" $ do
         route idRoute
