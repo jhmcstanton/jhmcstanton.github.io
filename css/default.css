@@ -191,6 +191,18 @@ img {
     margin: auto;
 }
 
+.grid-element {
+    border: solid lightgray;
+    height: 50vh; max-height: 300px;
+    width: 20%; min-width: 200px;
+    margin: 1%; padding: 1%;
+}
+
+#contact-icon {
+    display: block;
+    min-width: 100%;
+}
+
 .clock-wrapper {
     width: 90%; height: auto;
     border-style: solid;
