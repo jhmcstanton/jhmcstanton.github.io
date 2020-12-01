@@ -193,9 +193,18 @@ img {
 
 .grid-element {
     border: solid lightgray;
-    height: 50vh; max-height: 300px;
-    width: 20%; min-width: 200px;
+    height: auto; max-height: 200px;
+    width: 10%; min-width: 50px;
     margin: 1%; padding: 1%;
+}
+
+@media (max-width: 1024px) {
+    .grid-element {
+        height: auto;
+    }
+    .grid-element p {
+        display: none;
+    }
 }
 
 #contact-icon {
