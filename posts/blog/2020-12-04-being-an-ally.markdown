@@ -11,8 +11,8 @@ privileged colleagues to elavate the voices of our less privileged colleagues -
 our teammates, coworkers, even supervisors in some cases, that don't fall into
 the "norm" of our workplaces. These can include, but are not limited to,
 colleagues with identities other than cis male, colleagues of marginalized
-races, colleagues of the LGBQA community, colleagues with disabilities, and
-colleagues with beliefs other than the assumed default.\*
+races, colleagues of the broader LGBTQA+ community, colleagues with disabilities,
+and colleagues with beliefs other than the assumed default.\*
 
 ## Preface
 
@@ -34,12 +34,11 @@ enough to work in organizations where I have not personally witnessed or heard
 of these situations. This is not to disregard these events but I can't speak to
 those as well.
 
-A final word of preface. These are not my own ideas, they have been borrowed
-and aggregated from others. In particular, several years ago at a previous
-employer we had a presentation for being an ally to women in the workplace, and
-the suggestions absolutely generalize to other groups. Unfortunately, I have
-forgotten the name of the speaker and cannot cite them directly (don't be like
-me, elevate others and don't steal their ideas).
+A final word of preface. Many of these ideas are not my own, they have been
+borrowed and aggregated from others. In particular, several years ago at a
+previous employer we had a [presentation for being an ally to women in the
+workplace from Karen Catlin](https://karencatlin.com/past-appearances/), and the
+suggestions absolutely generalize to other groups.
 
 ## Being a Supportive Teammate
 
@@ -97,7 +96,7 @@ rather than using a team channel for discussing and collaborating on tasks.
 
 The issue with using DMs is that it entirely excludes teammates who otherwise
 may have had meaningful contribution to the discussion if they were able to
-"overhear" it. It's OK to @ your teammate in your team channel and have a thread
+overhear" it. It's OK to @ your teammate in your team channel and have a thread
 regarding the issue - this is similar to collaborating in a shared team work
 space. This at least allows everyone to see that the discussion is ongoing and
 if they have additional incite they can easily jump in and add to it.
