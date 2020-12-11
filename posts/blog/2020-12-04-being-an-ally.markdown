@@ -120,6 +120,17 @@ may be limited but its easy to rotate players between games and invite more
 people than can play at once. In general, just try to be inclusive of team mates
 even when you don't necessarily speak with them all the time.
 
+### Events\*\*
+
+Whenever you find yourself at a conference, meet up, or similar event, check
+and _adjust_ your assumptions. Folx you meet there are _probably_ your
+colleagues. In other words, they are probably not employees of the venue,
+caterers, recruiters, or HR people (unless the event is related to one
+of these things). These are your peers that are there for the same reasons you
+are: to learn, to network, to better themselves, etc. Treat them like the peer
+and colleague that they are and definitely _do not_ assume that they are
+there for another purpose.
+
 ## Conclusion
 
 This is far from an exhaustive list of methodologies to being an ally in the
@@ -139,3 +150,6 @@ some groups that you feel should be included definitely contact me and I can
 update this list! If you feel that I've used incorrect terminology here or
 anywhere please let me know so I can remain informed and edit this post
 accordingly!
+
+\*\* Added 12/10/2020. This is a great topic that Catlin discusses in her
+presentation that I somehow failed to include in this post originally.
