@@ -50,7 +50,7 @@ this issue for any worker able to be shipped a computer and work from the
 comfort of their own home. Working from home has been discussed for years, and
 hopefully will be made permanent for more companies everywhere now that it has
 been shown to work well. Since discussions regarding WFH have been ongoing
-for some time I'll defer the reader to those if you're interested (with out any
+for some time I'll defer the reader to those if you're interested (without any
 links for you though - good luck!). 
 
 ### Pay Workers for their Travel Time
@@ -102,10 +102,10 @@ proposed above are correct or the absolutely correct solution. I do strongly
 feel that workers should be appropriately compensated for all time provided
 to their employers and that this commute time falls inside and adjecent to the
 "off the clock violations" bucket of wage theft. That being said, a knee jerk,
-reactionary solution to this could inadvertently hurt the work by stripping
-some freedom of choosing where we live. Some people willingly move to the county
-and continue commuting to the office in town, and some of those folks would
-face losing their jobs. A solution that isn't well discussed or thought out
+reactionary solution to this could inadvertently hurt the worker by stripping
+some freedom of choosing where we live. Some people willingly move to the
+country and continue commuting to the office in town, and some of those folks
+would face losing their jobs. A solution that isn't well discussed or thought out
 could add another shackle to the worker, tieing them closer to the employer.
 
 All this is speculation, not founded in any research. Maybe these fears are
