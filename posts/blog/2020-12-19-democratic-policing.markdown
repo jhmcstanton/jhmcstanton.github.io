@@ -4,8 +4,8 @@ title: "Lukewarm Take #2: Democratize Police Procedures"
 
 Lukewarm take of the day: police procedure must be democratized.
 What does that mean? Any community that decides to keep (or has imposed upon it)
-a police force needs to have that force brought more under the will of the
-community that it polices.
+a police force needs to have what type of force / enforcement used decided by
+the community via direct democracy.
 
 ## Democratically Controlled Police Departments
 
@@ -14,7 +14,7 @@ think about making our voices heard via voting or city council meetings.
 Discussions may revolve around new regulations but, up until the defund the
 police movement, these conversations have typically identified what penalities
 may be levied against a guilty party, but not enforcement. In other words, 
-we talk about the ends but not the means. That may OK(ish) in some specific
+we talk about the ends but not the means. That may be OK(ish) in some specific
 circumstances (consider the IRS or similar departments), but any means that
 involves police presence must be taken to the people. Any new methodology that
 the department wants to use to aid its work must be aired out with the community
