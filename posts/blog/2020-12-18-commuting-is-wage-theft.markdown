@@ -94,6 +94,28 @@ workers, workers would likely have to move more often to take new positions,
 increasing the risk of taking a new position even in the same city as your
 current job. 
 
+#### Update 12/24/2020
+
+[This is _not_ what I meant by compensating workers for travel time.](https://www.bloomberg.com/news/articles/2020-12-22/toyota-s-driverless-shuttles-could-double-as-office-on-the-go)
+There may be some interesting use cases of driverless work vehicles, but lets
+not get hasty and make workers perform non-driving tasks while in a moving
+vehicle.
+
+We will need to deal with this as autonomous vehicles become the norm. Today we
+can look to commuters that travel via train, or workers who fly frequently for
+work. I've never lived somewhere where train or bussing to work was an option,
+nor have I flown for work, so this is absolutely outside my background. I would
+like to think workers who fly occasionally for work are not expected to perform
+other work functions while in transit and that employers aren't checking up on
+workers that take a train to see if they're squeezing in extra work while
+headed in or out of their laborspace. If this is the case, lets point to these
+existing standards before letting employers tell us to work in driverless
+commuter "offices." And if I'm being naive and this is not the case, and these
+pressures do exist, let's start to demand adequate compensation for the work
+we are already doing AND let's start demanding that this travel time already
+represents work being done for the employer that does not represent additional
+time that must be traditionally productive.
+
 ## Conclusion
 
 I haven't seen this issue or argument spelled out before (although I haven't
