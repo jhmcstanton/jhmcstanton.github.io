@@ -1,0 +1,52 @@
+---
+title: 2021 Goals
+---
+
+Happy New Year!
+
+Every year I try to make some personal and professional goals. Last year was the
+first time I decided to hold myself additionally accountable by posting them
+[in my blog.](./2020-01-28-2020-goals.html) That worked out OK, so I'm going to
+do that again this year. 
+
+## New Goals
+
+My goals for 2021 are based on my goals from 2020 - mostly just moving around
+numbers to make them more realistic. 2020 was a weird year and definitely
+skewed how those goals turned out.
+
+### ~~12~~ 6 Fermentations
+
+In 2020 I wanted to ferment 12 things: beer, kombucha, or anything really. It
+felt really weird going through with that last year without being able to
+reasonably share anything. This year I plan on doing 6 brews. Hopefully this
+accounts for enough time to allow vaccinations to become ubiquitous and
+sharing brews can happen again.
+
+
+### ~~12~~ 10 Open Source Contributions
+
+Last year I aimed for 12 contributions and ended up with 9. This year
+I just want to push that a little further and get 10 pull requests out.
+
+### Read ~~3~~ 2 Engineering Books
+
+I just didn't read anything from my engineering reading list last year. This
+year I'll shoot for 2 things from that list.
+
+### Read ~~6~~ 10 Thoughtful Books
+
+In 2020 I read 7ish nonfiction books for personal growth (you can check them
+out in the link above), and this year I'd like to push that up to 10 books.
+
+## The Checklist
+
+Just like 2020, in the spirit of accountability I'm going to keep a checklist of
+my goals on this page.
+
+| | | | | | | | | | | |
+|-|-|-|-|-|-|-|-|-|-|-|
+| Fermentations | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | | | | |
+| Open Source Pull Requests | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | 
+| Engineering Reading List | &#10060; | &#10060; |          | | | | | | | |
+| Thoughtful Reading List | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; |
