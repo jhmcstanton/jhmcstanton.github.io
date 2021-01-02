@@ -8,14 +8,14 @@ of dependence on their employer.
 
 ## Personal Freedom
 
-A major benefit of the existing employer/worker relationship is that the
-employer has an additional retention scheme for workers. This is a charitable
-way of saying that workers feel uncomfortable finding different work because any
-change in insurance can have unforeseen consequences. Workers are even less
-inclined to take a leave of absence or undertake their own business endeavor
-where they will likely have to pay much more for insurance or drop their
-coverage entirely. This limits personal mobility for the worker and heavily
-favors the employer in an already lopsided relationship.
+A major benefit of the existing employer/worker relationship (for the employer)
+is that the employer has an additional retention scheme for workers. This is a
+charitable way of saying that workers feel uncomfortable finding different work
+because any change in insurance can have unforeseen consequences. Workers are
+even less inclined to take a leave of absence or undertake their own business
+endeavor where they will likely have to pay much more for insurance or drop
+their coverage entirely. This limits personal mobility for the worker and
+heavily favors the employer in an already lopsided relationship.
 
 ## Illusion of Choice
 
@@ -30,7 +30,7 @@ The second illusion is the option of plans provided by an employer. When an
 employer provides multiple choices of plans workers _do_ get the benefit of
 choosing which specific plan offers them the most monetary benefit. However, if
 an employer decides there is some specific treatment or coverage is against their
-organization's "religious views" (????) then they won't cover it. In this case
+organization's "religious views" then they won't cover it. In this case
 the typical way for a worker to get this covered would be to find a new job.
 Much easier said than done.
 
@@ -39,9 +39,10 @@ Much easier said than done.
 Only those with significant economic privilege can meaningfully personalize
 their healthcare and separate it from any employer that they might have. All of
 us should have a right to healthcare and good health. No person should be forced
-to choose between incredible debt or their own personal well being. Folx should
-have full rights over their own bodies. We need to strive to tear down
-discriminatory medical practices of all types. This can't be done without
+to choose between incredible debt or their own personal well being.
+
+Folx should have full rights over their own bodies. We need to strive to tear
+down discriminatory medical practices of all types. This can't be done without
 decoupling insurance from employers and ensuring that everyone has the same
 level of healthcare.
 
