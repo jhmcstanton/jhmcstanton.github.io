@@ -23,7 +23,7 @@ There are a few ways in which this existing model provides "choices" to workers.
 The first way is simply price. When a worker has options between an employer
 provided insurance plan and a personal plan, obviously the personal plan will be
 more expensive when an employer is not covering any portion of it. Clearly this
-is compounded when the worker needs to provide for dependents. There's few, if
+is compounded when the worker needs to provide for dependents. There are few, if
 any, situations where a worker would pick the personal plan in this sitation.
 
 The second illusion is the option of plans provided by an employer. When an
