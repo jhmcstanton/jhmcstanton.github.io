@@ -57,7 +57,7 @@ piece = \relative {
     d8:maj7 d8:maj7~ d8:maj7 d8:maj7 d8:maj7 d8:maj7~ d8:maj7
     a:maj7 a4:maj7 a:maj7 a8:maj7 a:maj7
   }
-  fis'8 a, \glissando fis4 cis'8 \glissando e a,4
+  fis''8 a, \glissando fis4 cis'8 \glissando e a,4
   \chordmode {
     e8 e8 e4 e8 e:7 e4:7
   }
