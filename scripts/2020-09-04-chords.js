@@ -157,5 +157,22 @@ const updateProgression = function() {
     }
 };
 
+const changeMode = function(mode) {
+    const modei = mode - 1;
+    const modeList = document.getElementById('modelist');
+    modeList.selectedIndex = (modeList.selectedIndex + modei) % 7;
+    const note = document.getElementsByTagName('td')[7 + modei].innerHTML.split(',')[0];
+    document.getElementById('tonic').value = note;
+    updateProgression();
+};
+
+const _headers = document.getElementsByTagName('th');
+for (let i = 0; i < _headers.length; i++) {
+    const el = _headers[i];
+    el.addEventListener('click', event => {
+        changeMode(parseInt(el.id[el.id.length - 1]));
+    });
+}
+
 createModeList(getModeType());
 updateProgression();
