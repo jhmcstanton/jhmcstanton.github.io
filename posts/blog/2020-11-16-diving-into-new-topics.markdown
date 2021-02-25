@@ -23,7 +23,7 @@ regularly.
 Writing a melody a day isn't a particularly useful habit, at least for
 non-musicians. It was helpful for feeling out how different scales and
 modes feel and sound like, learning how to read and write music with
-western musical notation, and applying common music writing rules. 
+staff notation, and applying common music writing rules.
 This idea works for other topics, like learning a new programming language
 or paradigm. It won't make an expert out of anyone, but can be a useful
 learning experience.

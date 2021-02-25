@@ -11,7 +11,7 @@ around it.
 
 ## Time is Money, Right?
 
-In the west we love to say "Time is Money." We use this to push workers to get
+In the US we love to say "Time is Money." We use this to push workers to get
 their hustle on and "better themselves" by learning new, sellable skills and
 working side gigs. Especially here in the States we have a habit of shaming
 folks for not working hard enough or long enough. Somehow people with 
