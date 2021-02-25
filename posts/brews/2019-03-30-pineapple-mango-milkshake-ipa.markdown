@@ -146,8 +146,8 @@ Residual Alkalinity
 </table>
 
 <div class="grid-container">
-  <img src="/images/posts/brews/2019-03-30-pineapple-mango-milkshake-ipa/mash_1.jpg"> 
-  <img src="/images/posts/brews/2019-03-30-pineapple-mango-milkshake-ipa/mash_2.jpg"> 
+  <img  alt="mash_1" src="/images/posts/brews/2019-03-30-pineapple-mango-milkshake-ipa/mash_1.jpg"> 
+  <img  alt="mash_2" src="/images/posts/brews/2019-03-30-pineapple-mango-milkshake-ipa/mash_2.jpg"> 
 </div>
 
 The first runnings were run back through the grain bed a few times for clarity, although this wasn't a major concern in this low-flocullating and dark beer.
@@ -164,7 +164,7 @@ The first runnings were run back through the grain bed a few times for clarity, 
 | flameout | 0.501 oz Citra Hops (aroma) (1/3 of total) | 
 
 <div class="grid-container">
-  <img src="/images/posts/brews/2019-03-30-pineapple-mango-milkshake-ipa/boil_1.jpg"> 
+  <img  alt="boil_1" src="/images/posts/brews/2019-03-30-pineapple-mango-milkshake-ipa/boil_1.jpg"> 
 </div>
 
 ## Fermentation 
@@ -172,7 +172,7 @@ The first runnings were run back through the grain bed a few times for clarity, 
 Being essentially a tropical IPA, this was an interesting fermentation. The Omega OYL-200 yeast used required a super high fermentation temperature - 82&deg; to 85&deg;F . To accomplish this a fermwrap in conjunction with an inkbird controller were used to regulate the temperature. Luckily my house isn't naturally in the 80s, so no cooling was needed for the regulator. 
 
 <div class="grid-container">
-  <img src="/images/posts/brews/2019-03-30-pineapple-mango-milkshake-ipa/fermentation_1.jpg"> 
+  <img  alt="fermentation_1" src="/images/posts/brews/2019-03-30-pineapple-mango-milkshake-ipa/fermentation_1.jpg"> 
 </div>
 
 The primary was allowed to ferment for 4 days, between days 3 and 4 the gravity only reduced another 1-2 points,  before adding the can of pineapple juice. I don't have much racking equipment, or even extra carboys or fermentation bucks, so I dumped the can of thawed juice in the bottom of my bottling bucket, racked to the bucket and back to the carboy.
@@ -180,10 +180,10 @@ The primary was allowed to ferment for 4 days, between days 3 and 4 the gravity 
 Note that the juice was heated to ~85&deg;F in a sanitized pot before the addition.
 
 <div class="grid-container">
-  <img src="/images/posts/brews/2019-03-30-pineapple-mango-milkshake-ipa/fermentation_2.jpg"> 
-  <img src="/images/posts/brews/2019-03-30-pineapple-mango-milkshake-ipa/fermentation_3.jpg"> 
-  <img src="/images/posts/brews/2019-03-30-pineapple-mango-milkshake-ipa/fermentation_4.jpg"> 
-  <img src="/images/posts/brews/2019-03-30-pineapple-mango-milkshake-ipa/fermentation_5.jpg"> 
+  <img  alt="fermentation_2" src="/images/posts/brews/2019-03-30-pineapple-mango-milkshake-ipa/fermentation_2.jpg"> 
+  <img  alt="fermentation_3" src="/images/posts/brews/2019-03-30-pineapple-mango-milkshake-ipa/fermentation_3.jpg"> 
+  <img  alt="fermentation_4" src="/images/posts/brews/2019-03-30-pineapple-mango-milkshake-ipa/fermentation_4.jpg"> 
+  <img  alt="fermentation_5" src="/images/posts/brews/2019-03-30-pineapple-mango-milkshake-ipa/fermentation_5.jpg"> 
 </div>
 
 The secondary was allowed to ferment for 8 days, until the gravity stopped dropping for two consecutive days (again), with a final gravity of 12. 
@@ -196,7 +196,7 @@ I accidentally over carbed this one for a bit, probably rolled it a bit _too_ lo
 
 # Result
 
-<img src="/images/posts/brews/2019-03-30-pineapple-mango-milkshake-ipa/beer.jpg" class="brew-photo"> 
+<img  alt="beer" src="/images/posts/brews/2019-03-30-pineapple-mango-milkshake-ipa/beer.jpg" class="brew-photo"> 
 
 The initial tasting of this, a few days after carbing, was taken 
 at room temperature, which was low 60s. The later tasting was taken

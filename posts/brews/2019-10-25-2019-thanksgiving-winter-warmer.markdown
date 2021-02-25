@@ -148,11 +148,11 @@ of spices at flameout.
 
 <div class="grid-container">
   <figure>
-  <img src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/flameout.jpg" alt="Flame Out Spice Addition">
+  <img  alt="flameout" src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/flameout.jpg" alt="Flame Out Spice Addition">
   <figcaption>Flame Out Spice Addition</figcaption>
   </figure>
   <figure>
-  <img src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/og.jpg" alt="Original Gravity Reading">
+  <img  alt="og" src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/og.jpg" alt="Original Gravity Reading">
   <figcaption>Original Gravity</figcaption>
   </figure>
 </div>
@@ -164,8 +164,8 @@ This was fermented at between 63-67&deg;F. The yeast was rehydrated in
 a vigarous start. 
 
 <div class="grid-container">
-  <img src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/ferm_1.jpg" alt="Carboy 1">
-  <img src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/ferm_2.jpg" alt="Carboy 2">
+  <img  alt="ferm_1" src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/ferm_1.jpg" alt="Carboy 1">
+  <img  alt="ferm_2" src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/ferm_2.jpg" alt="Carboy 2">
 </div>
 
 Turns out that my dining room is just a little too warm for my target
@@ -184,13 +184,13 @@ until serving time (about 1 week). The C02 tank is still being alternated betwee
 this and the McAbod in the mean time.
 
 <div class="grid-container">
-  <img src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/sticks.jpg" alt="Cinnamon Sticks">
-  <img src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/carb1.jpg" alt="Carbonating in the Freezer">
+  <img  alt="sticks" src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/sticks.jpg" alt="Cinnamon Sticks">
+  <img  alt="carb1" src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/carb1.jpg" alt="Carbonating in the Freezer">
 </div>
 
 ## Result
 
-<img src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/beer.jpg" alt="Final Result" class="brew-photo">
+<img  alt="beer" src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/beer.jpg" alt="Final Result" class="brew-photo">
 
 ### Appearance
 

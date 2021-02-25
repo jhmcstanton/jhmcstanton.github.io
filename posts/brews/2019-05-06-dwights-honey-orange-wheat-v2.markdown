@@ -131,10 +131,10 @@ Residual Alkalinity
 </table>
 
 <div class="grid-container">
-  <img src="/images/posts/brews/2019-05-06-dwights-honey-orange-wheat-v2/mash_1.jpg" >
-  <img src="/images/posts/brews/2019-05-06-dwights-honey-orange-wheat-v2/mash_2.jpg" >
-  <img src="/images/posts/brews/2019-05-06-dwights-honey-orange-wheat-v2/mash_3.jpg" >
-  <img src="/images/posts/brews/2019-05-06-dwights-honey-orange-wheat-v2/mash_4.jpg" >
+  <img  alt="mash_1" src="/images/posts/brews/2019-05-06-dwights-honey-orange-wheat-v2/mash_1.jpg" >
+  <img  alt="mash_2" src="/images/posts/brews/2019-05-06-dwights-honey-orange-wheat-v2/mash_2.jpg" >
+  <img  alt="mash_3" src="/images/posts/brews/2019-05-06-dwights-honey-orange-wheat-v2/mash_3.jpg" >
+  <img  alt="mash_4" src="/images/posts/brews/2019-05-06-dwights-honey-orange-wheat-v2/mash_4.jpg" >
 </div>
 
 Super weird looking! Not sure exactly why this had so little color, possibly just the small size of the grain bill. Will probably dig into this later.
@@ -158,7 +158,7 @@ At this point the gravity was a measly 24 points.
 | -15 min | Remove Orange Peel | 
 
 <div class="grid-container">
-  <img src="/images/posts/brews/2019-05-06-dwights-honey-orange-wheat-v2/boil_1.jpg" >
+  <img  alt="boil_1" src="/images/posts/brews/2019-05-06-dwights-honey-orange-wheat-v2/boil_1.jpg" >
 </div>
 
 We did notice a little color come into the beer after adding the honey, although it is still pretty odd looking right now.
@@ -169,9 +169,9 @@ The carboy was kept in the basement which typically hovers in the low 60&deg;s a
 
 
 <div class="grid-container">
-  <img src="/images/posts/brews/2019-05-06-dwights-honey-orange-wheat-v2/fermentation_1.jpg" >
-  <img src="/images/posts/brews/2019-05-06-dwights-honey-orange-wheat-v2/fermentation_2.jpg" >
-  <img src="/images/posts/brews/2019-05-06-dwights-honey-orange-wheat-v2/fermentation_3.jpg" >
+  <img  alt="fermentation_1" src="/images/posts/brews/2019-05-06-dwights-honey-orange-wheat-v2/fermentation_1.jpg" >
+  <img  alt="fermentation_2" src="/images/posts/brews/2019-05-06-dwights-honey-orange-wheat-v2/fermentation_2.jpg" >
+  <img  alt="fermentation_3" src="/images/posts/brews/2019-05-06-dwights-honey-orange-wheat-v2/fermentation_3.jpg" >
 </div>
 
 The primary fermentation was most active in the first 3 days, and a total
@@ -190,7 +190,7 @@ The beer has been racked to a keg and allowed to carb for ~2 weeks at 60&deg;F a
 This taste taste was taken on 5/30/19, due to a few things popping up.
 The beer was served at ~63&deg;F.
 
-<img src="/images/posts/brews/2019-05-06-dwights-honey-orange-wheat-v2/beer_1.jpg" class="brew-photo">
+<img  alt="beer_1" src="/images/posts/brews/2019-05-06-dwights-honey-orange-wheat-v2/beer_1.jpg" class="brew-photo">
 
 ### Appearance
 

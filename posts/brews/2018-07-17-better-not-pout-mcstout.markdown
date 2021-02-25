@@ -26,7 +26,7 @@ near the low 4s IIRC.
 
 Once bottled my wife, Melanie, designed some labels featuring our pups and we started giving away (and hoarding) beer. 
 
-<img src="/images/posts/brews/better-not-pout-mcstout.jpg" width="80%" style="margin-left: auto; margin-right: auto; display: block;"/>
+<img alt="bottled-better-not-pout" src="/images/posts/brews/better-not-pout-mcstout.jpg" width="80%" style="margin-left: auto; margin-right: auto; display: block;"/>
 
 IMO, the beer turned out great. Turned out a little sweet like holiday cheer, but not overpowering. The spices came through nicely
 and was great just to stick under your nose. The only thing I would change for next time would be getting the rest of the fermentables

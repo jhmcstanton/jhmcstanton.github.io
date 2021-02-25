@@ -127,9 +127,9 @@ Residual Alkalinity
 </table>
 
 <div class="grid-container">
-  <img src="/images/posts/brews/2019-06-08-transatlantic-pale-ale/mash_1.jpg" alt="First Runnings">
-  <img src="/images/posts/brews/2019-06-08-transatlantic-pale-ale/mash_2.jpg" alt="Last Runnings First Lauter">
-  <img src="/images/posts/brews/2019-06-08-transatlantic-pale-ale/mash_3.jpg" alt="Collected Wort">
+  <img  alt="mash_1" src="/images/posts/brews/2019-06-08-transatlantic-pale-ale/mash_1.jpg" alt="First Runnings">
+  <img  alt="mash_2" src="/images/posts/brews/2019-06-08-transatlantic-pale-ale/mash_2.jpg" alt="Last Runnings First Lauter">
+  <img  alt="mash_3" src="/images/posts/brews/2019-06-08-transatlantic-pale-ale/mash_3.jpg" alt="Collected Wort">
 </div>
 
 Just highlighting the clarity gains from running the wort back through
@@ -161,11 +161,11 @@ around 64&deg;F, with a fermwrap. The fermentation range is
 
 <div class="grid-container">
   <figure>
-  <img src="/images/posts/brews/2019-06-08-transatlantic-pale-ale/fermentation_1.jpg" alt="Wrapped Carboy Post Boil">
+  <img  alt="fermentation_1" src="/images/posts/brews/2019-06-08-transatlantic-pale-ale/fermentation_1.jpg" alt="Wrapped Carboy Post Boil">
   <figcaption>Immediately After Pitching</figcaption>
   </figure>
   <figure>
-  <img src="/images/posts/brews/2019-06-08-transatlantic-pale-ale/fermentation_2.jpg" alt="After 30 hours">
+  <img  alt="fermentation_2" src="/images/posts/brews/2019-06-08-transatlantic-pale-ale/fermentation_2.jpg" alt="After 30 hours">
   <figcaption>30 Hours In</figcaption>
   </figure>
 </div>
@@ -191,7 +191,7 @@ in the keg. The keg quickly cooled in a cooler, with the beer hitting
 a temperature of 47.8&deg;F. The keg had not been cooled long enough
 to cold crash the beer yet.
 
-<img src="/images/posts/brews/2019-06-08-transatlantic-pale-ale/beer_1.jpg" class="brew-photo">
+<img  alt="beer_1" src="/images/posts/brews/2019-06-08-transatlantic-pale-ale/beer_1.jpg" class="brew-photo">
 
 ### Appearance
 

@@ -2,7 +2,7 @@
 title: McAbod Crane Pumpkin Beer
 ---
 
-<img src="/images/posts/brews/2019-10-25-mcabod-crane/pumpkins.jpg" alt="Pumpkins" class="brew-photo">
+<img  alt="pumpkins" src="/images/posts/brews/2019-10-25-mcabod-crane/pumpkins.jpg" alt="Pumpkins" class="brew-photo">
 
 My first attempt at a pumpkin beer, this is a recipe from [Frank Clark and
 Beer & Brewing](https://beerandbrewing.com/anatomy-of-a-colonial-era-pumpkin-ale/).
@@ -117,7 +117,7 @@ Residual Alkalinity
 
 This is just the local water with gypsum and calcium carbonate added.
 
-<img src="/images/posts/brews/2019-10-25-mcabod-crane/mash.jpg" alt="Pumpkin Mash" class="brew-photo">
+<img  alt="mash" src="/images/posts/brews/2019-10-25-mcabod-crane/mash.jpg" alt="Pumpkin Mash" class="brew-photo">
 
 I was concerned about the pumpkin chunks clogging up the sparge, so I also
 threw in rice hulls.
@@ -149,8 +149,8 @@ this beer since it is intended to have some old roots - colonial brewers
 didn't exactly have the benefit of tight temperature controls.
 
 <div class="grid-container">
-  <img src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/ferm_1.jpg" alt="Carboy 1">
-  <img src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/ferm_2.jpg" alt="Carboy 2">
+  <img  alt="ferm_1" src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/ferm_1.jpg" alt="Carboy 1">
+  <img  alt="ferm_2" src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/ferm_2.jpg" alt="Carboy 2">
 </div>
 
 Turns out that my dining room is just a little too warm for my target
@@ -172,12 +172,12 @@ carbonated between 38&deg;F - 48&deg;F at 10 PSI until serving time (about 1
 week). The C02 tank was still being alternated between this and the Winter Warmer.
 
 <div class="grid-container">
-  <img src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/carb1.jpg" alt="Carbonating in the Freezer">
+  <img  alt="carb1" src="/images/posts/brews/2019-10-25-2019-thanksgiving-winter-warmer/carb1.jpg" alt="Carbonating in the Freezer">
 </div>
 
 ## Result
 
-<img src="/images/posts/brews/2019-10-25-mcabod-crane/beer.jpg" alt="Final Result" class="brew-photo">
+<img  alt="beer" src="/images/posts/brews/2019-10-25-mcabod-crane/beer.jpg" alt="Final Result" class="brew-photo">
 
 ### Appearance
 

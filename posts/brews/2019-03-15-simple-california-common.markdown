@@ -84,9 +84,9 @@ probably didn't suffer from this as much because I used a pre-mixed packet of se
 by adding molasses to hit the target OG. 
 
 <div class="grid-container">
-  <img src="/images/posts/brews/2019-03-15-simple-california-common/mash_1.jpg">
-  <img src="/images/posts/brews/2019-03-15-simple-california-common/mash_2.jpg">
-  <img src="/images/posts/brews/2019-03-15-simple-california-common/mash_3.jpg">
+  <img  alt="mash_1" src="/images/posts/brews/2019-03-15-simple-california-common/mash_1.jpg">
+  <img  alt="mash_2" src="/images/posts/brews/2019-03-15-simple-california-common/mash_2.jpg">
+  <img  alt="mash_3" src="/images/posts/brews/2019-03-15-simple-california-common/mash_3.jpg">
 </div>
 
 Since this beer is less dark than my previous one I went ahead and passed 
@@ -101,7 +101,7 @@ and sanitize. I actually went ahead and started working on some beer bread
 mixture in the mean time.
 
 <div class="grid-container">
-<img src="/images/posts/brews/2019-03-15-simple-california-common/bread.jpg">
+<img  alt="bread" src="/images/posts/brews/2019-03-15-simple-california-common/bread.jpg">
 </div>
 
 Despite being a bit pale, the bread turned out really well! I followed
@@ -115,8 +115,8 @@ I don't normally include Cooling in these posts, but I splurged and bought
 an immersion chiller and this was my first change to use it. 
 
 <div class="grid-container">
-  <img src="/images/posts/brews/2019-03-15-simple-california-common/chilling_1.jpg">
-  <img src="/images/posts/brews/2019-03-15-simple-california-common/chilling_2.jpg">
+  <img  alt="chilling_1" src="/images/posts/brews/2019-03-15-simple-california-common/chilling_1.jpg">
+  <img  alt="chilling_2" src="/images/posts/brews/2019-03-15-simple-california-common/chilling_2.jpg">
 </div>
 
 So this looks super sanitary - I swear the bathroom is cleaned somewhat regularly. The day I brewed was still pretty cold out (too cold for the outdoor spigot) and the immersion chiller had no way connect this to my kitchen faucet. Instead we put an adapter on the bathroom faucet and carefully chilled in there. This cooled the wort down in minutes, rather than the hour an ice bath and whirlpool could take. 
@@ -130,7 +130,7 @@ This was fermented in my dining room between ~73&deg;F and ~76&deg;F for 8 days.
 I was actually surprised at the temperatures required for this yeast strain. I would have expected somewhere inthe 60s given the lager qualities it is supposed to have, but I still have a ton to learn about yeast.
 
 <div class="grid-container">
-  <img src="/images/posts/brews/2019-03-15-simple-california-common/fermentation_1.jpg">
+  <img  alt="fermentation_1" src="/images/posts/brews/2019-03-15-simple-california-common/fermentation_1.jpg">
 </div>
 
 Fermentation went well enough. Pretty active after about 30 hours, so not the strongest start, but expected without rehydrating the yeast. After 5 days I started checking the gravity. Between day 7 and 8 the gravity only dropped 1-2 points, so I called it. 
@@ -142,9 +142,9 @@ commons are typically better fresh and with a fair amount of carbonation,
 and I was ready to drink this one soon.
 
 <div class="grid-container">
-  <img src="/images/posts/brews/2019-03-15-simple-california-common/keg_1.jpg">
-  <img src="/images/posts/brews/2019-03-15-simple-california-common/keg_2.jpg">
-  <img src="/images/posts/brews/2019-03-15-simple-california-common/keg_3.jpg">
+  <img  alt="keg_1" src="/images/posts/brews/2019-03-15-simple-california-common/keg_1.jpg">
+  <img  alt="keg_2" src="/images/posts/brews/2019-03-15-simple-california-common/keg_2.jpg">
+  <img  alt="keg_3" src="/images/posts/brews/2019-03-15-simple-california-common/keg_3.jpg">
 </div>
 
 Unlike my last beer, this wasn't the set-and-forget method of force carbonation. That may have worked OK except that following fermentation the temperature warmed up by about 20&deg; outside, so set-and-forget was going to take waay longer than I wanted. Instead I rolled the keg around for a few minutes and set the PSI to 14.
@@ -153,13 +153,13 @@ I also cold crashed this for clarity in the keg during force carbonation for two
 
 # Result
 
-<img src="/images/posts/brews/2019-03-15-simple-california-common/beer_2.jpg" class="brew-photo">
+<img  alt="beer_2" src="/images/posts/brews/2019-03-15-simple-california-common/beer_2.jpg" class="brew-photo">
 
 ### Appearance
 
 The beer turned out a golden/amber color with a pretty nice head on top. 
 
-<img src="/images/posts/brews/2019-03-15-simple-california-common/beer_1.jpg" class="brew-photo">
+<img  alt="beer_1" src="/images/posts/brews/2019-03-15-simple-california-common/beer_1.jpg" class="brew-photo">
 
 It's still fairly murky. Planning on finding more ways to clarify in the future.
 
@@ -185,7 +185,7 @@ After brewing this I went and bought the original California Common - [Anchor
 Steam Beer](https://www.anchorbrewing.com/beer/anchor_steam) and tried 
 them side-by-side. 
 
-<img src="/images/posts/brews/2019-03-15-simple-california-common/anchor.jpg" class="brew-photo">
+<img  alt="anchor" src="/images/posts/brews/2019-03-15-simple-california-common/anchor.jpg" class="brew-photo">
 
 ### Appearance
 

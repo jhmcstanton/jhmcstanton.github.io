@@ -127,8 +127,8 @@ Residual Alkalinity
 </table>
 
 <div class="grid-container">
-  <img src="/images/posts/brews/2019-05-18-quarter-german/ro_ph.jpg" >
-  <img src="/images/posts/brews/2019-05-18-quarter-german/water-treatment.jpg" >
+  <img  alt="ro_ph" src="/images/posts/brews/2019-05-18-quarter-german/ro_ph.jpg" >
+  <img  alt="water-treatment" src="/images/posts/brews/2019-05-18-quarter-german/water-treatment.jpg" >
 </div>
 
 The additions are based on an estimated pH of 6.0 for the RO water. This
@@ -138,10 +138,10 @@ double checked the water before adding the minerals, and it looked to be
 about where estimated.
 
 <div class="grid-container">
-  <img src="/images/posts/brews/2019-05-18-quarter-german/mash_1.jpg" >
-  <img src="/images/posts/brews/2019-05-18-quarter-german/mash_2.jpg" >
-  <img src="/images/posts/brews/2019-05-18-quarter-german/mash_3.jpg" >
-  <img src="/images/posts/brews/2019-05-18-quarter-german/mash_4.jpg" >
+  <img  alt="mash_1" src="/images/posts/brews/2019-05-18-quarter-german/mash_1.jpg" >
+  <img  alt="mash_2" src="/images/posts/brews/2019-05-18-quarter-german/mash_2.jpg" >
+  <img  alt="mash_3" src="/images/posts/brews/2019-05-18-quarter-german/mash_3.jpg" >
+  <img  alt="mash_4" src="/images/posts/brews/2019-05-18-quarter-german/mash_4.jpg" >
 </div>
 
 The first batch produced almost half the needed wort for the boil. A few cup fulls (probably several liters) of the first runnings went back in to clarify, although I don't know that it cleared it up _that_ much.
@@ -153,7 +153,7 @@ The sparge water was poured and the grain bed allowed to settle for 20
 minutes before continuing the sparge. 
 
 <div class="grid-container">
-  <img src="/images/posts/brews/2019-05-18-quarter-german/mash_5.jpg" >
+  <img  alt="mash_5" src="/images/posts/brews/2019-05-18-quarter-german/mash_5.jpg" >
 </div>
 
 The gravity at this point is 1.043.
@@ -170,9 +170,9 @@ The gravity at this point is 1.043.
 | 5 min | Whirlflocc |
 
 <div class="grid-container">
-  <img src="/images/posts/brews/2019-05-18-quarter-german/boil_1.jpg" >
-  <img src="/images/posts/brews/2019-05-18-quarter-german/boil_2.jpg" >
-  <img src="/images/posts/brews/2019-05-18-quarter-german/boil_3.jpg" >
+  <img  alt="boil_1" src="/images/posts/brews/2019-05-18-quarter-german/boil_1.jpg" >
+  <img  alt="boil_2" src="/images/posts/brews/2019-05-18-quarter-german/boil_2.jpg" >
+  <img  alt="boil_3" src="/images/posts/brews/2019-05-18-quarter-german/boil_3.jpg" >
 </div>
 
 ## Fermentation
@@ -181,8 +181,8 @@ This is being fermented in a basement that is typically in the low 60&deg;s F (i
 temperate controlled with an Inkbird controller, set to the range of 68-72 &deg;F.
 
 <div class="grid-container">
-  <img src="/images/posts/brews/2019-05-18-quarter-german/fermentation_1.jpg" > 
-  <img src="/images/posts/brews/2019-05-18-quarter-german/fermentation_2.jpg" >
+  <img  alt="fermentation_1" src="/images/posts/brews/2019-05-18-quarter-german/fermentation_1.jpg" > 
+  <img  alt="fermentation_2" src="/images/posts/brews/2019-05-18-quarter-german/fermentation_2.jpg" >
 </div>
 
 Unfortunately I forgot to add my typical yeast nutrient and energizer to 
@@ -207,7 +207,7 @@ at 30 PSI to ensure it's carbed within a week.
 This taste test was taken on 6/6/19, 3 days after force carbing the beer.
 The beer was 64&deg;F.
 
-<img src="/images/posts/brews/2019-05-18-quarter-german/beer_1.jpg" class="brew-photo">
+<img  alt="beer_1" src="/images/posts/brews/2019-05-18-quarter-german/beer_1.jpg" class="brew-photo">
 
 ### Appearance
 
@@ -232,7 +232,7 @@ Light-end of medium. Surprisingly dry finish.
 
 This test was on 6/7/19 after cooling the beer for 13 hours to 43&deg;F.
 
-<img src="/images/posts/brews/2019-05-18-quarter-german/beer_2.jpg" class="brew-photo">
+<img  alt="beer_2" src="/images/posts/brews/2019-05-18-quarter-german/beer_2.jpg" class="brew-photo">
 
 ### Appearance
 
@@ -259,8 +259,8 @@ This test was on 6/14/19 after letting the beer crash for 48 hours at
 typically don't continuously refill my coolers with ice.
 
 <div class="grid-container">
-  <img src="/images/posts/brews/2019-05-18-quarter-german/beer_3.jpg">
-  <img src="/images/posts/brews/2019-05-18-quarter-german/beer_4.jpg">
+  <img  alt="beer_3" src="/images/posts/brews/2019-05-18-quarter-german/beer_3.jpg">
+  <img  alt="beer_4" src="/images/posts/brews/2019-05-18-quarter-german/beer_4.jpg">
 </div>
 
 The cold crash cleared this right up. I haven't had that much luck with

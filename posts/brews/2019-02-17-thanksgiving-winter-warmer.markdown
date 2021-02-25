@@ -81,10 +81,10 @@ This was my first mash at home (and [without an instructor](./2018-07-17-better-
 This beer was a single batch infusion with strike water at 162&deg; and a desired mash temperature of 153&deg;. The mash tun was preheated with boiling water, although we did end up needed to add more boiling water to get back up to temp. I'm not sure if this was due to poor preheating or possibly an inaccurate thermometer. For now I plan on resolving this with more preheating.
 
 <div class="grid-container">
-  <img src="/images/posts/brews/2018-thanksgiving-winter-warmer/mash-1.jpg">
-  <img src="/images/posts/brews/2018-thanksgiving-winter-warmer/mash-2.jpg">
-  <img src="/images/posts/brews/2018-thanksgiving-winter-warmer/wort-transfer-1.jpg">
-  <img src="/images/posts/brews/2018-thanksgiving-winter-warmer/wort-transfer-3.jpg">
+  <img  alt="mash-1" src="/images/posts/brews/2018-thanksgiving-winter-warmer/mash-1.jpg">
+  <img  alt="mash-2" src="/images/posts/brews/2018-thanksgiving-winter-warmer/mash-2.jpg">
+  <img  alt="wort-transfer-1" src="/images/posts/brews/2018-thanksgiving-winter-warmer/wort-transfer-1.jpg">
+  <img  alt="wort-transfer-3" src="/images/posts/brews/2018-thanksgiving-winter-warmer/wort-transfer-3.jpg">
 </div>
 
 ## Boil
@@ -92,9 +92,9 @@ This beer was a single batch infusion with strike water at 162&deg; and a desire
 After the mash everything went according to plan. 60 minute boil, followed with a steep at knock out. This particular batch was limited to 3 gallons because I'm still using an electric stove top and 6 gallon kettle to boil, which, of course, means it takes quite a while to boil (and I can't actually boil 6 gallons). Plus, after the boil, it still takes quite a while to cool the beer down to the fermentation temperature using an ice bath and whirl pool. Those last 9 - 11 degrees always seem to take forever. Eventually I'll invest in a counterflow chiller, propane burner, and larger kettle though.
 
 <div class="grid-container">
-  <img src="/images/posts/brews/2018-thanksgiving-winter-warmer/boil.jpg">
-  <img src="/images/posts/brews/2018-thanksgiving-winter-warmer/boil-complete.jpg">
-  <img src="/images/posts/brews/2018-thanksgiving-winter-warmer/flameout-spices.jpg">
+  <img  alt="boil" src="/images/posts/brews/2018-thanksgiving-winter-warmer/boil.jpg">
+  <img  alt="boil-complete" src="/images/posts/brews/2018-thanksgiving-winter-warmer/boil-complete.jpg">
+  <img  alt="flameout-spices" src="/images/posts/brews/2018-thanksgiving-winter-warmer/flameout-spices.jpg">
 </div>
 
 ## Fermentation
@@ -102,9 +102,9 @@ After the mash everything went according to plan. 60 minute boil, followed with 
 This was fermented with White Labs' [WLP023 Burton Ale Yeast](https://www.whitelabs.com/yeast-bank/wlp023-burton-ale-yeast). This yeast was chosen for it's attenuation and alcohol tolerance. This was fermented between 72&deg; and 74&deg; for 2 weeks. I don't yet have a fermentation chamber, so I stick my carboys in the basement. Although the temperature is fairly stable, I did have to move the carboy around a few times to maintain the proper temperature. In other words, not the best temperature control but it did seem to ferment well.
 
 <div class="grid-container">
-  <img src="/images/posts/brews/2018-thanksgiving-winter-warmer/fermentation-1.jpg">
-  <img src="/images/posts/brews/2018-thanksgiving-winter-warmer/fermentation-2.jpg">
-  <img src="/images/posts/brews/2018-thanksgiving-winter-warmer/yeast-starter.jpg" >
+  <img  alt="fermentation-1" src="/images/posts/brews/2018-thanksgiving-winter-warmer/fermentation-1.jpg">
+  <img  alt="fermentation-2" src="/images/posts/brews/2018-thanksgiving-winter-warmer/fermentation-2.jpg">
+  <img  alt="yeast-starter" src="/images/posts/brews/2018-thanksgiving-winter-warmer/yeast-starter.jpg" >
 </div>
 
 One thing that we did change up this time was making a yeast starter. A package of WLP023 should probably be fine for 3 gallons of a typical beer, but we decided to be safe for this high gravity beer.
@@ -118,13 +118,13 @@ The last steps that remain were kegging this beer and dry spicing it. This was a
 The last remaining spices were just cinnamon sticks. These were soaked in whiskey for an hour to sanitize, then dropped in the keg for a few days before drinking. 
 
 <div class="grid-container">
-  <img src="/images/posts/brews/2018-thanksgiving-winter-warmer/dry-cinnamon.jpg" >
+  <img  alt="dry-cinnamon" src="/images/posts/brews/2018-thanksgiving-winter-warmer/dry-cinnamon.jpg" >
 </div>
 
 
 ## Result
 
-  <img src="/images/posts/brews/2018-thanksgiving-winter-warmer/winter-warmer.jpg" class="brew-photo">
+  <img  alt="winter-warmer" src="/images/posts/brews/2018-thanksgiving-winter-warmer/winter-warmer.jpg" class="brew-photo">
   
 This beer carries a malty aroma with clear cinnamon and even clearer nutmeg notes. The cinnamon and nutmeg come through on the palate, especially the nutmeg, but the orange peel is very subtle, bordering on non-existent. The molasses plays nicely with the malt, kind of coming across like a molasses cookie. The hops are present but not overpowering or particularly bitter. 
 

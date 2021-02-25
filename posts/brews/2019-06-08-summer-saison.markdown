@@ -123,12 +123,12 @@ Residual Alkalinity
 </table>
 
 <div class="grid-container">
-  <img src="/images/posts/brews/2019-06-08-summer-saison/mash_1.jpg" alt="First Runnings">
-  <img src="/images/posts/brews/2019-06-08-summer-saison/mash_2.jpg" alt="First Lauter">
-  <img src="/images/posts/brews/2019-06-08-summer-saison/mash_3.jpg" alt="First Lauter Collection">
-  <img src="/images/posts/brews/2019-06-08-summer-saison/mash_4.jpg" alt="Drained Tun">
-  <img src="/images/posts/brews/2019-06-08-summer-saison/mash_5.jpg" alt="Second Collection">
-  <img src="/images/posts/brews/2019-06-08-summer-saison/mash_6.jpg" alt="Wort Clarity">
+  <img  alt="mash_1" src="/images/posts/brews/2019-06-08-summer-saison/mash_1.jpg" alt="First Runnings">
+  <img  alt="mash_2" src="/images/posts/brews/2019-06-08-summer-saison/mash_2.jpg" alt="First Lauter">
+  <img  alt="mash_3" src="/images/posts/brews/2019-06-08-summer-saison/mash_3.jpg" alt="First Lauter Collection">
+  <img  alt="mash_4" src="/images/posts/brews/2019-06-08-summer-saison/mash_4.jpg" alt="Drained Tun">
+  <img  alt="mash_5" src="/images/posts/brews/2019-06-08-summer-saison/mash_5.jpg" alt="Second Collection">
+  <img  alt="mash_6" src="/images/posts/brews/2019-06-08-summer-saison/mash_6.jpg" alt="Wort Clarity">
 </div>
 
 Definitely pleased with the clarity after the mash.
@@ -157,7 +157,7 @@ Values are for 1 gallon batch.
 
 <div class="grid-container">
   <figure>
-  <img src="/images/posts/brews/2019-06-08-summer-saison/preboil.jpg" alt="Pre-Boil Gravity Measurement">
+  <img  alt="preboil" src="/images/posts/brews/2019-06-08-summer-saison/preboil.jpg" alt="Pre-Boil Gravity Measurement">
   <figcaption>Pre Boil Gravity</figcaption>
   </figure>
 </div>
@@ -173,8 +173,8 @@ ambient temperature I'm simply wrapping the carboy with a blanket to
 allow the yeast to warm itself.
 
 <div class="grid-container">
-  <img src="/images/posts/brews/2019-06-08-summer-saison/fermentation_1.jpg" alt="Initial Fermentation">
-  <img src="/images/posts/brews/2019-06-08-summer-saison/fermentation_2.jpg" alt="Initial Fermentation Wrapped">
+  <img  alt="fermentation_1" src="/images/posts/brews/2019-06-08-summer-saison/fermentation_1.jpg" alt="Initial Fermentation">
+  <img  alt="fermentation_2" src="/images/posts/brews/2019-06-08-summer-saison/fermentation_2.jpg" alt="Initial Fermentation Wrapped">
 </div>
 
 Fermentation activity began within 16 hours.
@@ -192,7 +192,7 @@ was supplemented with the rolling method - carbing at 35 PSI for
 This taste test was taken on 7/13/19 at 60&deg;F . The beer has been carbonated
 but not cooled or cold crashed.
 
-<img src="/images/posts/brews/2019-06-08-summer-saison/beer_1.jpg" class="brew-photo">
+<img  alt="beer_1" src="/images/posts/brews/2019-06-08-summer-saison/beer_1.jpg" class="brew-photo">
 
 ### Appearance
 
