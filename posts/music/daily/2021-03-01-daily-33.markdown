@@ -1,0 +1,14 @@
+---
+title: "Daily 33: Phrygian Piece"
+---
+
+It's been a little while since I've tried just writing something out, so thought
+I would try playing with some harmonic minor/phyrigian dominant progressions.
+
+<button onclick="MIDIjs.play('./daily-33.mid')">Play</button>
+<button onclick="MIDIjs.stop()">Stop</button>
+
+![Music Piece](./daily-33.png "Music Piece")
+
+
+<script type="text/javascript" src="https://www.midijs.net/lib/midi.js"></script>
