@@ -58,6 +58,19 @@ message._ It's easier to get up to speed if the problem has been formally
 written than by derailing an ongoing conversation just to ask to catch up. This
 helps everyone involved.
 
+## DON'T at people at during their off hours
+
+Most people don't want to have their personal time interrupted, especially by
+something that can wait. A lot of us don't turn on Do Not Disturb during their
+entire off hours though, just in case something urgent comes up. Be careful
+about ating folks outside of their typical work / participation time.
+
+This can be a little tricky for organizations outside of the office. Folks
+frequently have different schedules and different times when they are likely to
+want to respond. This may require reading the room a bit. My go to move is to
+use their name in the message but not ating them, but each situation may be a
+little different.
+
 ## Chat Etiquette
 
 Etiquette and being polite is much more than social niceties. A key element is
