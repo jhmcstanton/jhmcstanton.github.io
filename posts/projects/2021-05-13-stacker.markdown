@@ -1,0 +1,26 @@
+---
+title: Introducing stacker
+---
+
+In the last few months I have been on many video meetings that use the "stack"
+method of facilitating speaking order. For those unfamiliar, the idea is that
+attendees of the meeting write the word "stack" into the call chat box to
+indicate they would like to speak. Anyone can stack at any time and speaking
+order is simply first come first serve. This just helps to reduce people
+speaking over each other or taking over the meeting.
+
+The stack method works well, but it does put some extra work on the meeting
+facilitator to track the stacks in chat, which can be difficult in active chats
+or large meetings. Additionally, stack does not nest well. By that, I mean that
+if someone wants to stack to respond to a current speaker, and not just to speak
+to the general topic, extra work has to be handled by the facilitator to track
+that.
+
+This is where [`stacker`](https://github.com/jhmcstanton/stacker/) comes in.
+`stacker` is a simple webapp that allows users of a call to join a new room and
+stack as a direct reply to the current, short-term discussion (think of it as a
+reply stack), or stack onto the traditional stack.
+
+`stacker` is hosted on [heroku right now and welcome for anyone to
+use](https://chat-stacker.herokuapp.com/)! I would love to get feedback from
+folks using this in their meetings.
