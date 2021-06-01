@@ -20,7 +20,7 @@ stack exec site build -- --use-water-profiles --compress-jpgs
 
 # Get previous files
 git fetch --all
-git checkout -b master --track origin/master || git checkout -b master
+git checkout -b main --track origin/main || git checkout -b main
 
 # Overwrite existing files with new files
 cp -a _site/. .
@@ -30,11 +30,11 @@ git add -A
 git commit -m "Publish."
 
 # Push
-git push origin master:master -f
+git push origin main:main -f
 
 # Restoration
 git checkout develop
-git branch -D master
+git branch -D main
 git stash pop
 
 kill "$selenium_pid"
