@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>🍻 &lambda; - Literate Markdown to Literate HTML</title>
+        <link rel="stylesheet" href="../../css/default.css" />
+        <link rel="stylesheet" href="../../css/syntax.css" />
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="../../">Brewda</a>
+            </div>
+            <nav>
+                <a href="../../">Home</a>
+                <a href="../../about.html">About</a>
+                <a href="../../contact.html">Contact</a>
+                <a href="../../posts/blog/">Blog</a>
+                <a href="../../posts/projects/">Projects</a>
+                <a href="../../posts/brews/">Brews</a>
+                <a href="../../posts/music/">Music</a>
+                <a href="../../archive.html">Archive</a>
+            </nav>
+        </header>
+
+        <main role="main">
+            <h1>Literate Markdown to Literate HTML</h1>
+            <article>
+    <section class="header">
+        Posted on September 18, 2019
+        
+    </section>
+    
+    <section>
+        <p>In my <a href="./2019-09-14-literate-markdown-with-diagrams.html">previous post</a> I described a Hakyll site extension that allows a blog author to treat their raw markdown files as Haskell code for the purposes of generating site resources. It’s much more common for Haskell bloggers to make literate Haskell blog posts for the purposes of distributing runnable example code to readers. In this post we’ll make a small tweak so that our final browser-rendered result is literate haskell friendly for readers as well.</p>
+<h2>
+Updating the Code Renderer
+</h2>
+<p>Only a couple of small tweaks are needed since we were previously rendering our markdown via <a href="http://hackage.haskell.org/package/pandoc"><code>pandoc</code></a>.</p>
+<p>First, we need to make a <code>pandoc</code> an explicit dependency on our site generator. This is needed because <code>hakyll</code> does not reexport the necessary <code>pandoc</code> <a href="http://hackage.haskell.org/package/pandoc-2.7.3/docs/Text-Pandoc-Extensions.html">extensions</a> and <a href="http://hackage.haskell.org/package/pandoc-2.7.3/docs/Text-Pandoc-Options.html">options</a> modules.</p>
+<pre><code>  build-depends:    base          == 4.*
+                  , hakyll        == 4.12.*
+  -----------------------------------------------
+                  , pandoc</code></pre>
+<p>Next we’ll tweak the renderer to enable the literate Haskell <code>pandoc</code> extension.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb2-1"><a href="#cb2-1"></a><span class="op">...</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">import</span>           <span class="dt">Text.Pandoc.Extensions</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="kw">import</span>           <span class="dt">Text.Pandoc.Options</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="op">...</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="co">-- Tweaking the Hakyll defaults to include</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co">-- enabling literate haskell</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="ot">myWriterOptions ::</span> <span class="dt">WriterOptions</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>myWriterOptions <span class="ot">=</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>  <span class="kw">let</span> exts <span class="ot">=</span> writerExtensions defaultHakyllWriterOptions <span class="kw">in</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a>  defaultHakyllWriterOptions {</span>
+<span id="cb2-12"><a href="#cb2-12"></a>    writerExtensions <span class="ot">=</span> enableExtension <span class="dt">Ext_literate_haskell</span> exts</span>
+<span id="cb2-13"><a href="#cb2-13"></a>  }</span>
+<span id="cb2-14"><a href="#cb2-14"></a></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="co">-- A helper custom pandoc renderer so we don't have to lug</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="co">-- around our custom options</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="ot">myRenderPandoc ::</span> <span class="dt">Item</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Compiler</span> (<span class="dt">Item</span> <span class="dt">String</span>)</span>
+<span id="cb2-18"><a href="#cb2-18"></a>myRenderPandoc <span class="ot">=</span> renderPandocWith defaultHakyllReaderOptions myWriterOptions</span>
+<span id="cb2-19"><a href="#cb2-19"></a></span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="co">-- Update our blog post rules to use the custom compiler</span></span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="ot">blogPostRules ::</span> <span class="dt">Compiler</span> () <span class="ot">-&gt;</span> <span class="dt">Rules</span> ()</span>
+<span id="cb2-22"><a href="#cb2-22"></a>blogPostRules preProcess <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb2-23"><a href="#cb2-23"></a>  route (setExtension <span class="st">&quot;html&quot;</span>)</span>
+<span id="cb2-24"><a href="#cb2-24"></a>  compile (</span>
+<span id="cb2-25"><a href="#cb2-25"></a>      preProcess <span class="co">-- runs the markdown as code</span></span>
+<span id="cb2-26"><a href="#cb2-26"></a>      <span class="op">&gt;&gt;</span> getResourceString</span>
+<span id="cb2-27"><a href="#cb2-27"></a>      <span class="op">&gt;&gt;=</span> applyAsTemplate postCtx</span>
+<span id="cb2-28"><a href="#cb2-28"></a>      <span class="op">&gt;&gt;=</span> myRenderPandoc <span class="co">-- renders the post with bird (&gt;) syntax</span></span>
+<span id="cb2-29"><a href="#cb2-29"></a>      <span class="op">&gt;&gt;=</span> loadAndApplyTemplate <span class="st">&quot;templates/post.html&quot;</span>    postCtx</span>
+<span id="cb2-30"><a href="#cb2-30"></a>      <span class="op">&gt;&gt;=</span> loadAndApplyTemplate <span class="st">&quot;templates/default.html&quot;</span> postCtx</span>
+<span id="cb2-31"><a href="#cb2-31"></a>      <span class="op">&gt;&gt;=</span> relativizeUrls )</span></code></pre></div>
+<p>Note, I have some extra stuff in there for some of my other blog posts (and elided some of the really unnecessary stuff), all you should need to do is include your <code>myRenderPandoc</code> that uses your custom <code>WriterOptions</code> then <code>hakyll</code> and <code>pandoc</code> will happily render your HTML in a literate haskell friendly manner.</p>
+<p>This post uses this new renderer. When <code>hakyll</code> builds it will run the following code:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="op">&gt;</span> main <span class="ot">=</span> <span class="fu">putStrLn</span> <span class="st">&quot;yo&quot;</span></span></code></pre></div>
+<p>and you, dear reader, can copy-and-paste this file from your browser, save it as a <code>.lhs</code> file and run it with <code>runghc</code>.</p>
+<p>That’s about it! Just enable that one <code>pandoc</code> extension then you and your readers can run code together.</p>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>🍻 &lambda; - Dependent Units of Measure</title>
+        <link rel="stylesheet" href="../../css/default.css" />
+        <link rel="stylesheet" href="../../css/syntax.css" />
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="../../">Brewda</a>
+            </div>
+            <nav>
+                <a href="../../">Home</a>
+                <a href="../../about.html">About</a>
+                <a href="../../contact.html">Contact</a>
+                <a href="../../posts/blog/">Blog</a>
+                <a href="../../posts/projects/">Projects</a>
+                <a href="../../posts/brews/">Brews</a>
+                <a href="../../posts/music/">Music</a>
+                <a href="../../archive.html">Archive</a>
+            </nav>
+        </header>
+
+        <main role="main">
+            <h1>Dependent Units of Measure</h1>
+            <article>
+    <section class="header">
+        Posted on November 24, 2020
+        
+    </section>
+    
+    <section>
+        <p>Recently I have been thinking about what a simple implementation of dependent units of measure would look like. When working with a handful of values with various units it is easy to make a mistake with a calculation or conversion simply because they typically have a shared or similar underlying primitive type. The goal with this post is to make a simple module for working with values of known units and composing them together.</p>
+<p>If you are interested in following along, this post is a literate idris file. You need either idris or idris2 installed, then just copy and paste this into a file with extension <code>.lidr</code> to try it out!</p>
+<h2 id="motivation">Motivation</h2>
+<p>Here’s a contrived example; imagine a simple haskell function to calculate speed:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1"></a><span class="ot">speed ::</span> <span class="dt">Fractional</span> a <span class="ot">=&gt;</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a</span>
+<span id="cb1-2"><a href="#cb1-2"></a>speed <span class="fu">length</span> time <span class="ot">=</span> <span class="fu">length</span> <span class="op">/</span> time</span></code></pre></div>
+<p>This works just fine, although the type is a little opaque. A more complicated function could also face issues during a refactor since those types are the same, what if the variables were swapped?</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb2-1"><a href="#cb2-1"></a><span class="ot">speed ::</span> <span class="dt">Fractional</span> a <span class="ot">=&gt;</span> a <span class="ot">-&gt;</span> a <span class="ot">-&gt;</span> a</span>
+<span id="cb2-2"><a href="#cb2-2"></a>speed <span class="fu">length</span> time <span class="ot">=</span> time <span class="op">/</span> <span class="fu">length</span></span></code></pre></div>
+<p>Clearly this is overly simplified, but these things happen in larger functions and code bases (at least to me). A common fix for this is to create new types for all the types your code base works in - even Java programmers uses this approach.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">newtype</span> <span class="dt">Length</span> a <span class="ot">=</span> <span class="dt">Length</span> {<span class="ot"> unlength ::</span> a }</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="kw">newtype</span> <span class="dt">Time</span>   a <span class="ot">=</span> <span class="dt">Time</span>   {<span class="ot"> untime   ::</span> a }</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="kw">newtype</span> <span class="dt">Speed</span>  a <span class="ot">=</span> <span class="dt">Speed</span>  {<span class="ot"> unspeed  ::</span> a }</span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="ot">speed ::</span> <span class="dt">Fractional</span> a <span class="ot">=&gt;</span> <span class="dt">Length</span> a <span class="ot">-&gt;</span> <span class="dt">Time</span> a <span class="ot">-&gt;</span> <span class="dt">Speed</span> a</span>
+<span id="cb3-6"><a href="#cb3-6"></a>speed <span class="fu">length</span> time <span class="ot">=</span> <span class="dt">Speed</span> (unlength l <span class="op">/</span> unlength t)</span></code></pre></div>
+<p>This is quite a bit better:</p>
+<ul>
+<li>Each parameter has its own type so its hard to mix them up</li>
+<li>The return type is also specific and enforces that the implementation acknowledges it</li>
+<li>The type is clearer at a glance</li>
+</ul>
+<p>This approach works well in practice, and can be seen in many code bases. It can still be goofed, but using the record datatype should make that harder to do and easier to resolve in the event that it happens. In general, I would recommend just going with this approach.</p>
+<p>But what if we wanted an even more type safe approach, just for fun? That’s what the next section tries to accomplish.</p>
+<h2 id="implementation">Implementation</h2>
+<p>Here is where the idris code comes in. We’ll define a few data types to try tagging and composing together types by their measure.</p>
+<h3 id="a-handful-of-types">A Handful of Types</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">BaseMeasure</span> <span class="fu">=</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">&gt;</span>   <span class="dt">Time</span> <span class="fu">|</span> <span class="dt">Length</span> <span class="fu">|</span> <span class="dt">Mass</span> <span class="fu">|</span> <span class="dt">Current</span> <span class="fu">|</span> <span class="dt">Temperatue</span> <span class="fu">|</span> <span class="dt">Lumin</span> <span class="fu">|</span> <span class="dt">SubstanceAmount</span></span></code></pre></div>
+<p>Here <code>BaseMeasure</code> is a simple data type to represent the various base quantities as defined by SI.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">&gt;</span> <span class="kw">infix</span> <span class="dv">3</span> <span class="fu">&lt;&lt;*&gt;&gt;</span>,<span class="fu">&lt;&lt;/&gt;&gt;</span>,<span class="fu">&lt;&lt;^&gt;&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Measure</span> <span class="ot">:</span> <span class="dt">Type</span> <span class="kw">where</span> </span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">&gt;</span>   <span class="dt">M</span>   <span class="ot">:</span> <span class="dt">BaseMeasure</span>            <span class="ot">-&gt;</span> <span class="dt">Measure</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">&gt;</span>   (<span class="fu">&lt;&lt;*&gt;&gt;</span>) <span class="ot">:</span> <span class="dt">Measure</span> <span class="ot">-&gt;</span> <span class="dt">Measure</span> <span class="ot">-&gt;</span> <span class="dt">Measure</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="fu">&gt;</span>   (<span class="fu">&lt;&lt;/&gt;&gt;</span>) <span class="ot">:</span> <span class="dt">Measure</span> <span class="ot">-&gt;</span> <span class="dt">Measure</span> <span class="ot">-&gt;</span> <span class="dt">Measure</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="fu">&gt;</span>   (<span class="fu">&lt;&lt;^&gt;&gt;</span>) <span class="ot">:</span> <span class="dt">Measure</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>     <span class="ot">-&gt;</span> <span class="dt">Measure</span></span></code></pre></div>
+<p>Next <code>Measure</code> is defined to compose together <code>BaseMeasures</code> to create compound measurements types. These can be composed like so:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">&gt;</span> <span class="dt">Speed</span> <span class="ot">:</span> <span class="dt">Measure</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">&gt;</span> <span class="dt">Speed</span> <span class="fu">=</span> <span class="dt">M</span> <span class="dt">Length</span> <span class="fu">&lt;&lt;/&gt;&gt;</span> <span class="dt">M</span> <span class="dt">Time</span></span></code></pre></div>
+<p>So far all we have are units without values. Let’s make another type for that.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">&gt;</span> <span class="kw">data</span> <span class="dt">Value</span> <span class="ot">:</span> <span class="dt">Type</span> <span class="ot">-&gt;</span> <span class="dt">Measure</span> <span class="ot">-&gt;</span> <span class="dt">Type</span> <span class="kw">where</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">&gt;</span>   <span class="dt">V</span> <span class="ot">:</span> a <span class="ot">-&gt;</span> <span class="dt">Value</span> a measure</span></code></pre></div>
+<p>This datatype is a vessel for a value and its (type level) measure. Note that the constructor does not carry around the measurement, it is a purely type level value. <code>Value</code> is used like this</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">carSpeed</span> <span class="ot">:</span> <span class="dt">Value</span> <span class="dt">Int</span> <span class="dt">Speed</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>carSpeed <span class="fu">=</span> <span class="dt">V</span> <span class="dv">10</span></span></code></pre></div>
+<p>Alright, so now we have a way to build up types, but we can’t do anything more with them than the haskell example above. Now we need to implement some value level operators.</p>
+<h3 id="basic-operators">Basic Operators</h3>
+<p>So now to implement the operators we will start with addition and subtraction. These do not affect units so they are straight forward.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">&gt;</span> <span class="kw">infix</span> <span class="dv">3</span> <span class="fu">&lt;++&gt;</span>,<span class="ot">&lt;-</span><span class="fu">&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">&gt;</span> (<span class="fu">&lt;++&gt;</span>) <span class="ot">:</span> <span class="dt">Num</span> a <span class="ot">=&gt;</span> <span class="dt">Value</span> a m <span class="ot">-&gt;</span> <span class="dt">Value</span> a m <span class="ot">-&gt;</span> <span class="dt">Value</span> a m</span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="fu">&gt;</span> (<span class="dt">V</span> a) <span class="fu">&lt;++&gt;</span> (<span class="dt">V</span> b) <span class="fu">=</span> <span class="dt">V</span> (a <span class="fu">+</span> b)</span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="fu">&gt;</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="fu">&gt;</span> (<span class="ot">&lt;-</span><span class="fu">&gt;</span>) <span class="ot">:</span> <span class="dt">Neg</span> a <span class="ot">=&gt;</span> <span class="dt">Value</span> a m <span class="ot">-&gt;</span> <span class="dt">Value</span> a m <span class="ot">-&gt;</span> <span class="dt">Value</span> a m</span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="fu">&gt;</span> (<span class="dt">V</span> a) <span class="ot">&lt;-</span><span class="fu">&gt;</span> (<span class="dt">V</span> b) <span class="fu">=</span> <span class="dt">V</span> (a <span class="fu">-</span> b)</span></code></pre></div>
+<p>Next lets implement unit affecting operators.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">&gt;</span> <span class="kw">infix</span> <span class="dv">3</span> <span class="fu">&lt;*&gt;</span>,<span class="fu">&lt;/&gt;</span>,<span class="fu">&lt;^&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">&gt;</span> (<span class="fu">&lt;*&gt;</span>) <span class="ot">:</span> <span class="dt">Num</span> a <span class="ot">=&gt;</span> <span class="dt">Value</span> a m1 <span class="ot">-&gt;</span> <span class="dt">Value</span> a m2 <span class="ot">-&gt;</span> <span class="dt">Value</span> a (m1 <span class="fu">&lt;&lt;*&gt;&gt;</span> m2)</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="fu">&gt;</span> (<span class="dt">V</span> a) <span class="fu">&lt;*&gt;</span> (<span class="dt">V</span> b) <span class="fu">=</span> <span class="dt">V</span> (a <span class="fu">*</span> b)</span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="fu">&gt;</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="fu">&gt;</span> (<span class="fu">&lt;/&gt;</span>) <span class="ot">:</span> <span class="dt">Fractional</span> a <span class="ot">=&gt;</span> <span class="dt">Value</span> a m1 <span class="ot">-&gt;</span> <span class="dt">Value</span> a m2 <span class="ot">-&gt;</span> <span class="dt">Value</span> a (m1 <span class="fu">&lt;&lt;/&gt;&gt;</span> m2)</span>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="fu">&gt;</span> (<span class="dt">V</span> a) <span class="fu">&lt;/&gt;</span> (<span class="dt">V</span> b) <span class="fu">=</span> <span class="dt">V</span> (a <span class="fu">/</span> b)</span></code></pre></div>
+<p>These operators will perform the expected mathematical operators on the underlying numeric representation <em>and on the units themselves</em>. In other words, the operator <code>&lt;*&gt;</code> says “give me two values with any two units and I’ll give you back their values <em>and</em> units multiplied.” When using these operators you will always get back the expected units.</p>
+<p>Let’s try making a <code>speed</code> function with these.</p>
+<pre class="idis"><code>&gt; speed : Fractional a =&gt; Value a (M Length) -&gt; Value a (M Time) -&gt; Value a Speed
+&gt; speed length time = length &lt;/&gt; time</code></pre>
+<p>So this <em>final</em> implementation requires the caller to provide a length and time and then the implementation can’t screw up the operation by mishandling values - here if length and time are swapped a compile time error occurs:</p>
+<pre><code>When unifying Value a (M Time &lt;&lt;/&gt;&gt; M Time) and Value a Speed
+Mismatch between:
+        Time
+and
+        Length
+at:
+133
+                            ^^^^^^^^^^^^^^^</code></pre>
+<h2 id="conclusion">Conclusion</h2>
+<p>This is a super minimal example of how to build a type safe library for working with units of measure. It’s incomplete for a real-life use: a number of operators are missing, it could use a <code>reduce</code> function to simplify units after each operation, and really ought to provide proof helpers for convincing idris that two units that are mathematically the same, but structurally different, are the same (idris would not believe that <code>Time &lt;&lt;*&gt;&gt; Temperature</code> and <code>Temperature &lt;&lt;*&gt;&gt; Time</code> are the same without some coaxing).</p>
+<p>While writing this I ran into a library with similar goals as this post, but more fleshed out and complete. If you’re interested in more examples defintely check out <a href="https://github.com/timjb/quantities">the quantities library</a>.</p>
+<p>Hopefully this gives you some ideas of how to use types in different ways in your projects, even if it is “just” wrapping your inputs in explicit types like in the haskell example. I mean, that’s what I would do.</p>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </footer>
+    </body>
+</html>

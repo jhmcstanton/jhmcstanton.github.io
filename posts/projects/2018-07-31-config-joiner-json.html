@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>🍻 &lambda; - config-joiner-json: A Configuration Aid</title>
+        <link rel="stylesheet" href="../../css/default.css" />
+        <link rel="stylesheet" href="../../css/syntax.css" />
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="../../">Brewda</a>
+            </div>
+            <nav>
+                <a href="../../">Home</a>
+                <a href="../../about.html">About</a>
+                <a href="../../contact.html">Contact</a>
+                <a href="../../posts/blog/">Blog</a>
+                <a href="../../posts/projects/">Projects</a>
+                <a href="../../posts/brews/">Brews</a>
+                <a href="../../posts/music/">Music</a>
+                <a href="../../archive.html">Archive</a>
+            </nav>
+        </header>
+
+        <main role="main">
+            <h1>config-joiner-json: A Configuration Aid</h1>
+            <article>
+    <section class="header">
+        Posted on July 31, 2018
+        
+    </section>
+    
+    <section>
+        <p>The other day I decided to work on a little helper aid and library for dealing with many configuration files - <a href="https://github.com/jhmcstanton/config-joiner-json"><code>config-joiner-json</code></a> is the result of that quick work.</p>
+<h1 id="why">Why</h1>
+<p>Projects frequently end up with multiple configuration files for various scenarios or environments, and in my case this frequently is in JSON. Being programmers, most of the project will be configurable and these configuration files end up with a lot of overlapping and redundant configuration that ends up being noise compared to the scenario or environment specific configuration that forced us to create the new config file in the first place.</p>
+<p><code>config-joiner-json</code> aims to fix this redundant config. This tool allows the user to factor out common config from their JSON files into one <code>common.json</code>, <code>parent.json</code>, or <code>whatever.json</code>, and then only the config that is actually unique lives in the more specific configuration files: <code>config1.json</code>, <code>dev.json</code>. Whenever changes are made to any of the configuration the user simply runs <code>config-joiner-json</code> to regenerate the completed JSON files and then drops them wherever they are needed. As an added bonus this also means that the configuration files used everywhere are machine generated and thus less error-prone from someone missing a comma.</p>
+<h1 id="how">How</h1>
+<p><code>config-joiner-json</code> is built in <code>Haskell</code> primarily using <a href="http://hackage.haskell.org/package/aeson-1.4.0.0/docs/Data-Aeson.html"><code>aeson</code></a> for the JSON handling.</p>
+<p><code>config-joiner-json</code> is both the binary outlined above and a library. The library houses all of the JSON reading, parsing, joining, writing, and even includes a handy <code>joinMain</code> method to wrap it all up. The binary basically combines <code>joinMain</code> with some option parsing, courtesy of <a href="http://hackage.haskell.org/package/optparse-applicative"><code>optparse-applicative</code></a>, with some file system discovery.</p>
+<p>For more details on how to use the library, and general documentation, check out the repo.</p>
+<h1 id="spooky-types">Spooky Types</h1>
+<p>Peeking into the <a href="https://github.com/jhmcstanton/config-joiner-json/blob/69361e4bfd47fc16a74306d811841658e5c095c2/lib/Config/JSON/Types.hs"><code>Config.JSON.Types</code></a> module you might see a couple of odd things. The first that might jump out (from the link above) is the use of <a href="https://github.com/jhmcstanton/config-joiner-json/blob/69361e4bfd47fc16a74306d811841658e5c095c2/lib/Config/JSON/Types.hs#L55">empty data declarations</a>. This is creating a new data type without any constructor - there isn’t a way to actually have an instance of a <code>PreProcess</code> or a <code>PostProcess</code>. The other that may jump out out the keen observer is this <a href="https://github.com/jhmcstanton/config-joiner-json/blob/69361e4bfd47fc16a74306d811841658e5c095c2/lib/Config/JSON/Types.hs#L44"><code>EnvConfig</code></a> data type that is parameterized on some <code>a</code>, but that <code>a</code> is nowhere present in the body of the type. What’s going on exactly?</p>
+<p>This is a simple use case of a <a href="https://wiki.haskell.org/Phantom_type"><code>phantom type</code></a>. A phantom type is just a spooky term for a type parameter that appears in the type constructor, but does not concretely exist on that data type.</p>
+<h2 id="why-though">Why Though</h2>
+<p>Phantom types are used somewhat frequently in Haskell (at least blog posts would lead me to believe that) as way to tag additional information on a type to get a little extra help from the compiler. In <code>config-joiner-json</code> they are specifically used to tag <code>EnvConfigs</code> with their status - <code>Pre</code> or <code>Post</code> processing or joining. The <a href="https://github.com/jhmcstanton/config-joiner-json/blob/69361e4bfd47fc16a74306d811841658e5c095c2/lib/Config/JSON/IO.hs"><code>Config.JSON.IO</code> module</a> uses these types to indicate that the bytes returned <a href="https://github.com/jhmcstanton/config-joiner-json/blob/69361e4bfd47fc16a74306d811841658e5c095c2/lib/Config/JSON/IO.hs#L34">haven’t been processed yet</a> or <a href="https://github.com/jhmcstanton/config-joiner-json/blob/69361e4bfd47fc16a74306d811841658e5c095c2/lib/Config/JSON/IO.hs#L56">have been processed</a> and are ready for disk.</p>
+<p>In this library these serve primarily as user documentation and a little extra type safety, but a library writer that religiously hid constructors could easily enforce that data passed to library functions is only ever in very specific states.</p>
+<h2 id="elsewhere">Elsewhere</h2>
+<p>Haskell isn’t the only language with support for phantom types - many languages with generics can use this trick. Here’s a <a href="http://gabrielsw.blogspot.com/2012/09/phantom-types-in-java.html">post where the writer uses them in Java</a>, and it follows very much the same pattern as used here.</p>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </footer>
+    </body>
+</html>

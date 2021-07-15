@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>🍻 &lambda; - Phantom Types and How to Enhance Them</title>
+        <link rel="stylesheet" href="../../css/default.css" />
+        <link rel="stylesheet" href="../../css/syntax.css" />
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="../../">Brewda</a>
+            </div>
+            <nav>
+                <a href="../../">Home</a>
+                <a href="../../about.html">About</a>
+                <a href="../../contact.html">Contact</a>
+                <a href="../../posts/blog/">Blog</a>
+                <a href="../../posts/projects/">Projects</a>
+                <a href="../../posts/brews/">Brews</a>
+                <a href="../../posts/music/">Music</a>
+                <a href="../../archive.html">Archive</a>
+            </nav>
+        </header>
+
+        <main role="main">
+            <h1>Phantom Types and How to Enhance Them</h1>
+            <article>
+    <section class="header">
+        Posted on August 15, 2018
+        
+    </section>
+    
+    <section>
+        <p>In an <a href="../projects/2018-07-31-config-joiner-json.html#spooky-types">earlier post about <code>config-joiner-json</code></a> I briefly mentioned <em>phantom types</em> and the reason they are used in <code>config-joiner-json</code>. The goal in this post is to explain a little more about phantom types and small ways they can be enhanced to help create better defined programs.</p>
+<p>If you are already familiar with phantom types just jump ahead to <a href="#enhancing-phantom-types">enhancing-phantom-types</a>.</p>
+<h1 id="phantom-types">Phantom Types</h1>
+<h2 id="what-are-they-again">What are they again?</h2>
+<p>A <em>Phantom type</em> is just a type parameter that appears in the <em>type</em> constructor, but not in the <em>data</em> constructor for that type. That is to say, it appears only at the type level. This is more obvious in an examples.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">newtype</span> <span class="dt">NotSpookyType</span> a <span class="ot">=</span> <span class="dt">NotSpookyData</span> a <span class="co">-- Not a phantom type! </span></span></code></pre></div>
+<p>Here <code>NotSpooky</code> is a very normal Haskell <code>newtype</code> declaration. The type parameter <code>a</code> appears in the type constructor, <code>NotSpookyType</code>, and is in the actual data constructor as well, <code>NotSpookyData</code>. At run time the <code>a</code> is actually present in all non-bottom <code>NotSpookyTypes</code> constructed.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">newtype</span> <span class="dt">SpookyType</span> a <span class="ot">=</span> <span class="dt">SpookyType</span> <span class="dt">Int</span> <span class="co">-- Phantom Type!</span></span></code></pre></div>
+<p>Here <code>SpookyType</code> is making use of a phantom type, <code>a</code>. Notice that all constructed <code>SpookyTypes</code> will actually be wrapping an <code>Int</code>, regardless of what type is supplied as the argument to <code>SpookyType</code>. All the <code>a</code> is doing here is allowing the programmer to tag an arbitrary type on any constructed <code>SpookyTypes</code> for some additional information.</p>
+<p>In addition, newtypes that include a phantom type parameter have the added benefit of being able to support many type classes, such as <code>Functor</code></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">instance</span> <span class="dt">Functor</span> <span class="dt">SpookyType</span> <span class="kw">where</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">fmap</span> f (<span class="dt">SpookyType</span> n) <span class="ot">=</span> <span class="dt">SpookyType</span> n</span></code></pre></div>
+<p>Obviously, these instances aren’t going to actually <em>do</em> much, but it does give the programmer access to a lot of extra tools for these data types.</p>
+<h2 id="whats-the-point">What’s the point?</h2>
+<p>Phantom types can be used for many things, although the canonical and frequent use case is to encode a state on the type carrying the phantom around. This is exactly how <code>config-joiner-json</code> is making use of phantom types today, so that will be the example here.</p>
+<h2 id="starting-off">Starting Off</h2>
+<p>In our library, <code>config-joiner-json</code>, we make extensive use of JSON values - reading them, joining them, etc. Due to the nature of the library functions will frequently take two JSON values as argument to <em>process</em> them, but the two values are definitely different primitives.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">type</span> <span class="dt">JSON</span>            <span class="ot">=</span> <span class="op">...</span> </span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="co">-- | combines a common configuration with a specific configuration into a full configuration </span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="ot">combine ::</span> <span class="dt">JSON</span> <span class="ot">-&gt;</span> <span class="dt">JSON</span> <span class="ot">-&gt;</span> <span class="dt">JSON</span></span></code></pre></div>
+<p>At first glance this function doesn’t offer a whole lot of insight (admittedly the documentation is sparse), but, what’s worse, is that we can trivially make mistakes with this API by swapping the order of arguments.</p>
+<p>Since we’re careful programmers and want to differentiate between the <em>common</em> and an <em>environment</em> JSON values, we create <code>newtypes</code> of them.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">type</span> <span class="dt">JSON</span>            <span class="ot">=</span> <span class="op">...</span> </span>
+<span id="cb5-2"><a href="#cb5-2"></a></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co">-- |A config containing common values used across multiple environments</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="kw">newtype</span> <span class="dt">CommonConfig</span> <span class="ot">=</span> <span class="dt">CommonConfig</span> <span class="dt">JSON</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co">-- |A config containing some or all environment specific values</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="kw">newtype</span> <span class="dt">EnvConfig</span>    <span class="ot">=</span> <span class="dt">EnvConfig</span> <span class="dt">JSON</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="co">-- | combines a common configuration with a specific configuration into a full configuration </span></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="ot">combine ::</span> <span class="dt">CommonConfig</span> <span class="ot">-&gt;</span> <span class="dt">EnvConfig</span> <span class="ot">-&gt;</span> <span class="dt">EnvConfig</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a>combine <span class="ot">=</span> <span class="op">...</span></span></code></pre></div>
+<p>So far so good, the ordering problem is gone and now we can create a fully processed environment config in a more obvious manner. Notice, though, that we still have <code>EnvConfig</code> in a couple of places. This type describes the primitive “a configuration for a specific environment”, but not if it is ready to be used in that environment (containing all required values). A user could still make odd mistakes with this type as well.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb6-1"><a href="#cb6-1"></a><span class="ot">readCommonConfig ::</span> <span class="dt">IO</span> <span class="dt">CommonConfig</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>readCommonConfig <span class="ot">=</span> <span class="op">...</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="ot">readEnvConfig ::</span> <span class="dt">IO</span> <span class="dt">EnvConfig</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>readEnvConfig <span class="ot">=</span> <span class="op">...</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="ot">writeEnvConfig ::</span> <span class="dt">EnvConfig</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> ()</span>
+<span id="cb6-8"><a href="#cb6-8"></a>writeEnvConfig <span class="ot">=</span> <span class="op">...</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a></span>
+<span id="cb6-10"><a href="#cb6-10"></a>main <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a>  commonConfig <span class="ot">&lt;-</span> readCommonConfig</span>
+<span id="cb6-12"><a href="#cb6-12"></a>  envConfig <span class="ot">&lt;-</span> readEnvConfig</span>
+<span id="cb6-13"><a href="#cb6-13"></a>  <span class="kw">let</span> fullConfig <span class="ot">=</span> combine commonConfig envConfig</span>
+<span id="cb6-14"><a href="#cb6-14"></a>  writeEnvConfig envConfig <span class="co">-- oops! Breaks at runtime</span></span></code></pre></div>
+<p>One solution to this would just be to add another type. Types are free after all, so let’s try it.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">type</span> <span class="dt">JSON</span>                   <span class="ot">=</span> <span class="op">...</span> </span>
+<span id="cb7-2"><a href="#cb7-2"></a></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co">-- |A config containing common values used across multiple environments</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="kw">newtype</span> <span class="dt">CommonConfig</span>        <span class="ot">=</span> <span class="dt">CommonConfig</span> <span class="dt">JSON</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="co">-- |A config containing some or all environment specific values that still needs to be processed</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="kw">newtype</span> <span class="dt">PreProcessEnvConfig</span> <span class="ot">=</span> <span class="dt">PreProcessEnvConfig</span> <span class="dt">JSON</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a></span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="co">-- |A config containing all environment specific values that is ready to be used</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="kw">newtype</span> <span class="dt">ProcessedEnvConfig</span>  <span class="ot">=</span> <span class="dt">ProcessesEnvConfig</span> <span class="dt">JSON</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a></span>
+<span id="cb7-12"><a href="#cb7-12"></a><span class="co">-- | combines a common configuration with a specific configuration into a full configuration </span></span>
+<span id="cb7-13"><a href="#cb7-13"></a><span class="ot">combine ::</span> <span class="dt">CommonConfig</span> <span class="ot">-&gt;</span> <span class="dt">PreProcessEnvConfig</span> <span class="ot">-&gt;</span> <span class="dt">PostProcessEnvConfig</span></span>
+<span id="cb7-14"><a href="#cb7-14"></a>combine <span class="ot">=</span> <span class="op">...</span></span></code></pre></div>
+<p>This solution actually works fine. All arguments have separate types for their specific use cases, and the user can’t accidentally reuse an environment JSON value that hasn’t been processed when they really want the fully processed value. There are a few draw backs though. First, we now no longer can write functions that operate on all environment config types regardless of their processing status (unless we wrote a type class for that, but we would still need an instance per type). Second, as the number of states grow the number of newtypes must grow lock-step with them. Here we are encoding each state as a new <code>EnvConfig</code> type, when we really have a single <code>EnvConfig</code> primitive whose state we want to track at the type level.</p>
+<h2 id="phantom-type-approach">Phantom Type Approach</h2>
+<p>Instead of encoding our states as unique <code>newtypes</code>, we want to tag our one type with different states.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb8-1"><a href="#cb8-1"></a><span class="ot">{-# LANGUAGE EmptyDataDecls #-}</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="kw">type</span> <span class="dt">JSON</span>                   <span class="ot">=</span> <span class="op">...</span> </span>
+<span id="cb8-3"><a href="#cb8-3"></a></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="co">-- |A config containing common values used across multiple environments</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="kw">newtype</span> <span class="dt">CommonConfig</span>        <span class="ot">=</span> <span class="dt">CommonConfig</span> <span class="dt">JSON</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a></span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="co">-- |The tagged type is not yet processed</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="kw">data</span> <span class="dt">PreProcess</span>              <span class="co">-- note, this has no constructor</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a></span>
+<span id="cb8-10"><a href="#cb8-10"></a><span class="co">-- |The tagged type is processed</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a><span class="kw">data</span> <span class="dt">PostProcess</span>             <span class="co">-- note, this has no constructor</span></span>
+<span id="cb8-12"><a href="#cb8-12"></a></span>
+<span id="cb8-13"><a href="#cb8-13"></a><span class="co">-- |A config containing some or all environment specific value</span></span>
+<span id="cb8-14"><a href="#cb8-14"></a><span class="kw">newtype</span> <span class="dt">EnvConfig</span> a          <span class="ot">=</span> <span class="dt">EnvConfig</span> <span class="dt">JSON</span></span>
+<span id="cb8-15"><a href="#cb8-15"></a></span>
+<span id="cb8-16"><a href="#cb8-16"></a><span class="co">-- | combines a common configuration with a specific configuration into a full configuration </span></span>
+<span id="cb8-17"><a href="#cb8-17"></a><span class="ot">combine ::</span> <span class="dt">CommonConfig</span> <span class="ot">-&gt;</span> <span class="dt">EnvConfig</span> <span class="dt">PreProcess</span> <span class="ot">-&gt;</span> <span class="dt">EnvConfig</span> <span class="dt">PostProcess</span></span>
+<span id="cb8-18"><a href="#cb8-18"></a>combine <span class="ot">=</span> <span class="op">...</span></span></code></pre></div>
+<p>Above is the encoding use phantom types. There are a few changes here. First, we are back to just a single <code>newtype</code> for environment configurations, <code>EnvConfig</code>, that includes <code>a</code> for encoding its state. Second is the new state-tracking types, <code>PreProcess</code>, and <code>PostProcess</code>. These are making use of the <code>EmptyDataDecls</code> extension so that that do not include any data constructor at all - they only exist at the type level.</p>
+<p>This approach turns out to be rather convenient. First, we can write functions that operate on all <code>EnvConfigs</code> trivially:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb9-1"><a href="#cb9-1"></a><span class="ot">envConfigTransform ::</span> <span class="dt">EnvConfig</span> a <span class="ot">-&gt;</span> <span class="dt">EnvConfig</span> a</span>
+<span id="cb9-2"><a href="#cb9-2"></a>envConfigTransform <span class="ot">=</span> <span class="op">...</span> </span></code></pre></div>
+<p>Second, callers can’t accidentally reuse a <code>PreProcess</code> config when a <code>PostProcess</code> config is required, assuming the API is making use of these types:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb10-1"><a href="#cb10-1"></a><span class="ot">readCommonConfig ::</span> <span class="dt">IO</span> <span class="dt">CommonConfig</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>readCommonConfig <span class="ot">=</span> <span class="op">...</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="ot">readEnvConfig ::</span> <span class="dt">IO</span> <span class="dt">EnvConfig</span> <span class="dt">PreProcess</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a>readEnvConfig <span class="ot">=</span> <span class="op">...</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a></span>
+<span id="cb10-7"><a href="#cb10-7"></a><span class="ot">writeEnvConfig ::</span> <span class="dt">EnvConfig</span> <span class="dt">PostProcess</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> ()</span>
+<span id="cb10-8"><a href="#cb10-8"></a>writeEnvConfig <span class="ot">=</span> <span class="op">...</span></span>
+<span id="cb10-9"><a href="#cb10-9"></a></span>
+<span id="cb10-10"><a href="#cb10-10"></a>main <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb10-11"><a href="#cb10-11"></a>  commonConfig <span class="ot">&lt;-</span> readCommonConfig</span>
+<span id="cb10-12"><a href="#cb10-12"></a>  envConfig <span class="ot">&lt;-</span> readEnvConfig</span>
+<span id="cb10-13"><a href="#cb10-13"></a>  <span class="kw">let</span> fullConfig <span class="ot">=</span> combine commonConfig envConfig</span>
+<span id="cb10-14"><a href="#cb10-14"></a>  writeEnvConfig envConfig <span class="co">-- doesn't compile! Success!</span></span></code></pre></div>
+<p>Finally, if we add new types that must be supported we just make a new empty data declaration and all the generic functions we wrote just work! Not too bad.</p>
+<h2 id="enhancing-phantom-types">Enhancing Phantom Types</h2>
+<p>By now you should hopefully have a decent idea about what phantom types are and when you might use them. An attentive reader may notice something at odds with phantom types and the way we typically make use of <code>newtypes</code> in Haskell programs.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">newtype</span> <span class="dt">EnvConfig</span> a <span class="ot">=</span> <span class="dt">EnvConfig</span> <span class="dt">JSON</span></span></code></pre></div>
+<p>In Haskell we typically attempt to minimize the number of valid states in a program as much as possible, leveraging <code>newtypes</code> and <code>data</code> types along the way to attempt to capture the very specific states desired. Type parameters, on the other hand, are generalized extremely broadly. Typically that makes sense, there isn’t usually a use case for a <code>List</code> that only contains <code>Num</code> instances, for example.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb12-1"><a href="#cb12-1"></a><span class="co">-- hypothetical syntax, not actually supported in standard Haskell</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="kw">data</span> [] (<span class="dt">Num</span> a) <span class="ot">=&gt;</span> a <span class="ot">=</span> [] <span class="op">|</span> a <span class="op">:</span> [a] </span></code></pre></div>
+<p>However, in the use case above for phantom types we <em>are</em> attempting to have a very small number of types that can be used as an encoding. This is where <code>DataKinds</code> come in.</p>
+<h3 id="datakinds">DataKinds</h3>
+<p>For those who haven’t bumped into <code>DataKinds</code> before, it is an extension that lifts type constructors to the kind level and data constructors to the type level. Let’s break that down really quick.</p>
+<h4 id="kinds">Kinds</h4>
+<p>A <em>kind</em> is a type of a type, generally represented as a <code>*</code> in Haskell but also <code>Type</code> after GHC 8.0. So <code>Int</code> has a <em>kind</em> of <code>*</code>. Types that take other types as arguments have a different kind. For example, <code>Maybe</code> has kind <code>* -&gt; *</code></p>
+<h4 id="type-constructors">Type Constructors</h4>
+<p>A type constructor is a type that takes other types as arguments to create a concrete type. <code>Maybe</code> and <code>[]</code> are type constructors.</p>
+<h4 id="data-constructors">Data Constructors</h4>
+<p>A data constructor constructs a <em>value</em> of a <em>type</em>. <code>Just</code> is a data constructor of <code>Maybe a</code> with type <code>Just :: a -&gt; Maybe a</code></p>
+<p>The <code>DataKinds</code> extension basically lets us use Data Constructors where we are using types, and Type Constructors where we are using kinds. Like most extensions in GHC, this has many applications and I definitely encourage you to try this extension out.</p>
+<h3 id="phantom-types-with-data-kinds">Phantom Types with Data Kinds</h3>
+<p>So how does <code>DataKinds</code> figure into our state encoding? We’re going to refactor <code>EnvConfig</code> to be parameterized on a type with a more limited kind than <code>*</code>, which is the type of all types.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb13-1"><a href="#cb13-1"></a><span class="ot">{-# LANGUAGE DataKinds      #-}</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="ot">{-# LANGUAGE EmptyDataDecls #-}</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="ot">{-# LANGUAGE KindSignatures #-}</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="ot">{-# LANGUAGE GADTs          #-}</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a></span>
+<span id="cb13-6"><a href="#cb13-6"></a><span class="co">-- |Current processing state of the file. </span></span>
+<span id="cb13-7"><a href="#cb13-7"></a><span class="kw">data</span> <span class="dt">ProcessState</span><span class="ot"> ::</span> <span class="op">*</span> <span class="kw">where</span></span>
+<span id="cb13-8"><a href="#cb13-8"></a>  <span class="co">-- |Indicates that the tagged type has not been processed</span></span>
+<span id="cb13-9"><a href="#cb13-9"></a>  <span class="dt">PreProcess</span><span class="ot">  ::</span> <span class="dt">ProcessState</span></span>
+<span id="cb13-10"><a href="#cb13-10"></a>  <span class="co">-- |Indicates that the tagged type has been processed</span></span>
+<span id="cb13-11"><a href="#cb13-11"></a>  <span class="dt">PostProcess</span><span class="ot"> ::</span> <span class="dt">ProcessState</span></span>
+<span id="cb13-12"><a href="#cb13-12"></a>  </span>
+<span id="cb13-13"><a href="#cb13-13"></a><span class="kw">newtype</span> <span class="dt">EnvConfig</span> (<span class="ot">a ::</span> <span class="dt">ProcessState</span>) <span class="ot">=</span> <span class="dt">EnvConfig</span> {<span class="ot"> envValue ::</span> <span class="dt">Value</span> }</span></code></pre></div>
+<p>There are really only two changes here. First, notice that <code>PreProcess</code> and <code>PostProcess</code> have been combined into one single type, <code>ProcessState</code>. Also, these are no longer empty data declarations, we could create a <code>ProcessState</code> using the constructors <code>PreProcess</code> and <code>PostProcess</code> if we really needed to (we still don’t need that though). Second, the parameter <code>a</code> on <code>EnvConfig</code> now has this extra weird annotation on it: <code>a :: ProcessState.</code> This can be read as “a has kind <code>ProcessState</code>”. Remember that typically the kind of a type like this would be <code>*</code>, and with the above extensions turned on we can actually annotate our type parameter with that kind signature on our previous implementation:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb14-1"><a href="#cb14-1"></a><span class="co">-- old newtype with kind signature</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="kw">newtype</span> <span class="dt">EnvConfig</span> (<span class="ot">a ::</span> <span class="op">*</span>) <span class="ot">=</span> <span class="dt">EnvConfig</span> {<span class="ot"> envValue ::</span> <span class="dt">Value</span> }</span></code></pre></div>
+<p>With the type parameter <code>a</code> limited to the kind <code>ProcessState</code>, there are only two possible types that can be provided as type arguments: <code>PreProcess</code> and <code>PostProcess</code>, the data constructors for the type <code>ProcessState</code>. The gain here is that whenever we write a general function the generality of the type arguments is limited to exactly one of these two states here. Additionally, we only have to change a little syntax on our <code>combine</code> function.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb15-1"><a href="#cb15-1"></a><span class="ot">combine ::</span> <span class="dt">CommonConfig</span> <span class="ot">-&gt;</span> <span class="dt">EnvConfig</span> <span class="dt">'PreProcess</span> <span class="ot">-&gt;</span> <span class="dt">EnvConfig</span> <span class="dt">'PostProcess</span></span></code></pre></div>
+<p>the ticks here are just to differentiate that these data constructors are in fact being used as types. We also know in any general function that we write for arbitrary <code>EnvConfigs</code></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb16-1"><a href="#cb16-1"></a><span class="ot">envConfigTransform ::</span> <span class="dt">EnvConfig</span> a <span class="ot">-&gt;</span> <span class="dt">EnvConfig</span> a</span>
+<span id="cb16-2"><a href="#cb16-2"></a>envConfigTransform <span class="ot">=</span> <span class="op">...</span> </span></code></pre></div>
+<p>that the <code>EnvConfig</code> has a very precise state for a as well.</p>
+<p>Finally, extending supported states is still just as simple as adding new empty data declarations, we just need to include them as data declarations on the type <code>ProcessState.</code></p>
+<h3 id="should-i-use-this">Should I use this?</h3>
+<p>In general, the <code>DataKind</code> approach is not needed, and in many cases overly restrictive. We could emulate the <code>DataKinds</code> version of our code here by not exporting the data constructors of <code>EnvConfig</code> and only exporting smart constructors and functions that include the types we want to support in our public / consumer API. The smart constructor approach also allows us as library writers to use any type as needed for <code>a</code>, which could be useful in some cases.</p>
+<p>The smart constructor approach works well, and is used by many libraries today. In this case I like the <code>DataKinds</code> approach since it allows us to worry less about what is hidden and exported from the library. In this library <code>DataKinds</code> aren’t tying our hands enough to cause problems, instead giving us enough rope to implement the library, and use it, without worrying about weird states that our <code>EnvConfigs</code> could be in.</p>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </footer>
+    </body>
+</html>
