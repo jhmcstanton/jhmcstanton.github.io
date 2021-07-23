@@ -1,5 +1,5 @@
 ---
-title: "Luke Warm Take #8: Professional Education"
+title: "Lukewarm Take #8: Professional Education"
 ---
 
 This is becoming more and more common amongst other software engineers but I
