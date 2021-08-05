@@ -49,7 +49,7 @@ my goals on this page.
 | Fermentations | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | | | | |
 | Open Source Pull Requests | [&#10003;](https://github.com/jhmcstanton/stacker) | [&#10003;](https://github.com/jhmcstanton/stacker) | [&#10003;](https://github.com/jaspervdj/hakyll/pull/862) | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; | 
 | Engineering Reading List | &#10060; | &#10060; |          | | | | | | | |
-| Thoughtful Reading List | [&#10003;](https://www.haymarketbooks.org/books/483-democracy-at-work) | [&#10003;](https://en.wikipedia.org/wiki/The_Society_of_the_Spectacle) | [&#10003;](https://en.wikipedia.org/wiki/The_Dispossessed) | [&#10003;](https://www.haymarketbooks.org/books/1664-we-do-this-til-we-free-us) | [&#10003;](https://janemcalevey.com/no-shortcuts/) | &#10060; | &#10060; | &#10060; | &#10060; | &#10060; |
+| Thoughtful Reading List | [&#10003;](https://www.haymarketbooks.org/books/483-democracy-at-work) | [&#10003;](https://en.wikipedia.org/wiki/The_Society_of_the_Spectacle) | [&#10003;](https://en.wikipedia.org/wiki/The_Dispossessed) | [&#10003;](https://www.haymarketbooks.org/books/1664-we-do-this-til-we-free-us) | [&#10003;](https://janemcalevey.com/no-shortcuts/) | [&#10003;](https://www.haymarketbooks.org/books/780-freedom-is-a-constant-struggle) | &#10060; | &#10060; | &#10060; | &#10060; |
 
 ## Extras
 
