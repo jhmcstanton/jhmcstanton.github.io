@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>🍻 &lambda; - Literate Markdown with Diagrams</title>
+        <link rel="stylesheet" href="../../css/default.css" />
+        <link rel="stylesheet" href="../../css/syntax.css" />
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="../../">Brewda</a>
+            </div>
+            <nav>
+                <a href="../../">Home</a>
+                <a href="../../about.html">About</a>
+                <a href="../../contact.html">Contact</a>
+                <a href="../../posts/blog/">Blog</a>
+                <a href="../../posts/projects/">Projects</a>
+                <a href="../../posts/brews/">Brews</a>
+                <a href="../../posts/music/">Music</a>
+                <a href="../../archive.html">Archive</a>
+            </nav>
+        </header>
+
+        <main role="main">
+            <h1>Literate Markdown with Diagrams</h1>
+            <article>
+    <section class="header">
+        Posted on September 14, 2019
+        
+    </section>
+    
+    <section>
+        <p>Recently I have been thinking about working on a blog post about designing programs using iterations of finite state machines as the specification. Naturally this should include diagrams of said machines. After searching around, one of the nicer programs for building these was <a href="http://madebyevan.com/fsm/">this simple SPA</a>, but it doesn’t support multiple cyclic transitions to the same node (although, I definitely recommend it!).</p>
+<p>This seemed like a good use case for <a href="http://hackage.haskell.org/package/diagrams"><code>diagrams</code></a>. Instead of building a diagrams definitions per blog post and manually ensuring the generated images are included with my site build, I figured why not just include <a href="https://wiki.haskell.org/Literate_programming">literate Haskell</a> in the raw post markdown to describe the diagrams needed in the post itself, then run the post as a Haskell program when my Hakyll site generater runs. This keeps the diagram up-to-date with the post, in source control, and automically includes the images in the website. Seemed easy enough.</p>
+<p>So that’s what this post is - a first literate post using some new tooling in my Hakyll site generator. The literate post leverages new library code written for this purpose that should be relatively easy to apply to other Hakyll sites.</p>
+<h2>
+Creating a Literate Post Module
+</h2>
+<p>The first thing is to create a library module of common functionality that literate posts may use. Note, in general this module isn’t meant for <em>readers</em> of the post, and is merely a handy module for the writer of the post. Contents of the post are likely to be runnable by the reader, and are possibly illustrative for them, but the entire program is for site generation.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">module</span> <span class="dt">Site.Posts.Literate</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>  (</span>
+<span id="cb1-3"><a href="#cb1-3"></a>    <span class="kw">module</span> <span class="dt">Diagrams.Prelude</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>  , <span class="kw">module</span> <span class="dt">Diagrams.Backend.SVG</span> <span class="co">-- your favorite backend here</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>  )</span>
+<span id="cb1-6"><a href="#cb1-6"></a>  <span class="kw">where</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="kw">import</span>           <span class="dt">Diagrams.Prelude</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="kw">import</span>           <span class="dt">Diagrams.Backend.SVG</span></span></code></pre></div>
+<p>First things first - reexport <code>diagrams</code> from our literate module. This includes all the common <code>diagrams</code> functionality plus the ability to render the descriptions into SVGs.</p>
+<p>Make sure to include <code>diagrams</code> in your <package>.cabal:</p>
+<pre><code>  build-depends:     base          == 4.*
+  ----------------------------------------------
+                   , diagrams
+                   , diagrams-lib
+                   , diagrams-contrib
+                   , diagrams-core
+                   , diagrams-svg
+  ----------------------------------------------
+                   , directory</code></pre>
+<p><code>diagrams</code> reexports all the packages found underneath it but for whatever reason stack wasn’t picking those up… Not a big deal, just a heads up.</p>
+<p>Additionally, we may want to be able to write other resources besides just diagrams. Let’s create some helpers for that.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">-- |Analagous to a 'System.IO.IOMode', but only</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="co">-- supports write and append modes.</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="kw">data</span> <span class="dt">ResourceMode</span> <span class="ot">=</span> <span class="dt">RWriteMode</span> <span class="op">|</span> <span class="dt">RAppendMode</span></span></code></pre></div>
+<p>As noted in the comment, this is a simplified <a href="http://hackage.haskell.org/package/base-4.12.0.0/docs/System-IO.html#t:IOMode"><code>IOMode</code></a> data type. Currently I don’t plan on reading any external resources from literate posts, so these helpers just remove that possibility. If you have that requirement, just reuse <code>IOMode.</code></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb4-1"><a href="#cb4-1"></a><span class="ot">resourceToIOMode ::</span> <span class="dt">ResourceMode</span> <span class="ot">-&gt;</span> <span class="dt">IOMode</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>resourceToIOMode <span class="dt">RWriteMode</span>  <span class="ot">=</span> <span class="dt">WriteMode</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>resourceToIOMode <span class="dt">RAppendMode</span> <span class="ot">=</span> <span class="dt">AppendMode</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="ot">overwriteWithFile ::</span> <span class="dt">FilePath</span> <span class="ot">-&gt;</span> (<span class="dt">Handle</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> r) <span class="ot">-&gt;</span> <span class="dt">IO</span> r</span>
+<span id="cb4-6"><a href="#cb4-6"></a>overwriteWithFile f <span class="ot">=</span> withFile f <span class="dt">RWriteMode</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="co">-- |Performs the provided operation on the file. If the parent</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="co">-- directories are missing they will be created as well.</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="ot">withFile ::</span> <span class="dt">FilePath</span> <span class="ot">-&gt;</span> <span class="dt">ResourceMode</span> <span class="ot">-&gt;</span> (<span class="dt">Handle</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> r) <span class="ot">-&gt;</span> <span class="dt">IO</span> r</span>
+<span id="cb4-11"><a href="#cb4-11"></a>withFile p r op <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a>  createDirectoryIfMissing <span class="dt">True</span> (parentDir p)</span>
+<span id="cb4-13"><a href="#cb4-13"></a>  <span class="kw">let</span> mode <span class="ot">=</span> resourceToIOMode r</span>
+<span id="cb4-14"><a href="#cb4-14"></a>  S.withFile p mode op</span>
+<span id="cb4-15"><a href="#cb4-15"></a></span>
+<span id="cb4-16"><a href="#cb4-16"></a><span class="ot">parentDir ::</span> <span class="dt">FilePath</span> <span class="ot">-&gt;</span> <span class="dt">FilePath</span></span>
+<span id="cb4-17"><a href="#cb4-17"></a>parentDir <span class="ot">=</span> <span class="fu">reverse</span> <span class="op">.</span> <span class="fu">dropWhile</span> (<span class="op">/=</span> <span class="ch">'/'</span>) <span class="op">.</span> <span class="fu">reverse</span></span></code></pre></div>
+<p>Don’t forget to export the helpers:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">module</span> <span class="dt">Site.Posts.Literate</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>  (</span>
+<span id="cb5-3"><a href="#cb5-3"></a>    <span class="kw">module</span> <span class="dt">Diagrams.Prelude</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>  , <span class="kw">module</span> <span class="dt">Diagrams.Backend.SVG</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>  , <span class="dt">ResourceMode</span>(<span class="op">..</span>)</span>
+<span id="cb5-6"><a href="#cb5-6"></a>  , overwriteWithFile</span>
+<span id="cb5-7"><a href="#cb5-7"></a>  , withFile</span>
+<span id="cb5-8"><a href="#cb5-8"></a>  )</span>
+<span id="cb5-9"><a href="#cb5-9"></a>  <span class="kw">where</span></span></code></pre></div>
+<p>And that’s about it for this first iteration of the Literate module. In the future this will be the literate prelude for other posts, so the module will be picking up more helpers.</p>
+<h2>
+Running the Posts
+</h2>
+<p>Next we need to be able to run the posts from the <code>Hakyll</code> site.</p>
+<p>We’ll start with a module that just runs <code>Haskell</code> code.</p>
+<h3>
+Literate.Compile
+</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">module</span> <span class="dt">Site.Posts.Literate.Compile</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>  (</span>
+<span id="cb6-3"><a href="#cb6-3"></a>    runghcPost</span>
+<span id="cb6-4"><a href="#cb6-4"></a>  )</span>
+<span id="cb6-5"><a href="#cb6-5"></a>  <span class="kw">where</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="kw">import</span> <span class="dt">System.Process.Typed</span></span></code></pre></div>
+<p>This calls for the <code>typed-process</code> package, so make sure to add that to the <package>.cabal.</p>
+<pre><code>  build-depends:     base          == 4.*
+                   , diagrams
+                   , diagrams-lib
+                   , diagrams-contrib
+                   , diagrams-core
+                   , diagrams-svg
+                   , directory
+  ----------------------------------------
+                   , typed-process</code></pre>
+<p>Now let’s implement the one needed method:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">-- |Runs a literate haskell post</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="co">-- using locally installed packages.</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="ot">runghcPost ::</span> <span class="dt">FilePath</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> ()</span>
+<span id="cb8-4"><a href="#cb8-4"></a>runghcPost f <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a>  <span class="kw">let</span> pconf <span class="ot">=</span> shell (<span class="st">&quot;stack runghc -- &quot;</span> <span class="op">++</span> f)</span>
+<span id="cb8-6"><a href="#cb8-6"></a>  withProcess pconf checkExitCode</span></code></pre></div>
+<p>This simply runs the post as a Haskell script using our local stack environment for installed packages.</p>
+<h3>
+site.hs
+</h3>
+<p>Finally, the site generater needs to be literate post aware.</p>
+<p>Include the compilation package in the generator:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">import</span>           <span class="dt">Site.Posts.Brews.Context</span> <span class="co">-- some other generator libs</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="kw">import</span>           <span class="dt">Site.Posts.Literate.Compile</span></span></code></pre></div>
+<p>And add some rules for it. Previously my hakyll site only generated html for <code>.markdown</code> files. These new posts will use the same compilation rules as the previous <code>.markdown</code> ones, with an extra pre-process compilation step to compile and run them.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb10-1"><a href="#cb10-1"></a><span class="co">-- inside hakyll main</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>    match <span class="st">&quot;posts/**/*.markdown&quot;</span> (blogPostRules (<span class="fu">pure</span> ()))</span>
+<span id="cb10-3"><a href="#cb10-3"></a></span>
+<span id="cb10-4"><a href="#cb10-4"></a>    match <span class="st">&quot;posts/**/*.lhs&quot;</span> (blogPostRules (</span>
+<span id="cb10-5"><a href="#cb10-5"></a>      getResourceFilePath</span>
+<span id="cb10-6"><a href="#cb10-6"></a>      <span class="op">&gt;&gt;=</span> unsafeCompiler <span class="op">.</span> runghcPost))</span></code></pre></div>
+<p>here the existing rules have been factored out into a helper function <code>blogPostRules :: Compiler () -&gt; Rules ()</code> that accepts a preprocess argument. Here’s what that function looks like.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb11-1"><a href="#cb11-1"></a><span class="ot">blogPostRules ::</span> <span class="dt">Compiler</span> () <span class="ot">-&gt;</span> <span class="dt">Rules</span> ()</span>
+<span id="cb11-2"><a href="#cb11-2"></a>blogPostRules preProcess <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>  route (setExtension <span class="st">&quot;html&quot;</span>)</span>
+<span id="cb11-4"><a href="#cb11-4"></a>  compile (</span>
+<span id="cb11-5"><a href="#cb11-5"></a>      preProcess</span>
+<span id="cb11-6"><a href="#cb11-6"></a>      <span class="op">&gt;&gt;</span> <span class="co">{- Previous blog post steps -}</span></span></code></pre></div>
+<p>And that’s it! Now we just need to write a literate haskell markdown post to test it out, which is conveniently the post you’re reading right now.</p>
+<h2>
+Trying it Out
+</h2>
+<p>So far all the code in the post has just been for static site generation. Now let’s write some code that’ll actually be run and generate a user-visible resource.</p>
+<p>Since the tooling made written above is primarily for resource generation and not for illustrative purposes, I plan on hiding much of the resource generation code behind <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details"><code>&lt;details&gt;</code> tags</a>. This allows the code to not distract from the post, but readers still have access to it if they are curious. Alternatively you could use multiline comments if you just want the code completely hidden.</p>
+<details>
+<p><summary>Collapsed Literate Code to Generate a Diagram</summary> This is all the code to generate a small Hello World! diagram</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode literatehaskell literate"><code class="sourceCode literatehaskell"><span id="cb12-1"><a href="#cb12-1"></a><span class="ot">&gt;</span> <span class="ot">{-# LANGUAGE NoMonomorphismRestriction #-}</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="ot">&gt;</span> <span class="ot">{-# LANGUAGE FlexibleContexts  #-}</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="ot">&gt;</span> <span class="ot">{-# LANGUAGE TypeFamilies      #-}</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="ot">&gt;</span> </span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="ot">&gt;</span> <span class="kw">import</span> <span class="dt">Site.Posts.Literate</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a><span class="ot">&gt;</span> <span class="kw">import</span> <span class="dt">Data.List</span> (foldr1)</span>
+<span id="cb12-7"><a href="#cb12-7"></a><span class="ot">&gt;</span> </span>
+<span id="cb12-8"><a href="#cb12-8"></a><span class="ot">&gt; hello ::</span> <span class="dt">Diagram</span> <span class="dt">B</span></span>
+<span id="cb12-9"><a href="#cb12-9"></a><span class="ot">&gt;</span> hello <span class="ot">=</span> <span class="fu">foldr1</span> (<span class="op">|||</span>) (<span class="fu">zipWith</span> boxIt <span class="st">&quot;Hello World!&quot;</span> shapes) <span class="kw">where</span></span>
+<span id="cb12-10"><a href="#cb12-10"></a><span class="ot">&gt;</span>   shapes <span class="ot">=</span> <span class="fu">cycle</span> [ unitCircle <span class="op">#</span> fc red</span>
+<span id="cb12-11"><a href="#cb12-11"></a><span class="ot">&gt;</span>                  , triangle <span class="dv">2</span> <span class="op">#</span> fc green</span>
+<span id="cb12-12"><a href="#cb12-12"></a><span class="ot">&gt;</span>                  , square <span class="dv">2</span> <span class="op">#</span> fc blue</span>
+<span id="cb12-13"><a href="#cb12-13"></a><span class="ot">&gt;</span>                  , pentagon <span class="fl">1.5</span> <span class="op">#</span> fc yellow</span>
+<span id="cb12-14"><a href="#cb12-14"></a><span class="ot">&gt;</span>                  ]</span>
+<span id="cb12-15"><a href="#cb12-15"></a><span class="ot">&gt;</span>   boxIt c shape <span class="ot">=</span> text [c] <span class="op">&lt;&gt;</span> shape <span class="op">#</span> lw thin</span>
+<span id="cb12-16"><a href="#cb12-16"></a><span class="ot">&gt;</span> </span>
+<span id="cb12-17"><a href="#cb12-17"></a><span class="ot">&gt;</span> <span class="co">-- This path is picked up by my site's image rules</span></span>
+<span id="cb12-18"><a href="#cb12-18"></a><span class="ot">&gt;</span> outputPath <span class="ot">=</span> <span class="st">&quot;images/posts/2019-09-14-hello-world.svg&quot;</span></span>
+<span id="cb12-19"><a href="#cb12-19"></a><span class="ot">&gt;</span> </span>
+<span id="cb12-20"><a href="#cb12-20"></a><span class="ot">&gt;</span> main <span class="ot">=</span> renderSVG outputPath (mkWidth <span class="dv">500</span>) hello</span></code></pre></div>
+</details>
+<p>And here is the result:</p>
+<figure>
+<img src="../../images/posts/2019-09-14-hello-world.svg" alt /><figcaption>Diagrams Hello World</figcaption>
+</figure>
+<p>There you go, all the machinery needed to run blog posts as code and include the output in your static site.</p>
+<h2>
+A Couple of Gotchas
+</h2>
+<p>I’ve bumped into a couple of small gotchas with literate haskell in markdown. First, for whatever reason it does not like the github flavored header synatx (##). Using this caused compilation errors with <code>runghc</code>.</p>
+<p>Additionally, using Haskell’s application operator <code>(&lt;dollar&gt;)</code> in example code fences caused html generation to fail. Haven’t figured out what the root cause of that is yet, but that just means that some extra parentheses need to be thrown in.</p>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>🍻 &lambda; - Extract to All-Grain Converter</title>
+        <link rel="stylesheet" href="../../css/default.css" />
+        <link rel="stylesheet" href="../../css/syntax.css" />
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="../../">Brewda</a>
+            </div>
+            <nav>
+                <a href="../../">Home</a>
+                <a href="../../about.html">About</a>
+                <a href="../../contact.html">Contact</a>
+                <a href="../../posts/blog/">Blog</a>
+                <a href="../../posts/projects/">Projects</a>
+                <a href="../../posts/brews/">Brews</a>
+                <a href="../../posts/music/">Music</a>
+                <a href="../../archive.html">Archive</a>
+            </nav>
+        </header>
+
+        <main role="main">
+            <h1>Extract to All-Grain Converter</h1>
+            <article>
+    <section class="header">
+        Posted on May 10, 2019
+        
+    </section>
+    
+    <section>
+        <!-- Style borrowed from StackOverflow https://stackoverflow.com/questions/3790935/can-i-hide-the-html5-number-input-s-spin-box -->
+<style>
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+</style>
+<p>Helper scripts, mostly for myself, to convert extract recipes to all grain recipes. Refer to <a href="https://byo.com/article/extract-to-all-grain-and-back/">this <em>Brew Your Own</em> article</a> for the formula sources.</p>
+<p>Take this with a <em>big</em> dose of salt. This was <em>incredibly</em> briefly tested.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td><strong>Extract</strong></td>
+<td><strong>Weight</strong></td>
+<td><strong>Estimated Specific Gravity Contribution</strong></td>
+</tr>
+<tr class="even">
+<td>Dry Malt Extract</td>
+<td><input type="number" min="0" name="dme-weight" value placeholder="0" max="100"></td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>Liquid Malt Extract</td>
+<td><input type="number" min="0" name="lme-weight" value placeholder="0"></td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Batch Size</td>
+<td><input id="batchSize" type="number" name="batchSize" value="1" min="0" placeholder="1">(gal)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Efficiency</td>
+<td><input id="efficiency" type="number" name="efficiency" value="70" min="0">(%)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="dry-malt-extract-to-grain">Dry Malt Extract to Grain</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Grain Type</th>
+<th>Percent of Extract</th>
+<th>Amount of Grain</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><input type="text" placeholder="base"></td>
+<td><input type="number" min="0" max="100" placeholder="70"></td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td><input type="text" placeholder="base"></td>
+<td><input type="number" min="0" max="100" placeholder="70"></td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td><input type="text" placeholder="base"></td>
+<td><input type="number" min="0" max="100" placeholder="70"></td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td><input type="text" placeholder="base"></td>
+<td><input type="number" min="0" max="100" placeholder="70"></td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td><input type="text" placeholder="base"></td>
+<td><input type="number" min="0" max="100" placeholder="70"></td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="liquid-malt-extract-to-grain">Liquid Malt Extract to Grain</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Grain Type</th>
+<th>Percent of Extract</th>
+<th>Amount of Grain</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><input type="text" placeholder="base"></td>
+<td><input type="number" min="0" max="100" placeholder="70"></td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td><input type="text" placeholder="base"></td>
+<td><input type="number" min="0" max="100" placeholder="70"></td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td><input type="text" placeholder="base"></td>
+<td><input type="number" min="0" max="100" placeholder="70"></td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td><input type="text" placeholder="base"></td>
+<td><input type="number" min="0" max="100" placeholder="70"></td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td><input type="text" placeholder="base"></td>
+<td><input type="number" min="0" max="100" placeholder="70"></td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<script src="../../scripts/2019-05-10-recipe-converter.js"></script>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </footer>
+    </body>
+</html>

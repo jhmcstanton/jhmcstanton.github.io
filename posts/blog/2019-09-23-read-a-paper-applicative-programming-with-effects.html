@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>🍻 &lambda; - Read a Paper: Applicative Programming with Effects</title>
+        <link rel="stylesheet" href="../../css/default.css" />
+        <link rel="stylesheet" href="../../css/syntax.css" />
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="../../">Brewda</a>
+            </div>
+            <nav>
+                <a href="../../">Home</a>
+                <a href="../../about.html">About</a>
+                <a href="../../contact.html">Contact</a>
+                <a href="../../posts/blog/">Blog</a>
+                <a href="../../posts/projects/">Projects</a>
+                <a href="../../posts/brews/">Brews</a>
+                <a href="../../posts/music/">Music</a>
+                <a href="../../archive.html">Archive</a>
+            </nav>
+        </header>
+
+        <main role="main">
+            <h1>Read a Paper: Applicative Programming with Effects</h1>
+            <article>
+    <section class="header">
+        Posted on September 23, 2019
+        
+    </section>
+    
+    <section>
+        <p>Maybe it’s just because I learned about Monads before Applicative Functors, but I periodically like to refresh on applicative functor motivation. When working with datatypes that have implement the Monad interface its pretty easy to just drop into <code>do</code> notation, with the occasional <code>fmap</code>, totally skipping over Applicative. This is unfortunate because the Applicative interface will often offer a much cleaner solution to the same problem solved with <code>bind.</code></p>
+<p>Applicative functors were first formally introduced to the functional programming community in 2008 in the functional pearl <a href="http://www.staff.city.ac.uk/~ross/papers/Applicative.html"><em>Applicative Programming with Effects</em></a> by Conor McBride and Ross Paterson. This brief paper serves to highlight a common pattern spotted in the FP community, namely <em>idiomatic</em> application of pure functions to values in effectful contexts. <em>Idiomatic</em> here means that the context provides the ad-hoc definition of what function application entails.</p>
+<p>The goal with this post is not to rewrite or reword this classic paper, but more to play around with the applicative definition described in the paper.</p>
+<h2 id="idiomatic-application">Idiomatic Application</h2>
+<p>Consider adding two random integers using the Monad interface.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">import</span> <span class="dt">System.Random</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="ot">randomAdd ::</span> <span class="dt">IO</span> <span class="dt">Integer</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>randomAdd <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>  x <span class="ot">&lt;-</span> randomIO</span>
+<span id="cb1-6"><a href="#cb1-6"></a>  y <span class="ot">&lt;-</span> randomIO</span>
+<span id="cb1-7"><a href="#cb1-7"></a>  <span class="fu">pure</span> (x <span class="op">+</span> y)</span></code></pre></div>
+<p>Pretty typical monadic code. Now recall the <a href="https://wiki.haskell.org/Typeclassopedia#Applicative">the applicative interface.</a></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">class</span> <span class="dt">Functor</span> f <span class="ot">=&gt;</span> <span class="dt">Applicative</span> f <span class="kw">where</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="ot">  pure  ::</span>                 a <span class="ot">-&gt;</span> f a</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="ot">  (&lt;*&gt;) ::</span> f (a <span class="ot">-&gt;</span> b) <span class="ot">-&gt;</span> f a <span class="ot">-&gt;</span> f b </span></code></pre></div>
+<p>App, <code>(&lt;*&gt;)</code>, is very similar in shape to <code>fmap</code>, but allows for combining effects with pure computations. <code>randomAdd</code> can be rewritten more concisely using the applicative interface:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1"></a><span class="ot">randomAdd ::</span> <span class="dt">IO</span> <span class="dt">Integer</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>randomAdd <span class="ot">=</span> <span class="fu">pure</span> (<span class="op">+</span>) <span class="op">&lt;*&gt;</span> randomIO <span class="op">&lt;*&gt;</span> randomIO</span></code></pre></div>
+<p>Conor and Ross point out that application like <code>randomAdd</code> have a similar shape to pure function application and introduced <em>idiom brackets</em> to mirror it even more so.</p>
+<h2 id="idiom-brackets">Idiom Brackets</h2>
+<p>Using the authors’ notation, <code>randomAdd</code> becomes</p>
+<pre><code>randomAdd = [[ (+) randomIO randomIO ]]</code></pre>
+<p>Unfortunately for us, GHC doesn’t support this syntactic sugar out of the box. There are various approaches to add this syntax to GHC, from some <a href="https://wiki.haskell.org/Idiom_brackets">type class hacking found in the haskell wiki</a>, to a <a href="https://personal.cis.strath.ac.uk/conor.mcbride/pub/she/">Haskell preprocessor written by Conor</a>, athough this supports much more than just idiom brackets. The approach I took was to learn a <em>tiny</em> bit of template haskell to make dollar menu style idiom brackets.</p>
+<h3 id="th-to-the-rescue">TH to the Rescue</h3>
+<p>A quasiquoter to support budget idiom brackets is surprisingly simple, although it took me an embarassingly long time to write. I’m not going to dig too deeply into the details since I’m not a template haskell expert <em>at all</em>, but the code <a href="https://github.com/jhmcstanton/haskell-sandbox/blob/master/src/TH/App.hs">can be found here</a>. This code isn’t available in a library, but to play with it just include the module in your project, import it, and enable the extension <code>QuasiQuotes</code>.</p>
+<p>Note that these are super-low budget quasiquotes, but they get the job done pretty frequently. The quoter assumes that each word or token provided to the quoter is a name in the local scope - arbitrary expressions are definitely not supported. <code>randomAdd</code> can be rewritten like this:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb5-1"><a href="#cb5-1"></a>randomAdd <span class="ot">=</span> [a| + randomIO randomIO |]</span></code></pre></div>
+<p>This quoter doesn’t support operators in a terribly Haskell-like way, but I tend to agree with Ross and Conor that idriom brackets are more convenient than repeated applications of <code>(&lt;*&gt;)</code>. Beyond convenience this syntax also allows the programmer to convey more of what they want and less how to get there, clarifying intent in code.</p>
+<h2 id="limitations-of-applicative">Limitations of Applicative</h2>
+<p>Consider the following Monadic code</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb6-1"><a href="#cb6-1"></a><span class="ot">leftOrRight ::</span> <span class="dt">Maybe</span> <span class="dt">Bool</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> a <span class="ot">-&gt;</span> <span class="dt">Maybe</span> a <span class="ot">-&gt;</span> <span class="dt">Maybe</span> a</span>
+<span id="cb6-2"><a href="#cb6-2"></a>leftOrRight bool l r <span class="ot">=</span> bool <span class="op">&gt;&gt;=</span> \b <span class="ot">-&gt;</span> <span class="kw">if</span> b <span class="kw">then</span> l <span class="kw">else</span> r</span></code></pre></div>
+<p>This code either runs the <code>l</code> computation or the <code>r</code> computation based on the <code>bool</code> computation.</p>
+<pre><code>λ&gt; leftOrRight Nothing (Just 10) (Just 100)
+Nothing -- entire computation fails due to failed boolean computation
+λ&gt; leftOrRight (Just True) (Just 10) (Just 100)
+Just 10
+λ&gt; leftOrRight (Just True) Nothing (Just 100)
+Nothing -- Failed computation returned
+λ&gt; leftOrRight (Just False) (Just 10) (Just 100)
+Just 100
+λ&gt; leftOrRight (Just False) Nothing (Just 100)
+Just 100
+</code></pre>
+<p>Here’s a similar function using the applicative interface:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb8-1"><a href="#cb8-1"></a><span class="ot">leftOrRightA ::</span> <span class="dt">Maybe</span> <span class="dt">Bool</span> <span class="ot">-&gt;</span> <span class="dt">Maybe</span> a <span class="ot">-&gt;</span> <span class="dt">Maybe</span> a <span class="ot">-&gt;</span> <span class="dt">Maybe</span> a</span>
+<span id="cb8-2"><a href="#cb8-2"></a>leftOrRightA bool l r <span class="ot">=</span> [a| lOrR bool l r ] where</span>
+<span id="cb8-3"><a href="#cb8-3"></a>  lOrR True  l _ = l</span>
+<span id="cb8-4"><a href="#cb8-4"></a>  lOrR False _ r = r</span>
+<span id="cb8-5"><a href="#cb8-5"></a></span>
+<span id="cb8-6"><a href="#cb8-6"></a></span>
+<span id="cb8-7"><a href="#cb8-7"></a>λ&gt; leftOrRightA Nothing (Just 100) (Just 200)</span>
+<span id="cb8-8"><a href="#cb8-8"></a>Nothing</span>
+<span id="cb8-9"><a href="#cb8-9"></a>λ&gt; leftOrRightA (Just True) (Just 100) (Just 200)</span>
+<span id="cb8-10"><a href="#cb8-10"></a>Just 100</span>
+<span id="cb8-11"><a href="#cb8-11"></a>λ&gt; leftOrRightA (Just True) Nothing (Just 200)</span>
+<span id="cb8-12"><a href="#cb8-12"></a>Nothing -- failed due to matching branch failing</span>
+<span id="cb8-13"><a href="#cb8-13"></a>λ&gt; leftOrRightA (Just False) Nothing (Just 200)</span>
+<span id="cb8-14"><a href="#cb8-14"></a>Nothing -- failed due to opposite branch failing</span></code></pre></div>
+<p>The applicative version always runs every computation, capturing all effects in the process. The result of the applicative action can depend on earlier values but the effects can not. This is in contrast with Monad which allows the effects of the computation to depend on earlier effects as well.</p>
+<p>There are upsides to this limitation though. The paper includes a definition of a purely applicative <code>Either</code> type</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">data</span> <span class="dt">Except</span> err a <span class="ot">=</span> <span class="dt">OK</span> a <span class="op">|</span> <span class="dt">Failed</span> err</span>
+<span id="cb9-2"><a href="#cb9-2"></a></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="kw">instance</span> <span class="dt">Monoid</span> err <span class="ot">=&gt;</span> <span class="dt">Applicative</span> (<span class="dt">Except</span> err) <span class="kw">where</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a>  <span class="fu">pure</span>                       <span class="ot">=</span> <span class="dt">OK</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a>  <span class="dt">OK</span> f <span class="op">&lt;*&gt;</span> <span class="dt">OK</span> x              <span class="ot">=</span> <span class="dt">OK</span> (f x)</span>
+<span id="cb9-6"><a href="#cb9-6"></a>  <span class="dt">OK</span> f <span class="op">&lt;*&gt;</span> <span class="dt">Failed</span> err        <span class="ot">=</span> <span class="dt">Failed</span> err</span>
+<span id="cb9-7"><a href="#cb9-7"></a>  <span class="dt">Failed</span> err <span class="op">&lt;*&gt;</span> <span class="dt">Ok</span> x        <span class="ot">=</span> <span class="dt">Failed</span> err</span>
+<span id="cb9-8"><a href="#cb9-8"></a>  <span class="co">-- The interesting bit</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a>  <span class="dt">Failed</span> err <span class="op">&lt;*&gt;</span> <span class="dt">Failed</span> err2 <span class="ot">=</span> <span class="dt">Failed</span> (err <span class="op">&lt;&gt;</span> err2)</span></code></pre></div>
+<p>In contrast with the monadic version of <code>Either</code>, this take on <code>Either</code> supports collecting every error produced by various subcomputations into a single exception. The monadic version can’t support this since the bind operation would be missing a value to pass - it must abort on the first failed computation.</p>
+<h1 id="conclusions">Conclusions</h1>
+<p><em>Applicative Programming with Effects</em> covers a lot of ground in a few pages that many haskell programmers should become familiar with. This post didn’t cover the full details, some of which aren’t as relevant today, and some of which I simply don’t have enough of a background to grasp. The authors specically compare and contrast applicative with arrows, which are a bit more general than applicative. Today arrows are used much less often, but occasionally there is a novel application for them. The authors also dug into explaining applicative with category theory which I don’t have any background in at all, but may benefit readers from a different academic background.</p>
+<p>For the every day haskell programmer applicative is just another nice tool for the tool box. Consider pulling it out when you notice that your monadic code is performing several completely independent effectful computations and you may get some added clarity and conciseness. GHC 8 also supports <a href="https://gitlab.haskell.org/ghc/ghc/wikis/applicative-do">applicative do notation</a> these days, which may be of interest to some readers. I haven’t enabled the extension myself, but for its original use case (supporting an applicative eDSL) it seems like a decent approach.</p>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </footer>
+    </body>
+</html>

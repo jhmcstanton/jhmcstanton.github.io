@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>🍻 &lambda; - Construct not Create</title>
+        <link rel="stylesheet" href="../../css/default.css" />
+        <link rel="stylesheet" href="../../css/syntax.css" />
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="../../">Brewda</a>
+            </div>
+            <nav>
+                <a href="../../">Home</a>
+                <a href="../../about.html">About</a>
+                <a href="../../contact.html">Contact</a>
+                <a href="../../posts/blog/">Blog</a>
+                <a href="../../posts/projects/">Projects</a>
+                <a href="../../posts/brews/">Brews</a>
+                <a href="../../posts/music/">Music</a>
+                <a href="../../archive.html">Archive</a>
+            </nav>
+        </header>
+
+        <main role="main">
+            <h1>Construct not Create</h1>
+            <article>
+    <section class="header">
+        Posted on October 19, 2018
+        
+    </section>
+    
+    <section>
+        <p>Today in Java it is pretty common practice to provide all dependencies for an object in its constructor. This encourages modular and testable code, and is pretty universally accepted.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">public</span> <span class="fu">MyClass1</span>(<span class="dt">final</span> MyDep1 dep1, <span class="dt">final</span> MyDep2 dep2) {</span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="kw">this</span>.<span class="fu">dep1</span> = dep1;</span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="kw">this</span>.<span class="fu">dep2</span> = dep2;</span>
+<span id="cb1-5"><a href="#cb1-5"></a>}</span></code></pre></div>
+<p>The dependency injection here encourages the class to write towards interface and not depend on a concrete interface. Again, universally accepted, nothing surprising here.</p>
+<p>There are other types of dependencies as well, typically runtime configuration dependencies. These will often be represented as a <code>Properties</code> instance or other type of Configuration abstraction, usually with a <code>Map</code> structure or interface to them. Frequently projects and libraries will provide the <code>Configuration</code> instance as a dependency to their classes.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">public</span> <span class="fu">MyClass2</span>(<span class="dt">final</span> somePackage.<span class="fu">Configuration</span> conf) {</span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="kw">this</span>.<span class="fu">serviceUrl</span> = conf.<span class="fu">getString</span>(<span class="st">&quot;serviceUrl&quot;</span>);</span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="kw">this</span>.<span class="fu">someInteger</span> = conf.<span class="fu">getInt</span>(<span class="st">&quot;someInteger&quot;</span>);</span>
+<span id="cb2-4"><a href="#cb2-4"></a>}</span></code></pre></div>
+<p>One could argue that this is dependency injection since the <code>Configuration</code> is provided by the caller. Really, though, this is injecting an implicit dependency, the <code>Configuration</code>, and not the actual dependencies, the URL and integer that are required.</p>
+<p>This is a relatively small difference and, honestly, may not matter much overall but it comes up fairly frequently and is a bit a of pet peeve of mine. A quick breakdown of what irks me here:</p>
+<h3 id="incorrect-injection">Incorrect Injection</h3>
+<p>Again, we aren’t actually providing dependencies, we are deriving them from a big blob of <code>Configuration</code> This is opaque to the caller unless all the used keys are properly documented (and that doc is maintained).</p>
+<h3 id="not-as-modular">Not as Modular</h3>
+<p>This immediately makes the class less modular since it is now depending on something it doesn’t even directly use.</p>
+<p>More subtly, the class now has access to things it shouldn’t need to know about. Providing all of the config, while convenient, exposes all of the configuration to every class that has a <code>Configuration</code> plumbed to it, potentially leaking abstractions.</p>
+<h3 id="additional-logic">Additional Logic</h3>
+<p>Ideally our constructors are as <em>dumb as possible</em>. By that I mean they either directly assign values if able or, at the most, checks that arguments are in a legal state.</p>
+<p>All the additional logic requires extra testing which gets tedious and, occasionally, error prone. Tests need to handle cases when the <code>Configuration</code> provided is missing some fields as well as the expected case of values being illegal (null <code>Strings</code>, negative <code>ints</code>, etc).</p>
+<p>Providing a method to create an object from a dependency like <code>Configuration</code> above is totally valid, but should be it’s own method. This pattern is typically called the <code>static factory method</code> pattern in Java and, happily, also co mes up in many projects.</p>
+<h2 id="separate-the-logic">Separate the Logic</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">// public here, but frequently this is private</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="kw">public</span> <span class="fu">MyClass2</span>(<span class="dt">final</span> <span class="bu">String</span> someUrl, <span class="dt">final</span> <span class="dt">int</span> someInteger) {</span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="kw">this</span>.<span class="fu">serviceUrl</span> = someUrl;</span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="kw">this</span>.<span class="fu">someInteger</span> = someInteger;</span>
+<span id="cb3-5"><a href="#cb3-5"></a>}</span>
+<span id="cb3-6"><a href="#cb3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co">// Frequently called create</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="kw">public</span> <span class="dt">static</span> MyClass2 <span class="fu">fromConf</span>(<span class="dt">final</span> somePackage.<span class="fu">Configuration</span> conf) {</span>
+<span id="cb3-9"><a href="#cb3-9"></a>  <span class="dt">final</span> <span class="bu">String</span> someUrl = conf.<span class="fu">getString</span>(<span class="st">&quot;serviceUrl&quot;</span>);</span>
+<span id="cb3-10"><a href="#cb3-10"></a>  <span class="dt">final</span> <span class="dt">int</span> someInteger = conf.<span class="fu">getInt</span>(<span class="st">&quot;someInteger&quot;</span>);</span>
+<span id="cb3-11"><a href="#cb3-11"></a></span>
+<span id="cb3-12"><a href="#cb3-12"></a>  <span class="kw">return</span> <span class="kw">new</span> <span class="fu">MyClass2</span>(someUrl, someInteger);</span>
+<span id="cb3-13"><a href="#cb3-13"></a>}</span></code></pre></div>
+<p>Note here that all that <code>Configuration</code> logic is moved out into its own static place, still allowing callers the convenience of just passing the configuration. Somewhat frequently I’ve seen the constructor made <code>private</code> once these factory methods are implemented. Personally, I keep them public for testing and to avoid imposing that the caller uses a specific <code>Configuration</code>, but each has its use case.</p>
+<h2 id="environment-variables">Environment Variables</h2>
+<p>Sometimes constructors will use values from the system environment to populate fields:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode java"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">public</span> <span class="fu">MyClass3</span>(<span class="co">/**</span> Look ma<span class="co">!</span> No dependencies<span class="co">!</span> <span class="co">*/</span>) {</span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="kw">this</span>.<span class="fu">serviceUrl</span> = <span class="bu">System</span>.<span class="fu">getProperty</span>(<span class="st">&quot;serviceUrl&quot;</span>);</span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="kw">this</span>.<span class="fu">anotherUrl</span> = <span class="bu">System</span>.<span class="fu">getProperty</span>(<span class="st">&quot;anotherUrl&quot;</span>);</span>
+<span id="cb4-4"><a href="#cb4-4"></a>}</span></code></pre></div>
+<p>Again, this is another case where this constructor should take its dependencies as arguments and provide a static factory method. This particular case bugs me even more since its not even apparent that the object requires any properties at all. Definitely avoid this case as well.</p>
+<h2 id="kiss">KISS</h2>
+<p>This is just a case of keeping things simple. Sometimes when these things come up in code it seems like Java is politely giving the programmer a little <em>too</em> much rope and we, as nice programmers, provide an abstraction in the wrong place. Remember, constructors are for simple assignments and not for creating the object through derivation.</p>
+<p><code>Scala</code> (accidentally?) has an interesting solution to things like this. The parameters on the primary constructor are fields on the object, so assignment is handled just by having a primary constructor. This, at least for me, removes some of the temptation to have constructors include logic to populate fields. That being said, the body of the class is also part of the primary constructor, so if extra logic is <em>really</em> needed, it is supported, although it looks a little odd. Check out this <a href="https://www.oreilly.com/library/view/scala-cookbook/9781449340292/ch04s02.html"><em>O’Reilly’</em> Scala cookbook</a> for details and examples.</p>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </footer>
+    </body>
+</html>

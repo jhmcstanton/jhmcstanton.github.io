@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>🍻 &lambda; - Brainfeck</title>
+        <link rel="stylesheet" href="../../css/default.css" />
+        <link rel="stylesheet" href="../../css/syntax.css" />
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="../../">Brewda</a>
+            </div>
+            <nav>
+                <a href="../../">Home</a>
+                <a href="../../about.html">About</a>
+                <a href="../../contact.html">Contact</a>
+                <a href="../../posts/blog/">Blog</a>
+                <a href="../../posts/projects/">Projects</a>
+                <a href="../../posts/brews/">Brews</a>
+                <a href="../../posts/music/">Music</a>
+                <a href="../../archive.html">Archive</a>
+            </nav>
+        </header>
+
+        <main role="main">
+            <h1>Brainfeck</h1>
+            <article>
+    <section class="header">
+        Posted on August 20, 2019
+        
+    </section>
+    
+    <section>
+        <p><a href="https://github.com/jhmcstanton/brainfeck/"><code>Brainfeck</code></a> is yet another brainfuck implementation. The web UI can be found <a href="https://brainfeck.jhmcstanton.com">over here</a>.</p>
+<p><code>Brainfeck</code> is just an excuse to use <a href="https://www.idris-lang.org/">idris</a> for a toy project since I’ve been working through <a href="https://www.manning.com/books/type-driven-development-with-idris"><em>Type-Driven Devlopment with Idris</em></a>. Brainfuck is an incredibly simple language so using a fully dependently typed language to implement it seemed like over-kill (and the implementation is <em>quite large</em>), but it’s been a solid learning experience to apply first-class dependent types to this project. I’ve also been rooting around on the idris homepage, and there are some pretty cool features in the language.</p>
+<h2 id="st">ST</h2>
+<p>Idris supported a module for some time called <a href="http://docs.idris-lang.org/en/latest/effects/introduction.html"><code>effects</code></a> that supported defining actions that could run specific operations, such as interacting with STDIO. This has since been deprecated in favor of <a href="http://docs.idris-lang.org/en/latest/st/"><code>st</code></a>, which apparently composes better and supports tracking resource usage and consumption (I say “apparently” because I never actually used <code>effects</code>).</p>
+<p><code>ST</code> is similar to Haskell’s <a href="http://hackage.haskell.org/package/base-4.12.0.0/docs/Control-Monad-ST.html">ST monad</a>. Both support running a typically stateful operation that returns a pure value by ensuring the unsafe state never escapes. Idris’ implementation has a few features that make working with complex types pretty awesome.</p>
+<p>First off, the <code>STrans</code> definition</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb1-1"><a href="#cb1-1"></a><span class="dt">STrans</span> <span class="ot">:</span> (m <span class="ot">:</span> <span class="dt">Type</span> <span class="ot">-&gt;</span> <span class="dt">Type</span>) <span class="ot">-&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>         (resultType <span class="ot">:</span> <span class="dt">Type</span>) <span class="ot">-&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>         (in_res <span class="ot">:</span> <span class="dt">Resources</span>) <span class="ot">-&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>         (out_res <span class="ot">:</span> resultType <span class="ot">-&gt;</span> <span class="dt">Resources</span>) <span class="ot">-&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>         <span class="dt">Type</span></span></code></pre></div>
+<p>supports updating a resource’s type based on the output of an action. This is essentially a requirement for doing anything not completely trivial with a dependently typed data structure. For example, a <code>Vect (n : Nat) a</code> may grow or shrink based on the operation. Without being able to update the type of the <code>Vect</code> this would be an invalid operation.</p>
+<p>Idris’ ST additionally defines the mutable state as a list of resources, instead of a single field. In Haskell’s ST this would be encoded using a product type of some sort. Idris’s implementation is both pretty dang convenient for getting at the mutable variables and composing stateful operations with differing, but related, resources.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">operation1</span> <span class="ot">:</span> (strs <span class="ot">:</span> <span class="dt">Var</span>) <span class="ot">-&gt;</span> <span class="dt">ST</span> m <span class="dt">String</span> [ strs <span class="ot">:::</span> <span class="dt">State</span> (<span class="dt">Vect</span> (<span class="dt">S</span> k) <span class="dt">String</span>) ]</span>
+<span id="cb2-2"><a href="#cb2-2"></a>operation1 strs <span class="fu">=</span> <span class="fu">...</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="fu">operation2</span> <span class="ot">:</span> (index <span class="ot">:</span> <span class="dt">Var</span>) <span class="ot">-&gt;</span> (strs <span class="ot">:</span> <span class="dt">Var</span>) <span class="ot">-&gt;</span> <span class="dt">ST</span> m <span class="dt">String</span> [ index <span class="ot">:::</span> <span class="dt">State</span> <span class="dt">Int</span>,</span>
+<span id="cb2-5"><a href="#cb2-5"></a>                                                            <span class="fu">strs</span>  <span class="ot">:::</span> <span class="dt">State</span> (<span class="dt">Vect</span> (<span class="dt">S</span> k) <span class="dt">String</span>) ]</span>
+<span id="cb2-6"><a href="#cb2-6"></a>operation2 index strs <span class="fu">=</span> <span class="fu">...</span></span></code></pre></div>
+<p>Here the functions <code>operation1</code> and <code>operation2</code> are stateful operations that each return a <code>String.</code> <code>operation1</code> has a mutable variable, <code>strs</code>, that is a non-empty <code>Vect</code> of <code>String</code>. <code>operation2</code> has the same mutable variable plus an additional variable, <code>index</code>, that is simply a mutable <code>Int</code>. <code>Strans</code> allows <code>operation1</code> to be called from within <code>operation2</code> since it uses a subset of the same resources, but not the other way around. This allows the programmer to minimize the amount of state that is threaded around when many resources are required.</p>
+<p>One caveat with this more sophisticated ST implementation is that the error messages can get fairly confusing, especially where resources are being created. In general this isn’t a large issue since resources weren’t created often for this project, just the beginning of program interpretation, but it was a bit of a hurdle.</p>
+<h2 id="flexible-ffi">Flexible FFI</h2>
+<p>Idris has a very flexible foreign function interface, including official support for javascript. This project is broken up into three parts to take advantage of this:</p>
+<ul>
+<li><code>brainfeck-lib</code>: the main implementation of the interpreter that is backend agnostic.</li>
+<li><code>brainfeck-cli</code>: a c-backend implementation that operates in the default <code>IO</code> monad.</li>
+<li><code>brainfeck-web</code>: which uses the javascript backend.</li>
+</ul>
+<p>I was delightfully surprised at how simple dropping in the js backend is to do.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode idris"><code class="sourceCode idris"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">clear</span> <span class="ot">:</span> () <span class="ot">-&gt;</span> <span class="dt">JS_IO</span> ()</span>
+<span id="cb3-2"><a href="#cb3-2"></a>clear <span class="fu">_</span> <span class="fu">=</span> <span class="kw">do</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>  foreign <span class="dt">FFI_JS</span> <span class="st">&quot;document.getElementById(%0).value = ''&quot;</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>                 (<span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">JS_IO</span> ())</span>
+<span id="cb3-5"><a href="#cb3-5"></a>                 myAwesomeElementId</span></code></pre></div>
+<p>Interacting with javascript is as simple as providing a javascript statement as a String, providing the <code>Type</code> that is expected to fill in the blanks of that statement, then finally filling in those blanks. This FFI even supports marshalling idris functions into js functions.</p>
+<h2 id="future-work">Future Work</h2>
+<p>I’m still working through <em>Type-Driven Development</em>, and I’ll probably make a few changes to <code>brainfeck</code> as I learn more. The current implementation uses some simple types to enforce that a function can only be run in specific states (non-nil instruction lists, the tape is in the correct position to shift, etc), but there’s probably better ways to encode some of these things. In general I plan on applying depdendent types to other toy projects.</p>
+<p>After using the js FFI with idris I would also strongly consider using it for other toy projects. I’m not particularly interested in web development (see this site as an example), but this makes it much more enjoyable. Being able to basically just drop the <code>brainfeck-lib</code> package into a browser was a pretty nice bonus as well.</p>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </footer>
+    </body>
+</html>
